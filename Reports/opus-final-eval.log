@@ -1,0 +1,13 @@
+EVAL_START backend=hymn-stq1_0-gguf-v1 format=Sherry STQ1_0 1.3125 bpw 常驻 GEMV (NOT LUT4, NOT affine INT4, NOT fp16 展开缓存) samples=259 maxTokens=64 seed=11400714819323198485 greedy=false request_level_reproducible=true
+EVAL_PROGRESS 25/259 ok=25 failed=0
+EVAL_PROGRESS 50/259 ok=50 failed=0
+EVAL_PROGRESS 75/259 ok=75 failed=0
+EVAL_PROGRESS 100/259 ok=100 failed=0
+EVAL_PROGRESS 125/259 ok=125 failed=0
+EVAL_PROGRESS 150/259 ok=150 failed=0
+EVAL_PROGRESS 175/259 ok=175 failed=0
+EVAL_PROGRESS 200/259 ok=200 failed=0
+EVAL_PROGRESS 225/259 ok=225 failed=0
+EVAL_PROGRESS 250/259 ok=250 failed=0
+EVAL_PROGRESS 259/259 ok=259 failed=0
+EVAL_DONE backend=hymn-stq1_0-gguf-v1 total=259 ok=259 failed=0 out=Reports/translation-hypotheses-final.jsonl

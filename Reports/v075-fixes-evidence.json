@@ -1,0 +1,88 @@
+{
+  "captured_at": "2026-11-22 11:22:00 +0800",
+  "version": "0.7.5 build 11",
+  "issue": "用户反馈：①「关于智译星」弹窗在其它窗口下面；② 左下角「划词即译」改为「划词即译，长PDF翻译」；③ 直接划词不弹窗、只有自己按 ⌘C 才弹，且 ⌘V 粘贴混乱；④ 反复弹隐私与安全性授权提示但权限已打开。",
+  "regression_acknowledged": "③④ 是 v0.7.4「哨兵剪贴板 + 启动主动申请授权」引入的回归，本次撤销。",
+  "root_causes": [
+    {
+      "id": 1,
+      "confirmed": true,
+      "cause": "attemptAX 用 AXIsProcessTrusted() 布尔值当门槛；TCC 记录指向旧路径副本或 App 未重启时会误报 false，整条 AX 路径被跳过",
+      "fix": "无条件尝试 AX，权限真不足时 API 自行返回失败；另增强父链/子节点读取、采样 3→5 次"
+    },
+    {
+      "id": 2,
+      "confirmed": true,
+      "cause": "哨兵剪贴板先 clearContents() 再模拟 ⌘C；模拟按键在授权未生效时无效，用户自己按 ⌘C 成了唯一能让 changeCount 变化的途径",
+      "fix": "剪贴板全程只读 observeClipboard：不 clearContents、不模拟 ⌘C、不恢复，只观察 changeCount；用户自行 ⌘C 仍可触发"
+    },
+    {
+      "id": 3,
+      "confirmed": true,
+      "cause": "哨兵把用户剪贴板清空近 1 秒并恢复，导致 ⌘V 粘贴到空内容",
+      "fix": "同上，删除 ClipboardSnapshot 与 postCopyShortcut"
+    },
+    {
+      "id": 4,
+      "confirmed": true,
+      "cause": "启动/捕获失败/授权状态变化反复调用 AXIsProcessTrustedWithOptions，该 API 每次都会弹系统引导，即使已授权",
+      "fix": "删除所有自动授权回调；promptAccessibility 仅由设置页按钮与主菜单开关这类用户主动点击触发"
+    }
+  ],
+  "changes": [
+    "Sources/HymnApp/SelectionCapture.swift（重写：AX 无条件尝试 + 父链/子节点增强 + 只读观察剪贴板）",
+    "Sources/HymnApp/SelectionWatcher.swift（移除 onAuthorizationNeeded 与自动弹框）",
+    "Sources/HymnApp/main.swift（自定义关于窗口 showAbout、移除自动授权回调）",
+    "Sources/HymnApp/UIComponents.swift（新增 AboutView）",
+    "Sources/HymnApp/LibraryViews.swift（设置页中性复查文案）",
+    "Sources/HymnApp/RootView.swift（左下角文案）",
+    "Sources/HymnCore/Selection/SelectionCapturePolicy.swift（注释修订）",
+    "Sources/hymntest/SelectionCapturePolicyTests.swift（测试注释修订）",
+    "Sources/HymnApp/AppBrand.swift / Scripts/make-app.sh / Scripts/make-release.sh（版本 0.7.5 build 11）",
+    "Reports/model-migration-plan.md（第 19 节）"
+  ],
+  "verification": {
+    "build": "BUILD_OK rc=0 零警告",
+    "tests": "200/200",
+    "release": "make-release.sh 全绿；verify READY 461860800 B / 354 tensors / Apple M3 Pro / offline；真译「你好，很高兴见到你。」；tick max 24.92 ms / avg 10.13 ms",
+    "direct_selection_under_forced_untrusted": {
+      "env": "HYMN_FORCE_UNTRUSTED=1 HYMN_SELECTION_DEBUG=1",
+      "log": "monitors installed trusted=false；ax stable ... accepted source=ax",
+      "popup": "layer=3 窗口 320x225 出现",
+      "conclusion": "去掉 trusted 门槛后 AX 主路径恢复，直接划词弹窗"
+    },
+    "pasteboard_untouched": {
+      "sentinel": "PASTE_SENTINEL_FINAL_075",
+      "readings": ["划词前", "划词后立刻", "划词后 2 秒"],
+      "all_equal": true,
+      "log": "clipboard observation timeout; pasteboard left untouched"
+    },
+    "no_authorization_prompt": {
+      "promptAccessibility invoked count": 0,
+      "covered": ["启动", "划词失败", "应用激活", "4 秒轮询多轮"]
+    },
+    "about_window": {
+      "layer": 3,
+      "screenshot_full": "Reports/ui-v075-about-topmost.png",
+      "screenshot_window": "Reports/ui-v075-about-window.png",
+      "conclusion": "自定义 floating 窗口盖在 WorkBuddy / 浏览器之上，内容完整（版本 0.7.5）"
+    },
+    "sidebar_caption": {
+      "text": "划词即译，长 PDF 翻译",
+      "screenshot": "Reports/ui-v075-main.png"
+    },
+    "settings_copy": {
+      "text": "若已在系统设置授权仍无反应，请完全退出后重新打开 App；也可点右侧复查。",
+      "button": "复查授权状态",
+      "screenshot": "Reports/ui-v075-settings.png"
+    },
+    "artifact": "dist/LinguaNova.app 5.2 MB / dist/LinguaNova-0.7.5.dmg 2.5 MB"
+  },
+  "caveats": [
+    "用 HYMN_FORCE_UNTRUSTED=1 模拟「已授权但 API 误报」；本机 AXIsProcessTrusted() 正常返回 true，未在用户真实 TCC 状态下复现。TCC 彻底无权限时 AX 会失败，只能靠用户自行 ⌘C 兜底。",
+    "只读观察路径真机验证了「超时且剪贴板 untouched」，未端到端复现「用户手动 ⌘C → 弹窗」成功案例（TextEdit 均走 AX 路径）。",
+    "关于窗口 level=.floating 会一直浮在其它应用之上直到关闭，是为满足「显示在桌面最上层」的取舍。",
+    "合成 CGEvent 拖拽仍偶发重复手势/半截选区（本轮手势级去重命中 1 次），真实鼠标单次拖拽不产生该序列。",
+    "主窗口翻译、CLI 评测、1260 全方向与质量基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未改动；STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4。"
+  ]
+}

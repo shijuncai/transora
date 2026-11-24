@@ -1,0 +1,19 @@
+{
+  "module": "HymnCore.RealModelBackend (END-TO-END REAL INFERENCE)",
+  "weight_format": "affine INT4 (NOT LUT4)",
+  "backend": "hymn-native-metal-affine-int4-v1",
+  "translation_en_zh": "您好，很高兴见到您。",
+  "translation_chunks": 6,
+  "ttft_ms": 771.55,
+  "total_ms": 993.05,
+  "cancel_observed": true,
+  "cancel_engine_latency_ms": 28.55,
+  "scheduler_max_concurrency": 1,
+  "main_thread_ticks": 120,
+  "main_thread_max_gap_ms": 14.49,
+  "main_thread_avg_gap_ms": 9.99,
+  "resident_before_mb": 84.4,
+  "resident_after_load_mb": 98.2,
+  "resident_peak_mb": 142.9,
+  "note": "MPS kernel 预热已前置到 prepare()；TTFT 仅含 prompt prefill；稳态吞吐见 forward-perf.json"
+}

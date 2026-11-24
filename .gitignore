@@ -1,0 +1,24 @@
+# ---- 构建产物（可重建，不进仓库）----
+.build/
+.swiftpm/
+dist/
+*.dmg
+*.app
+
+# ---- 第三方权重与评测资产 ----
+# 模型权重有独立许可，不随源码分发；放 Models/Hy-MT2-1.8B-1.25Bit-GGUF/
+Models/
+# COMET 评测资产约 5 GB
+Eval/
+
+# ---- 论文样本（第三方版权，仅本地验证用）----
+Sample/
+
+# ---- 开发过程中落下的临时文件 ----
+/--source
+
+# ---- 证据截图（报告 Markdown 保留，截图太占体积）----
+Reports/**/*.png
+Reports/*.png
+
+.DS_Store

@@ -1,0 +1,49 @@
+{
+  "captured_at": "2026-11-22 11:56:00 +0800",
+  "version": "0.7.7 build 13",
+  "request": "把菜单栏托盘与划词浮窗里的图标也替换成新的 LN logo。",
+  "changes": [
+    "TrayController.brandStatusImage(): 用 NSApp.applicationIconImage 按 18pt 绘制菜单栏图标，isTemplate=false，缺失时回退 sparkles",
+    "TrayController.about 改走 onAbout → AppDelegate.showAbout（此前托盘菜单仍调用系统标准关于面板，层级会掉）",
+    "SelectionPopupView 标题图标 → AppIconMark(size: 16)",
+    "RootView 底部状态栏 → AppIconMark(size: 12)；左下角卡片 → AppIconMark(size: 13)",
+    "版本 0.7.7 build 13"
+  ],
+  "coverage_after": [
+    "Dock / Finder",
+    "菜单栏托盘",
+    "侧栏左上角",
+    "设置页「关于」卡片",
+    "关于窗口",
+    "划词浮窗标题",
+    "主窗口底部状态栏",
+    "左下角提示卡片"
+  ],
+  "verification": {
+    "build": "BUILD_OK rc=0 零警告",
+    "tests": "200/200",
+    "release": "make-release.sh 全绿；verify READY；真译「你好，很高兴见到你。」；tick max 29.88 ms / avg 10.39 ms",
+    "menubar": {
+      "screenshot": "Reports/ui-v077-menubar-icon.png",
+      "result": "蓝色圆角 LN 小图标出现在菜单栏右侧，可辨识、间距正常"
+    },
+    "popup": {
+      "screenshot": "Reports/ui-v077-popup-icon.png",
+      "result": "标题「智译星」前显示 LN 图标，16pt 与标题协调、无裁切；原文/译文/按钮正常"
+    },
+    "main_window": {
+      "screenshot": "Reports/ui-v077-main-icons.png",
+      "result": "左上角、左下角卡片、底部状态栏三处均为同一 LN 图标"
+    },
+    "selection_still_works": {
+      "log": "ax stable ... accepted source=ax",
+      "clipboard": "PASTE_SENTINEL_077 unchanged"
+    },
+    "artifact": "dist/LinguaNova.app 5.3 MB / dist/LinguaNova-0.7.7.dmg 2.5 MB"
+  },
+  "caveats": [
+    "菜单栏图标 18pt 为 macOS 标准尺寸，彩色方块因内容留边距视觉上比相邻线条符号略小一圈，未放大以免挤压菜单栏。",
+    "再次重新构建 = ad-hoc 重签，辅助功能授权可能再次失效；升级后若划词无反应，按计划表 20.5 节清理旧条目只保留 /Applications/LinguaNova.app 再授权。",
+    "质量基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未改动；STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4。"
+  ]
+}

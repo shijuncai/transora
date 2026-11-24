@@ -1,0 +1,73 @@
+{
+  "captured_at": "2026-11-22 11:42:00 +0800",
+  "version": "0.7.6 build 12",
+  "issue": "① 直接划词仍不弹窗，只有自己按 ⌘C 才弹；② 用用户提供的 Blue Gradient LN Monogram Icon 替换 App logo。",
+  "why_v075_insufficient": "v0.7.5 为保证 ⌘V 安全把剪贴板路径改成完全只读，AX 读不到选区时就只剩用户自己按 ⌘C，正是用户看到的现象。只读观察不能替代自动复制。",
+  "root_cause_of_user_environment": "模拟 ⌘C 与 AX 读取同时失效，最可能是辅助功能授权没有对当前构建生效：项目只有 ad-hoc 签名（security find-identity 返回 0 valid identities），每次重新构建 cdhash 变化导致 TCC 记录失效，系统设置里还容易留下多个同名旧条目。属于 macOS 签名机制限制。",
+  "fix": {
+    "clipboard_path": "恢复模拟 ⌘C，但绝不 clearContents、不预设哨兵。t=0 记录 changeCount 与完整剪贴板快照并发送按键；0-450ms 内出现新内容判定为模拟生效 → 采用并恢复原剪贴板（⌘V 不受影响）；450ms-1.2s 内出现新内容判定为用户手动 ⌘C → 采用但不恢复；超时放弃，剪贴板全程未被本进程修改。",
+    "diagnosis": "selectedTextViaAX 返回 (text, disabled)，用 AXError.apiDisabled 区分「权限未生效」与「应用不暴露选区」；设置页在 ax-disabled 时显示橙色说明 + 打开辅助功能设置按钮 + 当前 App 完整路径。",
+    "debug_switches": ["HYMN_SKIP_AX=1 强制走剪贴板路径", "HYMN_FORCE_UNTRUSTED=1 模拟授权误报", "HYMN_SELECTION_DEBUG=1 日志"],
+    "icon": "Assets/logo-source.png + Scripts/make-icon-from-image.swift（四角洪泛填充透明 + 两轮收边 + 1024@92% 生成 10 尺寸）；make-icon.sh 优先使用该素材；make-app.sh 增加 touch + lsregister -f 刷新图标缓存；新增 AppIconMark 统一侧栏 / 关于卡片 / 关于窗口的品牌标。"
+  },
+  "files_changed": [
+    "Sources/HymnApp/SelectionCapture.swift",
+    "Sources/HymnApp/SelectionWatcher.swift",
+    "Sources/HymnApp/AppModel.swift",
+    "Sources/HymnApp/main.swift",
+    "Sources/HymnApp/LibraryViews.swift",
+    "Sources/HymnApp/RootView.swift",
+    "Sources/HymnApp/UIComponents.swift",
+    "Sources/HymnApp/AppBrand.swift",
+    "Scripts/make-icon.swift 相关：Scripts/make-icon.sh（分支）、Scripts/make-icon-from-image.swift（新增）",
+    "Scripts/make-app.sh（lsregister）",
+    "Scripts/make-release.sh（版本）",
+    "Assets/logo-source.png（新增）、Assets/LinguaNova.icns（重新生成）",
+    "Reports/model-migration-plan.md（第 20 节）"
+  ],
+  "verification": {
+    "build": "BUILD_OK rc=0 零警告",
+    "tests": "200/200",
+    "release": "make-release.sh 全绿；verify READY；真译「你好，很高兴见到你。」；tick max 19.53 ms / avg 10.14 ms",
+    "ax_path_direct_selection": {
+      "app": "TextEdit",
+      "cmd_c_pressed": false,
+      "log": "ax stable ... accepted source=ax",
+      "popup": "layer=3",
+      "clipboard": "PASTE_SENTINEL_076 unchanged"
+    },
+    "simulated_copy": {
+      "env": "HYMN_SKIP_AX=1",
+      "log": "simulated ⌘C ok, clipboard restored; text=uick brown fox jumps over the lazy dog. ALPHA",
+      "popup": "layer=3",
+      "cmd_c_pressed": false,
+      "clipboard_after_0_4s": "PASTE_SENTINEL_076B",
+      "clipboard_after_2_4s": "PASTE_SENTINEL_076B",
+      "conclusion": "模拟复制生效、无需手按 ⌘C 即可弹窗，且剪贴板被恢复"
+    },
+    "icon": {
+      "source": "clipboard-2026-11-22T03-28-17-562Z-a2f9d448.jpg (1254x1254)",
+      "crop": "1156x1145",
+      "canvas": 1024,
+      "content": 942,
+      "md5_match_in_app": true,
+      "finder": "dist 与 /tmp 新路径副本均显示蓝色 LN 圆角图标",
+      "ui": "主窗口左上角、关于窗口、设置页关于卡片统一为新图标",
+      "screenshots": ["Reports/ui-v076-finder-icon.png", "Reports/ui-v076-main.png", "Reports/ui-v076-about.png"]
+    },
+    "artifact": "dist/LinguaNova.app 5.3 MB / dist/LinguaNova-0.7.6.dmg 2.5 MB"
+  },
+  "user_actions_required": [
+    "完全退出所有正在运行的智译星（含托盘）",
+    "把新 LinguaNova.app 放到 /Applications，只保留一份",
+    "系统设置 → 隐私与安全性 → 辅助功能：删除所有旧的「智译星」条目，再 + 添加 /Applications/LinguaNova.app",
+    "完全退出并重新打开 App；设置页若仍显示橙色提示，会直接给出当前 App 路径"
+  ],
+  "caveats": [
+    "无代码签名证书，每次重新构建 ad-hoc 签名后都可能需要重新授权，属 TCC 签名匹配机制而非代码缺陷；彻底消除需要 Developer ID。",
+    "本轮在辅助功能有效的本机验证模拟复制，无法在用户真实授权失效环境下复现；只能靠设置页诊断与上述步骤排查。",
+    "模拟 ⌘C 生效时剪贴板被选区覆盖约 100-200ms 后恢复，极小概率撞上用户 ⌘V。",
+    "图标缓存彻底刷新可能需要重启 Finder 或重新登录。",
+    "质量基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未改动；STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4。"
+  ]
+}

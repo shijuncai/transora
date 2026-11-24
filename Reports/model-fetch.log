@@ -1,0 +1,18 @@
+[fetch] target   : /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Models/Hy-MT2-1.8B-4bit
+[fetch] endpoint : https://hf-mirror.com
+[fetch] format   : affine INT4 (NOT LUT4)
+[fetch] parts    : 12
+[fetch] 200   config.json                            1688 bytes
+[fetch] 200   model.safetensors.index.json          57380 bytes
+[fetch] 200   tokenizer.json                      9527287 bytes
+[fetch] 200   tokenizer_config.json                   359 bytes
+[fetch] 200   chat_template.jinja                     654 bytes
+[fetch] 200   generation_config.json                  221 bytes
+[fetch] 200   mlx_manifest.json                       375 bytes
+[fetch] 200 special_tokens_map.json 488 bytes
+[fetch] verifying checksums
+63180daf56cf2ca15223b358eae0bcb5252b7fd4bfa2b2882b36e82f4c410da8  config.json
+a9cecbc77050b86b2fa3df3a8941d34ed3585cdbcce07bd64b3da289d50537c6  model.safetensors
+b475bbef1b0b2fd57dcb865332b546475bd1ede2deb3bb91bafd0c047a8a530a  tokenizer.json
+b7491ec0e9c869dfce20f2176758099bf248d979dd05530ede99deb21698acee  chat_template.jinja
+[fetch] done: 1007776125 bytes

@@ -1,0 +1,62 @@
+{
+  "captured_at": "2026-11-21 21:18:02 +0800",
+  "purpose": "端到端验证：TextEdit 选中文本 → 全局 mouseUp 监听 → 划词浮窗 → 真实模型翻译 → 写入历史",
+  "baseline_max_id": 56,
+  "test_rows": [
+    {
+      "id": 57,
+      "source": "Hello, nice to meet you.",
+      "target": "你好，很高兴见到你。",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 58,
+      "source": "Hello, nice to meet you.",
+      "target": "你好，很高兴见到你。",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 59,
+      "source": "lo, nice to meet",
+      "target": "你好，很高兴见到你",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 60,
+      "source": "et",
+      "target": "和",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 61,
+      "source": "you.",
+      "target": "你。",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 62,
+      "source": "Hello",
+      "target": "你好",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 63,
+      "source": "you",
+      "target": "你",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 64,
+      "source": "Hello, nice to meet you.",
+      "target": "你好，很高兴见到你。",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    },
+    {
+      "id": 65,
+      "source": "meet",
+      "target": "遇见",
+      "model_tag": "hymn-stq1_0-gguf-v1 (SELECTION, STQ1_0, NOT LUT4)"
+    }
+  ],
+  "key_result": "id=64（主窗口已缩到托盘）：source='Hello, nice to meet you.' target='你好，很高兴见到你。' model_tag 含 SELECTION"
+}

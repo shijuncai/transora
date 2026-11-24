@@ -1,0 +1,6 @@
+开始构建 fp16 权重缓存…
+  source = /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Models/Hy-MT2-1.8B-4bit/model.safetensors
+  dest   = /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Models/Hy-MT2-1.8B-4bit/weights.fp16.bin
+tensors=354 (int4=225 bf16=129) bytes=-712806400 (3.58 GB) elapsed=228246.7 ms
+  回读校验: tensors=354 dataBytes=3582160896
+  文件实际大小: 3582214144 字节

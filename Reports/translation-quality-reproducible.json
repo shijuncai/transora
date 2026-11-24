@@ -1,0 +1,510 @@
+{
+  "tool": "sacrebleu 2.6.0 (corpus_bleu / corpus_chrf), Python 仅离线算分",
+  "hypothesis_file": "Reports/translation-hypotheses-reproducible.jsonl",
+  "backend": "hymn-stq1_0-gguf-v1",
+  "total_rows": 259,
+  "scored_rows": 256,
+  "failed_rows": 0,
+  "failed_ids": [],
+  "overall": {
+    "bleu": 22.62,
+    "chrf2": 41.21,
+    "signature": "BLEU = 22.62 45.8/26.2/17.5/12.5 (BP = 1.000 ratio = 1.025 hyp_len = 2447 ref_len = 2388)"
+  },
+  "directions": {
+    "ar->en": {
+      "n": 4,
+      "bleu": 30.35,
+      "chrf2": 52.85,
+      "avg_wall_ms": 1914.2
+    },
+    "bn->en": {
+      "n": 4,
+      "bleu": 7.82,
+      "chrf2": 31.66,
+      "avg_wall_ms": 2588.5
+    },
+    "cs->en": {
+      "n": 4,
+      "bleu": 40.08,
+      "chrf2": 60.95,
+      "avg_wall_ms": 1524.8
+    },
+    "de->en": {
+      "n": 4,
+      "bleu": 33.7,
+      "chrf2": 56.43,
+      "avg_wall_ms": 1553.1
+    },
+    "en->ar": {
+      "n": 4,
+      "bleu": 9.58,
+      "chrf2": 38.46,
+      "avg_wall_ms": 1953.9,
+      "bleu_char_level": 9.58
+    },
+    "en->bn": {
+      "n": 4,
+      "bleu": 1.42,
+      "chrf2": 17.39,
+      "avg_wall_ms": 3440.9,
+      "bleu_char_level": 1.42
+    },
+    "en->cs": {
+      "n": 4,
+      "bleu": 27.61,
+      "chrf2": 53.36,
+      "avg_wall_ms": 1831.1
+    },
+    "en->de": {
+      "n": 4,
+      "bleu": 22.25,
+      "chrf2": 59.23,
+      "avg_wall_ms": 1818.4
+    },
+    "en->es": {
+      "n": 4,
+      "bleu": 55.28,
+      "chrf2": 82.08,
+      "avg_wall_ms": 1665.2
+    },
+    "en->fa": {
+      "n": 4,
+      "bleu": 2.84,
+      "chrf2": 36.23,
+      "avg_wall_ms": 1743.0,
+      "bleu_char_level": 2.35
+    },
+    "en->fr": {
+      "n": 4,
+      "bleu": 26.5,
+      "chrf2": 53.8,
+      "avg_wall_ms": 2706.2
+    },
+    "en->gu": {
+      "n": 4,
+      "bleu": 1.31,
+      "chrf2": 14.55,
+      "avg_wall_ms": 4036.0,
+      "bleu_char_level": 1.31
+    },
+    "en->he": {
+      "n": 4,
+      "bleu": 42.43,
+      "chrf2": 57.01,
+      "avg_wall_ms": 2366.0,
+      "bleu_char_level": 42.43
+    },
+    "en->hi": {
+      "n": 4,
+      "bleu": 3.99,
+      "chrf2": 22.23,
+      "avg_wall_ms": 3285.5,
+      "bleu_char_level": 3.99
+    },
+    "en->id": {
+      "n": 4,
+      "bleu": 74.06,
+      "chrf2": 81.18,
+      "avg_wall_ms": 1314.5
+    },
+    "en->it": {
+      "n": 4,
+      "bleu": 18.86,
+      "chrf2": 47.58,
+      "avg_wall_ms": 1580.4
+    },
+    "en->ja": {
+      "n": 4,
+      "bleu": 0.0,
+      "chrf2": 17.41,
+      "avg_wall_ms": 2634.9,
+      "bleu_char_level": 9.1
+    },
+    "en->kk": {
+      "n": 4,
+      "bleu": 1.28,
+      "chrf2": 0.1,
+      "avg_wall_ms": 2691.7
+    },
+    "en->km": {
+      "n": 4,
+      "bleu": 0.0,
+      "chrf2": 12.03,
+      "avg_wall_ms": 3374.9,
+      "bleu_char_level": 0.0
+    },
+    "en->ko": {
+      "n": 4,
+      "bleu": 1.36,
+      "chrf2": 16.4,
+      "avg_wall_ms": 2730.4,
+      "bleu_char_level": 1.36
+    },
+    "en->mr": {
+      "n": 4,
+      "bleu": 2.22,
+      "chrf2": 27.3,
+      "avg_wall_ms": 2707.2,
+      "bleu_char_level": 2.22
+    },
+    "en->ms": {
+      "n": 4,
+      "bleu": 6.3,
+      "chrf2": 39.55,
+      "avg_wall_ms": 1535.7
+    },
+    "en->my": {
+      "n": 4,
+      "bleu": 7.55,
+      "chrf2": 14.87,
+      "avg_wall_ms": 4026.6,
+      "bleu_char_level": 7.55
+    },
+    "en->nl": {
+      "n": 4,
+      "bleu": 28.5,
+      "chrf2": 53.51,
+      "avg_wall_ms": 1939.2
+    },
+    "en->pl": {
+      "n": 4,
+      "bleu": 33.64,
+      "chrf2": 58.46,
+      "avg_wall_ms": 2264.3
+    },
+    "en->pt": {
+      "n": 4,
+      "bleu": 38.84,
+      "chrf2": 59.57,
+      "avg_wall_ms": 1924.7
+    },
+    "en->ru": {
+      "n": 4,
+      "bleu": 21.65,
+      "chrf2": 44.85,
+      "avg_wall_ms": 2144.6
+    },
+    "en->ta": {
+      "n": 4,
+      "bleu": 1.81,
+      "chrf2": 22.48,
+      "avg_wall_ms": 2804.3,
+      "bleu_char_level": 1.81
+    },
+    "en->te": {
+      "n": 4,
+      "bleu": 1.97,
+      "chrf2": 12.8,
+      "avg_wall_ms": 3750.4,
+      "bleu_char_level": 1.97
+    },
+    "en->th": {
+      "n": 4,
+      "bleu": 6.21,
+      "chrf2": 28.47,
+      "avg_wall_ms": 2544.2,
+      "bleu_char_level": 2.57
+    },
+    "en->tr": {
+      "n": 4,
+      "bleu": 16.83,
+      "chrf2": 52.66,
+      "avg_wall_ms": 1886.3
+    },
+    "en->ug": {
+      "n": 4,
+      "bleu": 2.76,
+      "chrf2": 23.58,
+      "avg_wall_ms": 3381.1,
+      "bleu_char_level": 2.76
+    },
+    "en->uk": {
+      "n": 4,
+      "bleu": 1.52,
+      "chrf2": 15.12,
+      "avg_wall_ms": 2396.7
+    },
+    "en->ur": {
+      "n": 4,
+      "bleu": 13.32,
+      "chrf2": 42.69,
+      "avg_wall_ms": 3121.9,
+      "bleu_char_level": 13.32
+    },
+    "en->vi": {
+      "n": 4,
+      "bleu": 9.51,
+      "chrf2": 35.08,
+      "avg_wall_ms": 1840.0
+    },
+    "en->zh": {
+      "n": 4,
+      "bleu": 48.21,
+      "chrf2": 52.06,
+      "avg_wall_ms": 1655.2,
+      "bleu_char_level": 56.73
+    },
+    "es->en": {
+      "n": 4,
+      "bleu": 53.48,
+      "chrf2": 73.26,
+      "avg_wall_ms": 1420.6
+    },
+    "fa->en": {
+      "n": 4,
+      "bleu": 16.43,
+      "chrf2": 40.99,
+      "avg_wall_ms": 1506.8
+    },
+    "fr->en": {
+      "n": 4,
+      "bleu": 35.51,
+      "chrf2": 57.62,
+      "avg_wall_ms": 2397.6
+    },
+    "gu->en": {
+      "n": 4,
+      "bleu": 14.61,
+      "chrf2": 32.1,
+      "avg_wall_ms": 2687.0
+    },
+    "he->en": {
+      "n": 4,
+      "bleu": 35.94,
+      "chrf2": 53.7,
+      "avg_wall_ms": 1918.0
+    },
+    "hi->en": {
+      "n": 4,
+      "bleu": 6.83,
+      "chrf2": 30.0,
+      "avg_wall_ms": 2423.8
+    },
+    "id->en": {
+      "n": 4,
+      "bleu": 58.28,
+      "chrf2": 60.6,
+      "avg_wall_ms": 1349.4
+    },
+    "it->en": {
+      "n": 4,
+      "bleu": 16.11,
+      "chrf2": 41.43,
+      "avg_wall_ms": 1685.4
+    },
+    "ja->en": {
+      "n": 4,
+      "bleu": 15.2,
+      "chrf2": 35.57,
+      "avg_wall_ms": 1900.0
+    },
+    "kk->en": {
+      "n": 4,
+      "bleu": 2.87,
+      "chrf2": 19.81,
+      "avg_wall_ms": 2045.2
+    },
+    "km->en": {
+      "n": 4,
+      "bleu": 5.08,
+      "chrf2": 43.67,
+      "avg_wall_ms": 2639.2
+    },
+    "ko->en": {
+      "n": 4,
+      "bleu": 17.17,
+      "chrf2": 37.96,
+      "avg_wall_ms": 2423.9
+    },
+    "mr->en": {
+      "n": 4,
+      "bleu": 53.37,
+      "chrf2": 66.8,
+      "avg_wall_ms": 2123.7
+    },
+    "ms->en": {
+      "n": 4,
+      "bleu": 5.83,
+      "chrf2": 27.39,
+      "avg_wall_ms": 1276.1
+    },
+    "my->en": {
+      "n": 4,
+      "bleu": 10.03,
+      "chrf2": 52.85,
+      "avg_wall_ms": 3238.8
+    },
+    "nl->en": {
+      "n": 4,
+      "bleu": 32.13,
+      "chrf2": 54.51,
+      "avg_wall_ms": 1766.5
+    },
+    "pl->en": {
+      "n": 4,
+      "bleu": 32.33,
+      "chrf2": 65.81,
+      "avg_wall_ms": 2078.2
+    },
+    "pt->en": {
+      "n": 4,
+      "bleu": 54.32,
+      "chrf2": 71.96,
+      "avg_wall_ms": 1530.7
+    },
+    "ru->en": {
+      "n": 4,
+      "bleu": 12.27,
+      "chrf2": 36.48,
+      "avg_wall_ms": 1805.1
+    },
+    "ta->en": {
+      "n": 4,
+      "bleu": 8.35,
+      "chrf2": 30.08,
+      "avg_wall_ms": 1927.7
+    },
+    "te->en": {
+      "n": 4,
+      "bleu": 24.41,
+      "chrf2": 44.68,
+      "avg_wall_ms": 2869.1
+    },
+    "th->en": {
+      "n": 4,
+      "bleu": 12.7,
+      "chrf2": 35.07,
+      "avg_wall_ms": 2142.9
+    },
+    "tr->en": {
+      "n": 4,
+      "bleu": 32.4,
+      "chrf2": 54.89,
+      "avg_wall_ms": 1651.0
+    },
+    "ug->en": {
+      "n": 4,
+      "bleu": 4.9,
+      "chrf2": 27.43,
+      "avg_wall_ms": 2958.0
+    },
+    "uk->en": {
+      "n": 4,
+      "bleu": 11.1,
+      "chrf2": 32.26,
+      "avg_wall_ms": 1923.1
+    },
+    "ur->en": {
+      "n": 4,
+      "bleu": 6.46,
+      "chrf2": 35.31,
+      "avg_wall_ms": 2197.7
+    },
+    "vi->en": {
+      "n": 4,
+      "bleu": 37.13,
+      "chrf2": 52.18,
+      "avg_wall_ms": 1630.5
+    },
+    "zh->en": {
+      "n": 4,
+      "bleu": 61.49,
+      "chrf2": 71.69,
+      "avg_wall_ms": 1679.1
+    }
+  },
+  "direction_count": 64,
+  "languages_touched": [
+    "ar",
+    "bn",
+    "cs",
+    "de",
+    "en",
+    "es",
+    "fa",
+    "fr",
+    "gu",
+    "he",
+    "hi",
+    "id",
+    "it",
+    "ja",
+    "kk",
+    "km",
+    "ko",
+    "mr",
+    "ms",
+    "my",
+    "nl",
+    "pl",
+    "pt",
+    "ru",
+    "ta",
+    "te",
+    "th",
+    "tr",
+    "ug",
+    "uk",
+    "ur",
+    "vi",
+    "zh"
+  ],
+  "language_count": 33,
+  "coverage_smoke": {
+    "n": 3,
+    "non_empty": 3,
+    "distinct_from_source": 3,
+    "details": [
+      {
+        "direction": "en->tl",
+        "hypothesis": "机器学习正在改变世界。",
+        "error": ""
+      },
+      {
+        "direction": "en->bo",
+        "hypothesis": "འ�ཕཕྲཕྲུལ་�ཆས་ས�སླསློབ་ས�སྦསྦྱསྦྱོང་གགིས་འ�ཛམ་ག�གླགླིང་བས�སྒསྒྱསྒྱུར་བ�ཞཞིན་�ཡཡོད།",
+        "error": ""
+      },
+      {
+        "direction": "en->mn",
+        "hypothesis": "�ᠮ�ᠠ�ᠱ�ᠢ�ᠨ �ᠰ�ᠤ�ᠷ�ᠭ�ᠠ�ᠭ�ᠤ�ᠯ�ᠢ �ᠳ�ᠡ�ᠯ�ᠡ�ᠬ�ᠡ�ᠶ ",
+        "error": ""
+      }
+    ]
+  },
+  "corpus_manifest": {
+    "corpus": "Helsinki-NLP/opus-100 (test split)",
+    "en_pivot_pairs": 32,
+    "directions_with_reference": 64,
+    "sentences_per_direction": 4,
+    "languages_without_reference": [
+      "tl",
+      "bo",
+      "mn"
+    ],
+    "model_card_language_count": 36
+  },
+  "comet": {
+    "status": "OK",
+    "model": "Unbabel/wmt22-comet-da",
+    "system_score": 0.7345,
+    "scored_rows": 256,
+    "direction_count": 64,
+    "report": "Reports/comet-scores.json",
+    "never_fabricated": true
+  },
+  "sampling": {
+    "request_level_reproducible": true,
+    "mode": "sample",
+    "note": "每请求按 seed 重建 Sampler，同批结果可逐请求复现。"
+  },
+  "caveats": [
+    "小样本系统级回归信号：每个方向 4 句，不是权威 WMT/FLORES 基准排行榜。",
+    "参考译文来自 OPUS-100 test split，未经人工复核；不同语料的领域差异会显著影响 BLEU。",
+    "BLEU(13a) 对无空格语言系统性偏低，已另给字符级 BLEU 与 chrF2。",
+    "以 en 为枢轴的 64 个方向 + 3 个无参考语言冒烟；1260 全方向覆盖另见 Reports/coverage-1260-report.json，其中 1196 个无参考方向不产质量分数。",
+    "译文由 maxTokens=64 截断控制，长句可能被截断，过滤规则见 Eval/opus100-manifest.json。",
+    "COMET 分数（若有）来自真实 Unbabel/wmt22-comet-da 推理；未产出时状态为 BLOCKED/NOT_DELIVERED，绝不填充占位分数。"
+  ]
+}

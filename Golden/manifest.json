@@ -1,0 +1,25 @@
+{
+  "source": "mlx.core.dequantize(weight, scales, biases, group_size=64, bits=4, mode='affine', dtype=float32)",
+  "mlx_version": "0.32.4",
+  "model": "mlx-community/Hy-MT2-1.8B-4bit",
+  "tensor": "model.layers.0.self_attn.q_proj",
+  "rows": 32,
+  "cols": 2048,
+  "dtype": "float32",
+  "endian": "little",
+  "first8": [
+    -0.01129150390625,
+    0.007537841796875,
+    -0.0037689208984375,
+    0.0037689208984375,
+    -0.01129150390625,
+    0.01129150390625,
+    -0.01507568359375,
+    -0.01129150390625
+  ],
+  "min": -0.0927734375,
+  "max": 0.10986328125,
+  "mean": -0.00010463874787092209,
+  "std": 0.015357885509729385,
+  "bytes": 262144
+}

@@ -1,0 +1,17 @@
+权重目录       : /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Models/Hy-MT2-1.8B-4bit
+文件字节       : 1007776125
+张量数         : 804  dtypes=["BF16": 579, "U32": 225]
+量化声明       : mode=affine bits=4 group_size=64
+码本类张量     : 0 (lut/codebook/centroid/lookup)
+检测到层数     : 32
+布局自检       : PASS
+真实 LUT4      : NO
+结论           : 这是 affine INT4 等间距码本量化，不是 LUT4；
+                 禁止在任何 UI / 元数据 / 报告中标注为 LUT4。
+
+Metal 设备       : Apple M3 Pro
+MSL 运行时编译   : 17.755 ms
+GPU/CPU 最大误差 : 0.000000000 (32768 个元素)
+官方 MLX golden  : 65536 元素, maxAbsDiff=0.0 (mx.dequantize, affine)
+零点残差         : 0.3915
+原生推理状态     : 权重/算子层已验证；完整 forward 尚未接入（见 stage-summary.md）

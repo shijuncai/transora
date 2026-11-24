@@ -1,0 +1,44 @@
+{
+  "purpose": "同一 259 样本、同后端、同 maxTokens=64、同语言名映射的三阶段对照",
+  "stages": [
+    {
+      "name": "历史基线（Sampler 修复前 / 流式修复前）",
+      "bleu": 23.2,
+      "chrf2": 41.19,
+      "comet": null,
+      "request_level_reproducible": false,
+      "note": "RNG state 跨请求延续；译文含流式解码字符损坏"
+    },
+    {
+      "name": "Sampler 修复后 / 流式修复前",
+      "bleu": 22.62,
+      "chrf2": 41.21,
+      "comet": 0.7345,
+      "request_level_reproducible": true,
+      "note": "每请求重建 Sampler；译文仍含流式解码字符损坏"
+    },
+    {
+      "name": "最终（Sampler + 流式解码修复）",
+      "bleu": 23.19,
+      "chrf2": 43.86,
+      "comet": 0.7809,
+      "request_level_reproducible": true,
+      "note": "每请求重建 Sampler + streaming-decode 修复；对应最终交付二进制"
+    }
+  ],
+  "delta_sampler_fix": {
+    "bleu": -0.58,
+    "chrf2": 0.02
+  },
+  "delta_streaming_fix": {
+    "bleu": 0.57,
+    "chrf2": 2.65,
+    "comet": 0.0464
+  },
+  "caveats": [
+    "Sampler 修复改变采样序列，属预期口径变化，不是权重或 prompt 改变。",
+    "流式解码修复只改字符串增量拼接，不改模型算子/权重/采样；分数提升来自消除 U+FFFD 残留与字符重复。",
+    "COMET 为 Unbabel/wmt22-comet-da 真实推理分数，与 BLEU/chrF2 不可直接换算。",
+    "三阶段分数口径不同，不可混用；各阶段原始报告均已留档。"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "captured_at": "2026-11-21 23:40:34 +0800",
+  "purpose": "划词浮窗尺寸随划词量自适应：TextEdit 全选 → 全局 mouseUp → 浮窗 → CGWindowList 实测窗口外框",
+  "binary": "/tmp/linguanova-size/LinguaNova.app（由 make-release.sh 最终产物复制）",
+  "cases": {
+    "short": {
+      "source_chars": 24,
+      "window_bounds": {
+        "x": 332,
+        "y": 159,
+        "w": 320,
+        "h": 209
+      },
+      "estimated_content_height": 181,
+      "window_id": 1517
+    },
+    "medium": {
+      "source_chars": 125,
+      "window_bounds": {
+        "x": 340,
+        "y": 139,
+        "w": 380,
+        "h": 225
+      },
+      "estimated_content_height": 197,
+      "window_id": 1517
+    },
+    "long": {
+      "source_chars": 1115,
+      "window_bounds": {
+        "x": 391,
+        "y": 203,
+        "w": 520,
+        "h": 365
+      },
+      "estimated_content_height": 337,
+      "window_id": 1517
+    }
+  },
+  "width_monotonic": true,
+  "height_monotonic": true,
+  "note": "CGWindowList bounds 为窗口外框，含约 28pt 标题栏；内容宽度与 SelectionPopupSizer 计算的 320/380/520 精确一致，内容高度≈bounds.h-28。",
+  "caveat": "合成 ⌘A 选区在长文本文件上偶发首字符偏移（\"This\"→\"his\"），属自动化选区时序，不影响尺寸逻辑；真实鼠标划词 E2E 已单独验证。"
+}

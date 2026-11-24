@@ -1,0 +1,94 @@
+{
+  "captured_at": "2026-11-22 10:50:00 +0800",
+  "version": "0.7.4 build 10",
+  "issue": "用户反馈划词弹窗再次完全不出现；另要求侧栏 5 个按钮改为整块圆角矩形可点击、翻译页语言标签与下拉同行且切换按钮等高。",
+  "root_causes": [
+    {
+      "id": 1,
+      "confirmed": true,
+      "cause": "SelectionWatcher.finish 的「2 秒内相同文本不重复弹」把反复划同一词/同一句的第二次起全部吞掉",
+      "fix": "移除文本去重，串行调度保证一个手势一个结果"
+    },
+    {
+      "id": 2,
+      "confirmed": true,
+      "cause": "剪贴板回退要求新内容不同于原剪贴板，且 AX 报告选区长度为 0 时直接放弃；网页/Electron 常误报空选区",
+      "fix": "哨兵剪贴板：清空并记录 changeCount，之后变化只可能来自本次 ⌘C；AX 空选区仅记日志"
+    },
+    {
+      "id": 3,
+      "confirmed": true,
+      "cause": "只有 global monitor，用户在智译星自己窗口里划词无反应",
+      "fix": "同时安装 local monitor，并过滤浮窗自身事件"
+    },
+    {
+      "id": 4,
+      "confirmed": false,
+      "note": "防御性补强，本次真机 trusted=true，未复现授权失效",
+      "cause": "无辅助功能授权时全局监听静默不投递，旧版只在捕获失败后才提示授权",
+      "fix": "启动时主动申请授权，激活/4s 轮询检测变化并重装监听"
+    }
+  ],
+  "files_changed": [
+    "Sources/HymnApp/RootView.swift",
+    "Sources/HymnApp/UIComponents.swift",
+    "Sources/HymnApp/TranslateView.swift",
+    "Sources/HymnCore/Selection/SelectionCapturePolicy.swift",
+    "Sources/HymnApp/SelectionCapture.swift",
+    "Sources/HymnApp/SelectionWatcher.swift",
+    "Sources/HymnApp/SelectionPanelController.swift",
+    "Sources/HymnApp/main.swift",
+    "Sources/HymnApp/AppBrand.swift",
+    "Sources/hymntest/SelectionCapturePolicyTests.swift",
+    "Scripts/make-app.sh",
+    "Scripts/make-release.sh",
+    "Reports/model-migration-plan.md"
+  ],
+  "verification": {
+    "build": "BUILD_OK rc=0 零警告",
+    "tests": "200/200（新增 4 项哨兵剪贴板策略测试）",
+    "release": "make-release.sh 全绿；verify READY 461860800 B / 354 tensors / Apple M3 Pro / offline",
+    "smoke": "真译「你好，很高兴见到你。」；划词链路 pair=en->zh error=none；tick max 21.98 ms / avg 10.13 ms",
+    "sidebar_full_area_click": {
+      "click_offset_in_window": [150, 133],
+      "location": "按钮右侧空白区域，远离文字与图标",
+      "result": "从「设置」成功切换到「术语库」",
+      "screenshot": "Reports/ui-v074-sidebar-full-hit.png"
+    },
+    "language_bar": {
+      "labels_inline": true,
+      "swap_button_height_matches_picker": true,
+      "screenshot": "Reports/ui-v074-translate.png"
+    },
+    "popup_visible": {
+      "source": "k brown fox jumps over the lazy dog. ALPHA",
+      "pair": "英 → 中",
+      "translation": "棕色狐狸跳过了懒狗。阿尔法",
+      "buttons": ["复制译文", "存为 txt", "存为 docx", "打开主窗口"],
+      "screenshot": "Reports/ui-v074-selection-popup.png"
+    },
+    "repeated_selection": {
+      "description": "同一段文本间隔 3 秒划两次",
+      "accepted_before": 4,
+      "accepted_after": 6,
+      "delta": 2,
+      "conclusion": "第二次未被去重吞掉，每次都弹窗"
+    },
+    "ax_full_text": [
+      "The quick brown fox jumps over the lazy dog. ALPHA...",
+      "植入物通常不会随着时间而磨损。BETA_MARKER_2222。"
+    ],
+    "clipboard_sentinel_e2e": {
+      "first_round": "0.7.4 首轮在 WorkBuddy 窗口 AX 不稳定时端到端成功：clipboard stable ... text=现在启动真机 App 做 UI 与划词验证。",
+      "final_round": "TextEdit 全走 AX 路径；哨兵仅验证「无选区时正确超时放弃」"
+    },
+    "artifact": "dist/LinguaNova.app 5.2 MB / dist/LinguaNova-0.7.4.dmg 2.5 MB"
+  },
+  "caveats": [
+    "本次真机 accessibility trusted=true，授权失效不是本次复现到的根因；第 4 项为防御性补强。换构建/换路径后如系统要求重新授权，需在辅助功能里重新勾选。",
+    "合成 CGEvent 拖拽在 TextEdit 上仍偶发一次脚本拖拽产生两组手势并读到半截选区（6 条 accepted 中 2 条为片段）；真实鼠标单次拖拽不产生该序列。新增手势级去重本轮 hit=0，未宣称完全消除。",
+    "无选区或 ⌘C 未生效时仍按「宁可不弹也不弹错」放弃；哨兵会完整恢复所有剪贴板类型。",
+    "主窗口翻译、CLI 评测、1260 全方向与质量基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未改动。",
+    "STQ1_0 1.3125 bpw 常驻 GEMV，NOT LUT4 / NOT affine INT4。"
+  ]
+}

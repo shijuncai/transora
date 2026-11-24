@@ -1,0 +1,21 @@
+{
+  "compute_kernels_per_token" : 258,
+  "embed_max_abs" : 0,
+  "forward_argmax" : 28036,
+  "forward_expected_argmax" : 28036,
+  "forward_gpu_ms" : 40.547624999999996,
+  "forward_logits_corr" : 0.99999945524721545,
+  "forward_logits_max_abs" : 0.012658596038818359,
+  "forward_top20_overlap" : 20,
+  "gemm_per_token" : 225,
+  "gemv_elements" : 80,
+  "gemv_max_abs" : 7.62939453125e-06,
+  "gemv_min_corr" : 0.99999999964413611,
+  "gemv_samples" : 4,
+  "gpu_buffer_bytes" : 461860800,
+  "layer32_hidden_corr" : 0.99999958519018439,
+  "norm_buffer_bytes" : 282624,
+  "note" : "独立 Python\/PR golden；非模型推理性能，非 TTFT\/token·s⁻¹",
+  "resident_weight_bytes" : 461860800,
+  "stage" : "G4 常驻 STQ1_0\/Q6_K GEMV + 32 层 forward 数值对齐"
+}

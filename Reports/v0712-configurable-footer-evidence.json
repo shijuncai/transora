@@ -1,0 +1,181 @@
+{
+  "version": "0.7.12",
+  "build": {
+    "BUILD_OK": true,
+    "warnings": 0,
+    "app": "dist/LinguaNova.app 455 MB（内嵌 450 MB 模型）",
+    "dmg": "dist/LinguaNova-0.7.12.dmg 443 MB",
+    "codesign": "ad-hoc（未公证，spctl 仍 rejected）"
+  },
+  "date": "2026-11-22T19:15+08:00",
+  "summary": "划词浮窗底排按钮改为可配置（设置页增删，最多 7 个、至少 1 个），新增 Bing/Google/微博/淘宝 四个网页动作",
+  "files": {
+    "new": [
+      "Sources/HymnCore/Selection/SelectionActionCatalog.swift",
+      "Sources/hymntest/SelectionActionTests.swift"
+    ],
+    "changed": [
+      "Sources/HymnApp/SelectionPopupView.swift",
+      "Sources/HymnApp/AppModel.swift",
+      "Sources/HymnApp/LibraryViews.swift",
+      "Sources/HymnApp/DocumentExporter.swift",
+      "Sources/HymnCore/UI/SelectionPopupLayout.swift",
+      "Sources/hymntest/main.swift",
+      "Sources/hymntest/GGUFTests.swift",
+      "Sources/HymnApp/AppBrand.swift",
+      "Scripts/make-app.sh",
+      "Scripts/make-release.sh"
+    ],
+    "removed": [
+      "SelectionPopupView 里写死的 7 个 FooterButton",
+      "DocumentExportFormat.popupIcon"
+    ]
+  },
+  "constraints": {
+    "maxCount": 7,
+    "minCount": 1,
+    "order": "恒按 SelectionActionID 声明顺序，增删不跳位",
+    "persistenceKey": "hymn.selection.actions",
+    "storageFormat": "逗号分隔短码，如 copy,txt,docx,notes,reminders,speak,main",
+    "unknownTokens": "忽略；全部无效时回落出厂 7 个"
+  },
+  "actions": [
+    {
+      "id": "copy",
+      "title": "复制译文",
+      "symbol": "doc.on.doc",
+      "online": false
+    },
+    {
+      "id": "txt",
+      "title": "存为 TXT",
+      "symbol": "doc.plaintext",
+      "online": false
+    },
+    {
+      "id": "docx",
+      "title": "存为 DOCX",
+      "symbol": "doc.richtext",
+      "online": false
+    },
+    {
+      "id": "notes",
+      "title": "存入备忘录",
+      "symbol": "note.text",
+      "online": false
+    },
+    {
+      "id": "reminders",
+      "title": "加入提醒事项",
+      "symbol": "checklist",
+      "online": false
+    },
+    {
+      "id": "speak",
+      "title": "朗读译文",
+      "symbol": "speaker.wave.2.fill",
+      "online": false
+    },
+    {
+      "id": "main",
+      "title": "在主窗口打开",
+      "symbol": "macwindow",
+      "online": false
+    },
+    {
+      "id": "bing",
+      "title": "译文 Bing 搜索",
+      "symbol": "b.circle",
+      "online": true
+    },
+    {
+      "id": "google",
+      "title": "译文 Google 搜索",
+      "symbol": "g.circle",
+      "online": true
+    },
+    {
+      "id": "weibo",
+      "title": "译文发送微博",
+      "symbol": "paperplane",
+      "online": true
+    },
+    {
+      "id": "taobao",
+      "title": "译文淘宝搜索",
+      "symbol": "bag",
+      "online": true
+    }
+  ],
+  "webEndpoints": {
+    "bing": "https://www.bing.com/search?q=",
+    "google": "https://www.google.com/search?q=",
+    "taobao": "https://s.taobao.com/search?q=",
+    "weibo": "https://service.weibo.com/share/share.php?title=",
+    "encoding": "URLComponents + URLQueryItem，中文与 & = # + 不被截断；换行/连续空白折叠为空格；上限 1000 字符"
+  },
+  "tests": {
+    "total": 255,
+    "passed": 255,
+    "failed": 0,
+    "newSuite": {
+      "name": "selection-actions",
+      "cases": 31,
+      "covers": [
+        "出厂顺序",
+        "序列化往返",
+        "空/未知/重复码",
+        "乱序归一",
+        "上限 7",
+        "下限 1",
+        "开关语义",
+        "查询串折叠与截断",
+        "四个网页 URL 的主机/参数名/特殊字符",
+        "https",
+        "requiresTranslation 标记",
+        "图标唯一性"
+      ]
+    }
+  },
+  "releaseScript": {
+    "verify": "READY 461860800 B / 354 tensors / Apple M3 Pro / offline=True",
+    "smokeTranslate": "你好，很高兴见到你。",
+    "selectionChain": "en->zh error=none，与主窗口译文一致",
+    "bundleModel": "BUNDLE_MODEL_OK（无效偏好下仍 real=true）",
+    "dmgReadOnlySmoke": "从挂载的 DMG 直接运行：real=true，tick max 20.77 ms / avg 10.28 ms"
+  },
+  "uiVerification": [
+    "设置页「划词面板按钮」7/7 全开：网页四行显示「已达上限」且开关禁用（ui-v0712-settings-full-7.png）",
+    "取消「存为 DOCX」→ 6/7、预览 6 个图标 +「还可添加 1 个」、Botton 行解除禁用（ui-v0712-settings-5-selected 系列）",
+    "开启「译文 Bing 搜索」→ 7/7、预览末尾出现 b.circle、状态栏「已加入「译文 Bing 搜索」」",
+    "点「恢复默认」→ 7/7、按钮变灰、UserDefaults 回到 copy,txt,docx,notes,reminders,speak,main（ui-v0712-settings-reset.png）",
+    "浮窗底排随配置变化：7 个时 = copy/txt/notes/reminders/speak/main/bing（ui-v0712-popup-custom7.png）",
+    "5 个时（copy/bing/google/weibo/taobao）定宽单元格 + 整排居中，不被拉宽（ui-v0712-popup-5buttons.png）",
+    "悬停第 7 格 2 秒显示「译文 Bing 搜索」气泡，未越出浮窗（ui-v0712-hover-bing.png）"
+  ],
+  "webVerification": [
+    {
+      "action": "bing",
+      "evidence": "Safari 打开 bing.com/search?q=你好，标题「你好 - Search」（ui-v0712-bing-search.png）"
+    },
+    {
+      "action": "google",
+      "evidence": "Safari 标题「你好，不错 - Google 搜索」，结果页正常"
+    },
+    {
+      "action": "taobao",
+      "evidence": "Safari 标题「你好，不错_淘宝搜索」，页面为淘宝搜索页（ui-v0712-taobao-search.png）"
+    },
+    {
+      "action": "weibo",
+      "evidence": "打开 service.weibo.com/share/share.php，未登录被重定向到 passport.weibo.com 登录页（ui-v0712-weibo-share.png）；已加剪贴板兜底：点击后 pbpaste == 译文，状态栏「已复制译文并打开微博」"
+    }
+  ],
+  "boundaries": [
+    "微博分享页需要浏览器已登录微博；未登录会先跳登录页，title 参数可能丢失，因此同时把译文放进剪贴板",
+    "网页动作会把译文带出本机（用户主动点击才发生），翻译本身仍全程离线；设置页已就此单独提示",
+    "固定 7 格布局在浮窗最窄档（320 pt）每格约 40 pt，按钮名较长时靠悬停气泡识别",
+    "Google 在部分网络环境不可达，但 URL 打开行为与 Bing 一致",
+    "未重跑质量基线（BLEU 23.19 / chrF2 43.86 / COMET 0.7809）；STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4"
+  ]
+}

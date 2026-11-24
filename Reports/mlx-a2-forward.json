@@ -1,0 +1,41 @@
+{
+  "module": "MLX Swift official runtime (A2' / A2'')",
+  "scope": "load real 1.8B checkpoint + single 4-token batched-prefill forward vs D-1 fp32 golden",
+  "weight_format": "affine INT4 (NOT LUT4)",
+  "backend": "mlx-swift-lm HunyuanModel (research probe only, NOT wired into HymnTranslate)",
+  "model_type": "HunyuanModel",
+  "model_dir": "Models/Hy-MT2-1.8B-4bit",
+  "safetensors_bytes": 1007776125,
+  "tensors": 804,
+  "elements": 279975552,
+  "load_ms_cold": 694.5,
+  "load_ms_page_cache_hit": 155.9,
+  "prompt_ids": [120000, 120006, 28036, 120007],
+  "vocab": 120818,
+  "forward_ms_4token_prefill": 712.7,
+  "logits_correlation": 0.999806175,
+  "logits_max_abs_diff": 0.261308,
+  "logits_mean_abs_diff": 0.037642,
+  "top20_overlap": 19,
+  "argmax_mlx": 16883,
+  "argmax_golden": 16883,
+  "argmax_d1": 16883,
+  "d1_reference": {
+    "weight_source": "weights.fp16.bin (same bit patterns as fp32 golden)",
+    "logits_correlation": 0.999998013,
+    "logits_max_abs_diff": 0.023392,
+    "logits_mean_abs_diff": 0.003809,
+    "top20_overlap": 20,
+    "steady_tokens_per_second_range": "25.94-28.9"
+  },
+  "precision_note": "MLX uses affine INT4 -> bf16 dequantization; D-1 and the fp32 golden share the same fp16 weight cache. Two different weight-precision paths explain MLX's larger elementwise error; argmax and top-20 remain consistent.",
+  "produces_translation": false,
+  "wired_into_app": false,
+  "still_default_backend": "hymn-native-metal-affine-int4-v1 (D-1)",
+  "measurement_note": "single-run measurements; forward_ms is 4-token prefill, NOT tokens/s and NOT TTFT",
+  "regression": {
+    "main_build_rc": 0,
+    "main_tests": "120/120",
+    "cli_translation": "您好，很高兴见到您。"
+  }
+}

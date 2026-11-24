@@ -1,0 +1,29 @@
+{
+  "after_png" : "\/var\/folders\/_n\/ydqkqb8s7fq1p19my5545m640000gn\/T\/hymn-ui-click\/after.png",
+  "ax_control_frame" : [
+    1584,
+    526,
+    131,
+    24
+  ],
+  "before_png" : "\/var\/folders\/_n\/ydqkqb8s7fq1p19my5545m640000gn\/T\/hymn-ui-click\/before.png",
+  "changed_pixels" : 10872,
+  "changed_ratio" : 0.8645038167938931,
+  "click_point" : [
+    1649.5,
+    538
+  ],
+  "control_area_pixels" : 12576,
+  "method" : "AXFrame 定位 + CGEvent 真实 leftMouseDown\/Up + CGDisplayCreateImage 前后 RGBA 像素差",
+  "note" : "像素变化证明控件被真实点击并重绘；后端身份是否成功切换需另由状态栏文本\/AX 值校验",
+  "pid" : 69711,
+  "pixel_rect" : [
+    3168,
+    1052,
+    262,
+    48
+  ],
+  "status" : "OK",
+  "target" : "mlx",
+  "target_title" : "MLX Swift"
+}

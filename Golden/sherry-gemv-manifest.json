@@ -1,0 +1,106 @@
+{
+  "purpose": "G4 常驻 STQ1_0/Q6_K Metal GEMV 独立 golden（离线校准）",
+  "reference": "llama.cpp PR #22836 dequantize_row_stq1_0 + ggml-quants.c dequantize_row_q6_K",
+  "note": "Python 直接从 GGUF 原始字节独立解码；仅离线生成 Golden，不进入运行时",
+  "gguf": "Models/Hy-MT2-1.8B-1.25Bit-GGUF/Hy-MT2-1.8B-1.25Bit.gguf",
+  "gguf_bytes": 461860800,
+  "data_start": 5090208,
+  "x_dtype": "fp32 输入，运行时转 fp16",
+  "y_dtype": "fp32 保存 fp16 舍入后的期望值",
+  "samples": [
+    {
+      "tensor": "blk.0.attn_q.weight",
+      "type": 42,
+      "rows": 32,
+      "in_features": 2048,
+      "x_file": "sherry-gemv-blk-0-attn_q-weight-x.f32",
+      "y_file": "sherry-gemv-blk-0-attn_q-weight-y.f32",
+      "first8_y": [
+        0.06854248046875,
+        0.01534271240234375,
+        0.024932861328125,
+        -0.01373291015625,
+        -0.052093505859375,
+        -0.0211944580078125,
+        -0.02691650390625,
+        -0.0279388427734375
+      ],
+      "y_min": -0.11016845703125,
+      "y_max": 0.08673095703125
+    },
+    {
+      "tensor": "blk.7.ffn_gate.weight",
+      "type": 42,
+      "rows": 16,
+      "in_features": 2048,
+      "x_file": "sherry-gemv-blk-7-ffn_gate-weight-x.f32",
+      "y_file": "sherry-gemv-blk-7-ffn_gate-weight-y.f32",
+      "first8_y": [
+        -0.06512451171875,
+        -0.0019197463989257812,
+        0.01044464111328125,
+        -0.0095977783203125,
+        -0.0958251953125,
+        -0.1531982421875,
+        0.05389404296875,
+        -0.0243988037109375
+      ],
+      "y_min": -0.1531982421875,
+      "y_max": 0.08209228515625
+    },
+    {
+      "tensor": "blk.31.ffn_down.weight",
+      "type": 42,
+      "rows": 16,
+      "in_features": 6144,
+      "x_file": "sherry-gemv-blk-31-ffn_down-weight-x.f32",
+      "y_file": "sherry-gemv-blk-31-ffn_down-weight-y.f32",
+      "first8_y": [
+        -0.0777587890625,
+        -0.055450439453125,
+        0.08746337890625,
+        -0.06500244140625,
+        -0.297119140625,
+        -0.09747314453125,
+        -0.10772705078125,
+        -0.0941162109375
+      ],
+      "y_min": -0.297119140625,
+      "y_max": 0.1544189453125
+    },
+    {
+      "tensor": "token_embd.weight",
+      "type": 14,
+      "rows": 16,
+      "in_features": 2048,
+      "x_file": "sherry-gemv-token_embd-weight-x.f32",
+      "y_file": "sherry-gemv-token_embd-weight-y.f32",
+      "first8_y": [
+        -0.00971221923828125,
+        0.10699462890625,
+        -0.037933349609375,
+        0.043975830078125,
+        0.0065460205078125,
+        0.0262603759765625,
+        0.0469970703125,
+        0.08697509765625
+      ],
+      "y_min": -0.037933349609375,
+      "y_max": 0.147216796875
+    }
+  ],
+  "embed": {
+    "token_id": 120000,
+    "file": "sherry-embed-120000.f32",
+    "first8": [
+      -0.00034332275390625,
+      0.004291534423828125,
+      0.00377655029296875,
+      -0.00240325927734375,
+      0.00102996826171875,
+      -0.0020599365234375,
+      -0.00102996826171875,
+      -0.00274658203125
+    ]
+  }
+}

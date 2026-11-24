@@ -1,0 +1,108 @@
+{
+  "source": "AngelSlim/Hy-MT2-1.8B-1.25Bit-GGUF / Hy-MT2-1.8B-1.25Bit.gguf",
+  "sha256": "cc497fe8f033b52b3b8b00a7669e9661435432f9d4cd43f7ed24400c01507a93",
+  "file_bytes": 461860800,
+  "gguf_version": 3,
+  "tensor_count": 354,
+  "metadata_count": 34,
+  "type_histogram": {
+    "0": 129,
+    "14": 1,
+    "42": 224
+  },
+  "data_start": 5090208,
+  "reference": "llama.cpp PR #22836 dequantize_row_stq1_0 + ggml-quants.c dequantize_row_q6_K",
+  "note": "Python 独立实现，仅离线生成 Golden/，绝不进入运行时",
+  "samples": [
+    {
+      "tensor": "blk.0.attn_q.weight",
+      "type": 42,
+      "blocks": 8,
+      "elements": 2048,
+      "bytes": 8192,
+      "file": "gguf-blk-0-attn_q-weight.f32",
+      "first8": [
+        0.0,
+        -0.005462646484375,
+        0.005462646484375,
+        0.0,
+        0.0,
+        0.005462646484375,
+        -0.005462646484375,
+        -0.005462646484375
+      ]
+    },
+    {
+      "tensor": "blk.0.attn_k.weight",
+      "type": 42,
+      "blocks": 4,
+      "elements": 1024,
+      "bytes": 4096,
+      "file": "gguf-blk-0-attn_k-weight.f32",
+      "first8": [
+        0.00750732421875,
+        -0.00750732421875,
+        -0.00750732421875,
+        0.00750732421875,
+        0.0,
+        0.00750732421875,
+        0.0,
+        -0.00750732421875
+      ]
+    },
+    {
+      "tensor": "blk.7.ffn_gate.weight",
+      "type": 42,
+      "blocks": 4,
+      "elements": 1024,
+      "bytes": 4096,
+      "file": "gguf-blk-7-ffn_gate-weight.f32",
+      "first8": [
+        0.03515625,
+        0.03515625,
+        -0.03515625,
+        -0.03515625,
+        -0.03515625,
+        0.0,
+        -0.03515625,
+        -0.03515625
+      ]
+    },
+    {
+      "tensor": "blk.31.ffn_down.weight",
+      "type": 42,
+      "blocks": 4,
+      "elements": 1024,
+      "bytes": 4096,
+      "file": "gguf-blk-31-ffn_down-weight.f32",
+      "first8": [
+        0.0186767578125,
+        0.0,
+        -0.0186767578125,
+        0.0186767578125,
+        0.0,
+        0.0,
+        -0.0186767578125,
+        0.0186767578125
+      ]
+    },
+    {
+      "tensor": "token_embd.weight",
+      "type": 14,
+      "blocks": 4,
+      "elements": 1024,
+      "bytes": 4096,
+      "file": "gguf-token_embd-weight.f32",
+      "first8": [
+        -0.027637481689453125,
+        0.0,
+        0.011227726936340332,
+        0.009500384330749512,
+        0.012955069541931152,
+        -0.012955069541931152,
+        -0.014682412147521973,
+        0.015546083450317383
+      ]
+    }
+  ]
+}

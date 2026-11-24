@@ -1,0 +1,67 @@
+{
+  "captured_at": "2026-11-22 10:07:00 +0800",
+  "issue": "v0.7.2 划词弹窗显示的原文不是用户实际选中的文字：出现旧窗口的词、只截到一半的选区、甚至其它文档/网页的整段文字。",
+  "reproduction_before": {
+    "method": "TextEdit 中 A/B 两段不同文本，隔离 SQLite 数据库记录每次划词落库的 source_text",
+    "expected": "完整 A 或完整 B 文本",
+    "observed": [
+      "dog（A 句子的最后一个词）",
+      "物通常不会（B 文本少首字）",
+      "over（A 文档里的另一个词）",
+      "brown fox jumps over the lazy dog. ALPHA_MARKER_1（A 文本缺开头）",
+      "Hugging Face's logo …（完全无关的浏览器网页全文）",
+      "Sparse Ternary Quantization / Structured Data / Sherry（其它应用剪贴板残留）"
+    ],
+    "diagnostic_log": "HYMN_SELECTION_DEBUG=1 显示 AX 路径每次都读到正确全文；错内容全部来自剪贴板回退被无关 mouseUp 触发"
+  },
+  "root_causes": [
+    "并发捕获：每次 mouseUp 各起一个任务，多个 captureViaClipboard 同时模拟 ⌘C / 改写 / 恢复剪贴板，把彼此的 restore 当成新选区",
+    "AX 取 AXUIElementCreateSystemWide() 的「系统键盘焦点」，而非前台应用焦点元素，跨窗口时读到旧窗口选区",
+    "任意 mouseUp（单击、切窗口、系统事件、拖滚动条）都发起捕获；剪贴板回退把别的窗口遗留内容当成当前选区",
+    "手势坐标在 MainActor 异步 Task 里用 NSEvent.mouseLocation 读取，连串事件位置漂移，单击被误判成拖拽",
+    "选区动画/焦点切换期间只读一次 AX，读到不完整的中间态；结果无 token / 前台应用校验"
+  ],
+  "fixes": [
+    "HymnCore/Selection/SelectionCapturePolicy.swift：选区连续两次采样一致才采用；token 与前台 PID 双重校验；剪贴板假阳性过滤；手势判定（真实 dragged 且位移≥6pt，或双击选词）",
+    "SelectionWatcher 严格串行调度（pending 只保留最新 + busy 槽位 + 3s 硬超时看门狗），任意时刻只有一个捕获在读写剪贴板",
+    "事件位置改用 event.cgEvent?.location 在派发前同步读取，anchor 仍用 AppKit 坐标供浮窗定位",
+    "SelectionCapture 改用 AXUIElementCreateApplication(前台 PID) 读 kAXSelectedTextAttribute，AX 双读稳定才采用",
+    "剪贴板回退前检查 kAXSelectedTextRange：明确为空则直接放弃；回退要求内容不同于原剪贴板且双读稳定；⌘C 按键之间加 15ms 间隔",
+    "超时或校验失败一律返回 nil，宁可不弹也不弹错"
+  ],
+  "verification_after": {
+    "idle_37s": {
+      "capture_starts": 0,
+      "history_rows": 0,
+      "conclusion": "普通操作不再误触发"
+    },
+    "case_A": {
+      "ax_ground_truth": "The quick brown fox jumps over the lazy dog. ALPHA_MARKER_1111.",
+      "captured": "The quick brown fox jumps over the lazy dog. ALPHA_MARKER_1111.",
+      "pair": "en->zh",
+      "target": "敏捷的棕色狐狸跳过了懒狗。ALPHA_MARKER_1111。",
+      "records": 1
+    },
+    "case_B": {
+      "ax_ground_truth": "植入物通常不会随着时间而磨损。BETA_MARKER_2222。",
+      "captured": "植入物通常不会随着时间而磨损。BETA_MARKER_2222。",
+      "pair": "zh->en",
+      "target": "Implants usually do not wear out over time. BETA_MARKER_2222.",
+      "records": 1
+    },
+    "empty_selection_drag": {
+      "records": 0,
+      "conclusion": "拖拽但无实际选区时不弹窗、不写历史"
+    },
+    "total_records_after_two_cases": 2,
+    "screenshot": "Reports/ui-v073-selection-exact.png",
+    "tests": "196/196（新增 selection-capture-policy 27 项）",
+    "build": "BUILD_OK rc=0 零警告；make-release.sh 全绿；tick max 23.88 ms / avg 10.15 ms",
+    "artifact": "v0.7.3 build 9，.app 5.1 MB / DMG 2.5 MB"
+  },
+  "caveats": [
+    "拉丁语系仍无法凭 Unicode 细分语言；选区恰好等于剪贴板原内容时剪贴板回退会主动放弃（保守取舍）",
+    "Electron / 网页类应用若不暴露 AX 选区信息，仍依赖模拟 ⌘C；手势过滤已把误触发降到最低，但无法绕过 TCC",
+    "只影响划词捕获链路；主窗口翻译、CLI 评测、质量分数基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未改动"
+  ]
+}

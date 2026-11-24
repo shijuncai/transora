@@ -1,0 +1,118 @@
+{
+  "stage": "P4",
+  "generatedAt": "2026-11-23T23:5x+08:00",
+  "build": "release, swift 6.4.3, macOS 27.0.1, M3 Pro",
+  "identityRun": {
+    "doc": "Python编程快速上手 让繁琐工作自动化.pdf",
+    "pages": 409,
+    "sampledPages": 20,
+    "stride": 21,
+    "note": "不翻译，只把原文字换成思源宋体重画（恒等排版）",
+    "r1": {
+      "structureLostPagesOverSlack": [
+        [
+          337,
+          248
+        ]
+      ],
+      "structureLostTotalPx": 279,
+      "maskExternalDiffTotalPx": 294717,
+      "slackPx": 64,
+      "slackRatio": 0.02
+    },
+    "r2Overflow": 0,
+    "r3OverlapPairs": 2,
+    "r4MissingGlyphInstances": 36,
+    "r5Truncated": 0,
+    "r7Inversions": 0,
+    "layoutSSIM": {
+      "mean": 0.9034,
+      "min": 0
+    },
+    "analysisMsPerPage": 44.8
+  },
+  "repairLoop": {
+    "doc": "f40.pdf (40 页)",
+    "translations": "pseudo（每段加『【译文示例】』前缀，比原文长 ~30%，用于压排版极限）",
+    "rounds": [
+      {
+        "round": 0,
+        "checked": 40,
+        "errorsBeforeRepair": null,
+        "repairs": 17
+      },
+      {
+        "round": 1,
+        "checked": 17,
+        "errors": 15,
+        "repairs": 7,
+        "churnedPages": 10,
+        "unexpectedPages": 0
+      },
+      {
+        "round": 2,
+        "checked": 11,
+        "errors": 15,
+        "repairs": 0
+      }
+    ],
+    "repairedPages": [
+      5,
+      10,
+      27,
+      31,
+      36,
+      37
+    ],
+    "unresolvedPages": [
+      2,
+      7,
+      12,
+      13,
+      15,
+      17,
+      26,
+      30,
+      33,
+      34,
+      39
+    ],
+    "manualActions": 14,
+    "totalMs": 4649
+  },
+  "performance": {
+    "typeset661PagesMs": 3903,
+    "typeset409PagesMs": 2877,
+    "render144dpiMsPerPage": "20-25",
+    "analyzeMsPerPage": 47.6,
+    "extrapolated400PagesSinglePassSec": 19
+  },
+  "knownDefects": [
+    {
+      "id": "il-ctm-flip-offset",
+      "doc": "DeepSeek从入门到精通（960x540 幻灯片，内容流 1 0 0 -1 0 540 cm）",
+      "page": 4,
+      "symptom": "IL 块框比渲染墨迹高约 80pt；R1 结构丢失 3393px，判失败",
+      "root": "P2 的 CTM/文本矩阵追踪在这类内容上偏移；写入侧吃到同一变换，误差相互抵消",
+      "status": "已定位，转 P5"
+    },
+    {
+      "id": "pua-glyphs",
+      "codepoints": [
+        "U+F08C",
+        "U+F08D",
+        "U+F08E",
+        "U+F08F",
+        "U+F0B7"
+      ],
+      "symptom": "符号字体私用区字形无法重画，R4 如实列出",
+      "status": "P5 字体回退链"
+    }
+  ],
+  "tests": {
+    "total": 413,
+    "passed": 413,
+    "failed": 0,
+    "p4Cases": 29
+  }
+}

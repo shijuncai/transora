@@ -1,0 +1,284 @@
+{
+  "tool": "unbabel-comet (Unbabel/wmt22-comet-da)",
+  "model": "Unbabel/wmt22-comet-da",
+  "hypothesis_file": "Reports/translation-hypotheses-final.jsonl",
+  "total_rows": 259,
+  "eligible_rows": 256,
+  "status": "OK",
+  "never_fabricated": true,
+  "note": "COMET 只在真实加载评测模型并跑完 predict 后产出分数；失败时绝不填充占位分数。",
+  "model_source": "local分段下载(字节数校验通过)",
+  "checkpoint_bytes": 2323649073,
+  "system_score": 0.7809,
+  "mean_score": 0.7809,
+  "min_score": 0.3244,
+  "max_score": 0.9875,
+  "scored_rows": 256,
+  "direction_count": 64,
+  "directions": {
+    "ar->en": {
+      "n": 4,
+      "comet": 0.7104
+    },
+    "bn->en": {
+      "n": 4,
+      "comet": 0.8207
+    },
+    "cs->en": {
+      "n": 4,
+      "comet": 0.8635
+    },
+    "de->en": {
+      "n": 4,
+      "comet": 0.9108
+    },
+    "en->ar": {
+      "n": 4,
+      "comet": 0.6792
+    },
+    "en->bn": {
+      "n": 4,
+      "comet": 0.8382
+    },
+    "en->cs": {
+      "n": 4,
+      "comet": 0.8687
+    },
+    "en->de": {
+      "n": 4,
+      "comet": 0.8724
+    },
+    "en->es": {
+      "n": 4,
+      "comet": 0.885
+    },
+    "en->fa": {
+      "n": 4,
+      "comet": 0.8914
+    },
+    "en->fr": {
+      "n": 4,
+      "comet": 0.7705
+    },
+    "en->gu": {
+      "n": 4,
+      "comet": 0.6963
+    },
+    "en->he": {
+      "n": 4,
+      "comet": 0.8799
+    },
+    "en->hi": {
+      "n": 4,
+      "comet": 0.6551
+    },
+    "en->id": {
+      "n": 4,
+      "comet": 0.9507
+    },
+    "en->it": {
+      "n": 4,
+      "comet": 0.7524
+    },
+    "en->ja": {
+      "n": 4,
+      "comet": 0.8
+    },
+    "en->kk": {
+      "n": 4,
+      "comet": 0.497
+    },
+    "en->km": {
+      "n": 4,
+      "comet": 0.7495
+    },
+    "en->ko": {
+      "n": 4,
+      "comet": 0.7464
+    },
+    "en->mr": {
+      "n": 4,
+      "comet": 0.8682
+    },
+    "en->ms": {
+      "n": 4,
+      "comet": 0.8484
+    },
+    "en->my": {
+      "n": 4,
+      "comet": 0.7712
+    },
+    "en->nl": {
+      "n": 4,
+      "comet": 0.8731
+    },
+    "en->pl": {
+      "n": 4,
+      "comet": 0.9448
+    },
+    "en->pt": {
+      "n": 4,
+      "comet": 0.8327
+    },
+    "en->ru": {
+      "n": 4,
+      "comet": 0.7273
+    },
+    "en->ta": {
+      "n": 4,
+      "comet": 0.7474
+    },
+    "en->te": {
+      "n": 4,
+      "comet": 0.7135
+    },
+    "en->th": {
+      "n": 4,
+      "comet": 0.7642
+    },
+    "en->tr": {
+      "n": 4,
+      "comet": 0.8834
+    },
+    "en->ug": {
+      "n": 4,
+      "comet": 0.6622
+    },
+    "en->uk": {
+      "n": 4,
+      "comet": 0.6823
+    },
+    "en->ur": {
+      "n": 4,
+      "comet": 0.7676
+    },
+    "en->vi": {
+      "n": 4,
+      "comet": 0.7218
+    },
+    "en->zh": {
+      "n": 4,
+      "comet": 0.7996
+    },
+    "es->en": {
+      "n": 4,
+      "comet": 0.8599
+    },
+    "fa->en": {
+      "n": 4,
+      "comet": 0.7681
+    },
+    "fr->en": {
+      "n": 4,
+      "comet": 0.7919
+    },
+    "gu->en": {
+      "n": 4,
+      "comet": 0.7248
+    },
+    "he->en": {
+      "n": 4,
+      "comet": 0.7282
+    },
+    "hi->en": {
+      "n": 4,
+      "comet": 0.7604
+    },
+    "id->en": {
+      "n": 4,
+      "comet": 0.9248
+    },
+    "it->en": {
+      "n": 4,
+      "comet": 0.6999
+    },
+    "ja->en": {
+      "n": 4,
+      "comet": 0.6767
+    },
+    "kk->en": {
+      "n": 4,
+      "comet": 0.5184
+    },
+    "km->en": {
+      "n": 4,
+      "comet": 0.7502
+    },
+    "ko->en": {
+      "n": 4,
+      "comet": 0.6856
+    },
+    "mr->en": {
+      "n": 4,
+      "comet": 0.9182
+    },
+    "ms->en": {
+      "n": 4,
+      "comet": 0.7649
+    },
+    "my->en": {
+      "n": 4,
+      "comet": 0.8815
+    },
+    "nl->en": {
+      "n": 4,
+      "comet": 0.8332
+    },
+    "pl->en": {
+      "n": 4,
+      "comet": 0.9005
+    },
+    "pt->en": {
+      "n": 4,
+      "comet": 0.9029
+    },
+    "ru->en": {
+      "n": 4,
+      "comet": 0.6719
+    },
+    "ta->en": {
+      "n": 4,
+      "comet": 0.7795
+    },
+    "te->en": {
+      "n": 4,
+      "comet": 0.7533
+    },
+    "th->en": {
+      "n": 4,
+      "comet": 0.8235
+    },
+    "tr->en": {
+      "n": 4,
+      "comet": 0.8224
+    },
+    "ug->en": {
+      "n": 4,
+      "comet": 0.6938
+    },
+    "uk->en": {
+      "n": 4,
+      "comet": 0.6388
+    },
+    "ur->en": {
+      "n": 4,
+      "comet": 0.6393
+    },
+    "vi->en": {
+      "n": 4,
+      "comet": 0.6968
+    },
+    "zh->en": {
+      "n": 4,
+      "comet": 0.9203
+    }
+  },
+  "sampling_mode": "sample",
+  "request_level_reproducible": true,
+  "caveats": [
+    "wmt22-comet-da 训练于 WMT22 新闻领域，对 OPUS-100 领域与低资源语言的分数需谨慎解读。",
+    "COMET 是神经评测模型给出的估计值，不等于人工评价；不得与 BLEU/chrF2 直接换算或比较绝对值。",
+    "分数只覆盖有权威参考译文的样本，无参考方向不参与打分。",
+    "每方向样本数少（本批为小样本回归信号），不是 WMT/FLORES 排行榜。"
+  ]
+}

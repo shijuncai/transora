@@ -1,0 +1,13 @@
+{
+ "purpose": "D1-delta \u9010\u7b97\u5b50 golden\uff1afp16 \u8f93\u5165\u4f4d\u6a21\u5f0f + fp32 \u7cbe\u786e\u8ba1\u7b97\uff08\u5b98\u65b9 mlx 0.32.4\uff09",
+ "input_dtype": "float16 (saved as float32 values with exact fp16 bit patterns)",
+ "adjusted_rope_base": 11158839.92507748,
+ "rope_offset": 3,
+ "rms_eps": 1e-05,
+ "attn_scale": 0.08838834764831845,
+ "attn_seq": 7,
+ "heads": 16,
+ "kv_heads": 4,
+ "head_dim": 128,
+ "expected_tolerance": "fp16 output rounding, abs<=2e-3 or rel<=2e-3"
+}

@@ -1,0 +1,13 @@
+{
+  "backend" : "hymn-stq1_0-gguf-v1",
+  "cache_bytes" : 3582160896,
+  "cancel_ms" : 46.931375000000003,
+  "en_to_zh" : "你好，很高兴见到你。",
+  "main_thread_max_tick_ms" : 14.646750000000001,
+  "note" : "单次测量；prepare 含 MPS 预热。权重来源 Sherry STQ1_0 1.3125 bpw，运行时展开为 fp16 缓存，不是 1.31bpw 常驻",
+  "prepare_ms" : 2716.8310000000001,
+  "scheduler_max_concurrency" : 1,
+  "stage" : "G1 \/ Sherry STQ1_0 GGUF 并列后端",
+  "weight_format" : "Sherry STQ1_0 1.3125 bpw (NOT LUT4, NOT affine INT4)",
+  "zh_to_en" : "Machine learning is changing the world."
+}

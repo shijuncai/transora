@@ -1,0 +1,18 @@
+Building for debugging...
+[1 / 1]
+[2 / 11] HymnNative
+[5 / 14] HymnNative
+[12 / 20] HymnNative
+[17 / 25] hymntest-product
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnNative: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[23 / 31] hymntest-product
+[29 / 33] hymntest-product
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymntest-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymntest-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymnctl-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymnctl-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[31 / 33] hymnctl-product
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnTranslate-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnTranslate-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[36 / 37] HymnTranslate-product
+Build complete! (1.70 sec)

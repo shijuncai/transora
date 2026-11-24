@@ -1,0 +1,130 @@
+{
+  "purpose": "后续原生 Swift tokenizer 必须与这些 token id 逐项对齐；当前工程尚未实现原生 tokenizer。",
+  "tool": "HuggingFace tokenizers 0.23.3 (离线校准 oracle，非交付运行时依赖)",
+  "tokenizer": "mlx-community/Hy-MT2-1.8B-4bit/tokenizer.json",
+  "add_special_tokens": false,
+  "chat_template": "{% if messages[0]['role'] == 'system' %}{% set loop_messages = messages[1:] %}{% set system_message = messages[0]['content'] %}<｜hy_begin▁of▁sentence｜>{{ system_message }}<｜hy_place▁holder▁no▁3｜>{% else %}{% set loop_messages = messages %}<｜hy_begin▁of▁sentence｜>{% endif %}{% for message in loop_messages %}{% if message['role'] == 'user' %}<｜hy_User｜>{{ message['content'] }}{% elif message['role'] == 'assistant' %}<｜hy_Assistant｜>{{ message['content'] }}<｜hy_place▁holder▁no▁2｜>{% endif %}{% endfor %}{% if add_generation_prompt %}<｜hy_Assistant｜>{% else %}<｜hy_place▁holder▁no▁8｜>{% endif %}",
+  "special_ids": {
+    "bos": 120000,
+    "eos": 120020,
+    "pad": 120002,
+    "user": 120006,
+    "assistant": 120007
+  },
+  "samples": [
+    {
+      "text": "Hello, nice to meet you.",
+      "ids": [
+        16883,
+        11,
+        13574,
+        287,
+        5032,
+        444,
+        13
+      ],
+      "tokens": [
+        "Hello",
+        ",",
+        "Ġnice",
+        "Ġto",
+        "Ġmeet",
+        "Ġyou",
+        "."
+      ],
+      "roundtrip": "Hello, nice to meet you."
+    },
+    {
+      "text": "把下面的英文翻译成中文：Hello, nice to meet you.",
+      "ids": [
+        67841,
+        31315,
+        504,
+        16883,
+        11,
+        13574,
+        287,
+        5032,
+        444,
+        13
+      ],
+      "tokens": [
+        "æĬĬä¸ĭéĿ¢çļĦèĭ±æĸĩ",
+        "ç¿»è¯ĳæĪĲä¸Ńæĸĩ",
+        "ï¼ļ",
+        "Hello",
+        ",",
+        "Ġnice",
+        "Ġto",
+        "Ġmeet",
+        "Ġyou",
+        "."
+      ],
+      "roundtrip": "把下面的英文翻译成中文：Hello, nice to meet you."
+    },
+    {
+      "text": "Transformer 是一种神经网络架构。",
+      "ids": [
+        58282,
+        206,
+        5759,
+        52785,
+        19825,
+        292
+      ],
+      "tokens": [
+        "Transformer",
+        "Ġ",
+        "æĺ¯ä¸Ģç§į",
+        "ç¥ŀç»ıç½ĳç»ľ",
+        "æŀ¶æŀĦ",
+        "ãĢĤ"
+      ],
+      "roundtrip": "Transformer 是一种神经网络架构。"
+    },
+    {
+      "text": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>将以下文本翻译为简体中文：Hello, nice to meet you.<｜hy_Assistant｜>",
+      "ids": [
+        120000,
+        120006,
+        934,
+        80575,
+        5832,
+        403,
+        2307,
+        623,
+        11015,
+        504,
+        16883,
+        11,
+        13574,
+        287,
+        5032,
+        444,
+        13,
+        120007
+      ],
+      "tokens": [
+        "<｜hy_begin▁of▁sentence｜>",
+        "<｜hy_User｜>",
+        "å°Ĩ",
+        "ä»¥ä¸ĭæĸĩæľ¬",
+        "ç¿»è¯ĳ",
+        "ä¸º",
+        "ç®Ģ",
+        "ä½ĵ",
+        "ä¸Ńæĸĩ",
+        "ï¼ļ",
+        "Hello",
+        ",",
+        "Ġnice",
+        "Ġto",
+        "Ġmeet",
+        "Ġyou",
+        ".",
+        "<｜hy_Assistant｜>"
+      ],
+      "roundtrip": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>将以下文本翻译为简体中文：Hello, nice to meet you.<｜hy_Assistant｜>"
+    }
+  ]
+}

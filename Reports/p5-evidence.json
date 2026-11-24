@@ -1,0 +1,103 @@
+{
+  "stage": "P5",
+  "version": "0.8.0 (19)",
+  "generatedAt": "2026-11-24T00:0x+08:00",
+  "build": "release, Swift 6.4.3, macOS 27.0.1, M3 Pro / 18 GB",
+  "headline": {
+    "rendererScaleBug": "CGPDFPage.getDrawingTransform 在 macOS 27 不缩放；P4 的「IL 偏移 80pt」结论因此作废",
+    "untouchedDocument": "没有译文时输出与原文件逐字节相同（+0 B）",
+    "untouchedPages": "抽样 20 页掩膜覆盖率 0.000、R1 差异 0、R2/R3/R4/R7 全 0",
+    "tests": { "before": 413, "after": 426, "failed": 0 }
+  },
+  "renderer": {
+    "before": "target 1920x1080 → a=1 tx=480 ty=270（页面 1:1 居中，未缩放）",
+    "after": "scale(dpi/72) + rotate(/Rotate) + translate(-MediaBox 原点)",
+    "assertions": {
+      "render-content-scale": "矩形 (100,100)-(300,200) → 墨迹 (100.0,100.0)-(300.0,200.0)",
+      "render-scale-invariant": "72dpi 与 144dpi 页面坐标一致"
+    }
+  },
+  "identityRun": {
+    "doc": "Python编程快速上手 让繁琐工作自动化.pdf",
+    "pages": 409,
+    "translations": "无（不翻译）",
+    "inputBytes": 14543658,
+    "outputBytes": 14543658,
+    "byteIdentical": true,
+    "unchangedDocument": true,
+    "sampledPages": 20,
+    "stride": 21,
+    "maskRatioMean": 0.0,
+    "r1DiffPixels": 0,
+    "r2Overflow": 0,
+    "r3OverlapPairs": 0,
+    "r4MissingGlyphs": 0,
+    "r5Truncated": 0,
+    "r7Inversions": 0,
+    "layoutSSIM": { "mean": 0.9997, "min": 0.9989 },
+    "typesetMs": 2700,
+    "analysisMsPerPage": 51.5
+  },
+  "pseudoLoop": {
+    "doc": "f40.pdf（40 页，英文药品说明）",
+    "translations": "pseudo（每段加 11 字前缀，比原文长 ~30%）",
+    "rounds": [
+      { "round": 0, "checked": 40, "errors": 25, "repairs": 24 },
+      { "round": 1, "checked": 11, "errors": 7, "repairs": 7 },
+      { "round": 2, "checked": 3, "errors": 7, "repairs": 0 }
+    ],
+    "repairedPages": [5, 10, 26, 27, 31, 36, 37, 39],
+    "unresolvedPages": [17, 33, 34],
+    "final": { "r1DiffPixels": 72, "r2Overflow": 4, "r3Overlap": 0, "r4Missing": 0, "r5Truncated": 3 },
+    "totalMs": 4159
+  },
+  "scrub": {
+    "doc": "同上 409 页书，伪译文全译",
+    "inputBytes": 14543658,
+    "incrementalBytes": 16873010,
+    "scrubbedBytes": 15943586,
+    "scrubSavesVsIncremental": 929424,
+    "scrubOverheadVsInput": 1399928,
+    "pages": "409 → 409",
+    "imageObjects": 533,
+    "imagesByteIdentical": true,
+    "renderDiffBeforeAfter": "抽样 1/3/100/200/409 页 = 0 像素",
+    "verify": "VERIFY_PASS"
+  },
+  "app": {
+    "mode": "PDF 页新增「版式重建（PDF）」",
+    "pipeline": "结构 → 逐段翻译（串行、段边界可取消）→ 写回 → R1–R7 自检（>80 页按 页数/40 抽样）→ 报告",
+    "fontsBundled": "Contents/Resources/Fonts（28 MB，含 OFL.txt）",
+    "headlessSmoke": {
+      "doc": "2014_Book_ThePythonWorkbook.pdf.pdf（169 页）",
+      "blocksTranslated": 8,
+      "pdfBytes": 15044273,
+      "passed": true,
+      "codes": [],
+      "pagesWithZeroPixelDiff": "第 4 页起全部 0",
+      "visual": "第 3 页标题页：The Python Workbook → Python工作簿，横线（矢量）未动"
+    },
+    "uiScreenshot": "未完成：启动时系统弹出「访问文稿文件夹」授权框，本会话无自动化权限"
+  },
+  "code": {
+    "newFiles": {
+      "HymnCore/PDF/PDFScrub.swift": 162,
+      "HymnCore/PDF/PDFComparisonReport.swift": 278,
+      "HymnApp/PDFRebuildPipeline.swift": 194,
+      "HymnApp/AppModel+PDFRebuild.swift": 315,
+      "HymnApp/PDFTranslationView.swift": 312,
+      "hymntest/PDFP5Tests.swift": 258
+    },
+    "totalNewLines": 1519,
+    "pdfModuleLines": 11417
+  },
+  "knownLimits": [
+    "洗版后文件不再与原文件逐字节对齐（流字节不变，对象顺序重排）",
+    "洗版体积可能略大于原文件（原文件用对象流压缩）",
+    "扫描件不做 OCR",
+    "合并单元格 / 无线表格 / 竖排未处理",
+    "/Rotate 页渲染已修正，但像素级检查仍跳过",
+    "中译中：源语言与文档语言不一致时模型会照翻，未做提示",
+    "App 窗口视觉验收待人工确认"
+  ]
+}

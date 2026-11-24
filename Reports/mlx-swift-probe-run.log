@@ -1,0 +1,1 @@
+MLX_SWIFT_PROBE_OK device=gpu matmul_softmax=[0.0320586, 0.08714432, 0.2368828, 0.6439142]

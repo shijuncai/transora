@@ -1,0 +1,104 @@
+{
+  "version": "0.7.9",
+  "build": "15",
+  "date": "2026-11-22T17:10:00+08:00",
+  "requests": [
+    "划词浮窗加扬声器按钮，用 AVSpeechSynthesizer 朗读译文，位置在「返回主界面」左边",
+    "划词翻译非英语内容时仍显示「英 → 中」，修复"
+  ],
+  "rootCause": {
+    "summary": "SelectionLanguageResolver.detect 只按 Unicode 书写系统判定，拉丁字母一律返回 nil；resolve 于是把所有拉丁文字当成主窗口源语言（通常 en）",
+    "consequence": "标签错成「英 → 中」，并且错误的源语言进入提示词，模型把法语当英语处理",
+    "example": "同一句法语：错标 en 时被音译为「乌德拉伊斯」；标成 fr 后正确译为「你好，我想预订一张两人桌位。」"
+  },
+  "changes": [
+    {
+      "file": "Sources/HymnCore/Compatibility/SelectionLanguageResolver.swift",
+      "detail": "detect 拆为 detectByWritingSystem（确定性规则）+ detectLatinLanguage（NLLanguageRecognizer，离线）；置信度门槛 0.45；仅接受 latinLanguages ∩ LanguageCatalog 内的结果"
+    },
+    {
+      "file": "Sources/HymnApp/AppModel.swift",
+      "detail": "新增 isSelectionSpeaking / toggleSelectionSpeech / stopSelectionSpeech；AVSpeechSynthesizer 懒加载；音色按译文目标语言选，找不到精确音色按语言前缀兜底；200ms 轮询 isSpeaking 复位状态（不用 delegate，避开 stopSpeaking 的 didCancel 竞态）；新划词时停止朗读"
+    },
+    {
+      "file": "Sources/HymnApp/SelectionPopupView.swift",
+      "detail": "底部一行加入扬声器按钮，位于「打开主窗口」左侧；HStack 间距 6→5 适配 320 窄档；空闲 speaker.wave.2.fill（灰）/朗读中 speaker.wave.3.fill（强调色）"
+    },
+    {
+      "file": "Sources/hymntest/SelectionLanguageTests.swift",
+      "detail": "新增 18 项：7 种拉丁语言整句、3 个短问候、6 个噪声短词不臆造、2 组 resolve 语言对"
+    }
+  ],
+  "languageDetection": {
+    "confidenceFloor": 0.45,
+    "measured": [
+      { "input": "fr sentence", "result": "fr:1.00" },
+      { "input": "de sentence", "result": "de:1.00" },
+      { "input": "es sentence", "result": "es:0.99" },
+      { "input": "pt sentence", "result": "pt:1.00" },
+      { "input": "it sentence", "result": "it:1.00" },
+      { "input": "vi sentence", "result": "vi:1.00" },
+      { "input": "id sentence", "result": "id:1.00" },
+      { "input": "Bonjour", "result": "fr:0.63 (accepted)" },
+      { "input": "OK", "result": "pl:0.29 (rejected)" },
+      { "input": "test", "result": "fr:0.13 (rejected)" },
+      { "input": "Hello", "result": "en:0.13 (rejected)" }
+    ]
+  },
+  "speech": {
+    "engine": "AVSpeechSynthesizer",
+    "voiceResolution": "按译文目标语言映射 BCP-47，例如 zh→zh-CN",
+    "observedVoice": "com.apple.voice.compact.zh-CN.Tingting",
+    "iconIdle": "speaker.wave.2.fill (secondary)",
+    "iconSpeaking": "speaker.wave.3.fill (accentColor)",
+    "stopTriggers": ["再次点击", "新一次划词", "关闭浮窗", "点击浮窗外"]
+  },
+  "verification": {
+    "build": { "result": "BUILD_OK rc=0", "warnings": 0 },
+    "tests": { "pass": 218, "fail": 0, "total": 218, "note": "较 0.7.8 的 200 项新增 18 项语言识别用例" },
+    "release": {
+      "verifyReady": true,
+      "ggufBytes": 461860800,
+      "tensorCount": 354,
+      "mainThreadTickMaxMs": 25.21,
+      "mainThreadTickAvgMs": 10.28,
+      "selectionPair": "en->zh",
+      "selectionError": "none",
+      "bundleModelOk": true
+    },
+    "languagePairOnDevice": {
+      "frenchPopupLabel": "法 → 中",
+      "frenchTranslation": "我想预订一张双人餐桌",
+      "frenchHeadless": "fr->zh  你好，我想预订一张两人桌位。",
+      "germanHeadless": "de->zh  您好，我想预订一张两人使用的餐桌。",
+      "repeatRuns": "连续 3 次划词，历史 3 条均为 fr->zh"
+    },
+    "speechOnDevice": {
+      "trigger": "辅助功能按下按钮（help=朗读译文）",
+      "log": ["[speech] button tapped", "[speech] speech start lang=zh voice=com.apple.voice.compact.zh-CN.Tingting chars=14", "[speech] speech speaking"],
+      "screenshots": ["Reports/ui-v079-popup-idle.png", "Reports/ui-v079-popup-speaking.png", "Reports/ui-v079-popup-fr-pair.png"]
+    },
+    "noAutoPlay": {
+      "test": "连续 3 次划词，不按按钮",
+      "accepted": 3,
+      "speechEvents": 0
+    }
+  },
+  "artifacts": {
+    "app": "dist/LinguaNova.app (455 MB, 含内嵌模型)",
+    "dmg": "dist/LinguaNova-0.7.9.dmg (442 MB)"
+  },
+  "knownLimits": [
+    "混合语言选区（如同时选中法语与德语两行）仍可能按整体判错，本轮实测被判为 de，法语行被音译",
+    "同一文字的近亲语言在极短文本上可能低置信度回落，属识别模型固有局限",
+    "音色依赖系统已安装语音；缺失时回落默认音色，未做界面提示",
+    "朗读只在合成器进入 speaking 状态层面验证，无音频设备无法验证实际声音",
+    "诊断期出现过一次「未点击即朗读」，加标记日志后含发布版连续多轮未复现，未定位成因，未宣称已消除"
+  ],
+  "untouchedBaselines": {
+    "bleu": 23.19,
+    "chrf2": 43.86,
+    "comet": 0.7809,
+    "note": "STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4"
+  }
+}

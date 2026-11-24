@@ -1,0 +1,99 @@
+{
+  "version": "0.7.11",
+  "build": "17",
+  "date": "2026-11-22T18:35:00+08:00",
+  "requests": [
+    "在「系统设置 → 隐私与安全性 → 自动化」勾选智译星后仍然无效",
+    "光标停在 7 个按钮上 2 秒显示按钮名称"
+  ],
+  "diagnosis": {
+    "symptoms": [
+      "系统设置里已勾选「智译星」，实际发送 Apple Event 仍失败",
+      "备忘录与提醒事项都写入失败"
+    ],
+    "evidence": [
+      { "probe": "codesign -d -r- /Applications/LinguaNova.app", "result": "designated => cdhash H\"922f255de04f72e4257371951a421c43199dc086\"", "meaning": "ad-hoc 签名以二进制哈希作指定要求，TCC 记录随每次重构建失效" },
+      { "probe": "Info.plist", "result": "缺少 NSAppleEventsUsageDescription", "meaning": "发送 Apple Events 缺用途声明，系统可拒绝且不弹框" },
+      { "probe": "osascript tell Notes to activate", "result": "成功", "meaning": "启动事件不受 TCC 限制" },
+      { "probe": "osascript tell Notes to get name of first note / count notes", "result": "-10004 权限违规", "meaning": "连只读命令都被拒，非脚本写法问题" },
+      { "probe": "osascript tell Reminders to count reminders", "result": "-10004 权限违规", "meaning": "同上，且未出现授权弹窗" },
+      { "probe": "AEDeterminePermissionToAutomateTarget(Notes) ", "result": "0 (noErr / 已授权)", "meaning": "授权状态与实际事件结果不一致" },
+      { "probe": "AEDeterminePermissionToAutomateTarget(Reminders)", "result": "-1744 (待授权)", "meaning": "请求本应触发授权框，实际没有" }
+    ],
+    "conclusion": "Apple Events 在当前 ad-hoc 签名下不可靠，不再继续调参，改为不需要「自动化」的两条通道"
+  },
+  "changes": [
+    {
+      "target": "备忘录",
+      "method": "写临时 .txt 到 ~/Library/Caches/HymnTranslate/ShareQueue/，用 NSWorkspace.open(_:withApplicationAt:configuration:) 交给备忘录导入，activates=false",
+      "permissionNeeded": "无",
+      "noteTitleRule": "文件首行成为标题",
+      "noteFolder": "导入的备忘录"
+    },
+    {
+      "target": "提醒事项",
+      "method": "EventKit：requestFullAccessToReminders() + EKReminder(title:notes:)，写入默认列表",
+      "permissionNeeded": "标准「提醒事项」隐私授权（NSRemindersFullAccessUsageDescription）",
+      "extra": "authorizationStatus == .denied 时快速失败；请求挂起 12 秒兜底提示"
+    },
+    {
+      "file": "Sources/HymnApp/SelectionPopupView.swift",
+      "detail": "底排按钮改为数组驱动；.onHover + 2.0s Task 显示自绘气泡，横向跟随单元格并按估算宽度夹在浮窗内；保留 accessibilityLabel"
+    },
+    {
+      "file": "Sources/HymnCore/Compatibility/SelectionShareFormat.swift",
+      "detail": "删除 htmlBody 与 appleScriptLiteral（死代码），只保留 plainBody / title"
+    },
+    {
+      "file": "Scripts/make-app.sh",
+      "detail": "移除 NSAppleEventsUsageDescription，新增 NSRemindersFullAccessUsageDescription"
+    }
+  ],
+  "verification": {
+    "build": { "result": "BUILD_OK rc=0", "warnings": 0 },
+    "tests": { "pass": 224, "fail": 0, "total": 224, "note": "较 0.7.10 的 230 项减少 6 项：随 htmlBody/appleScriptLiteral 死代码一并删除的用例" },
+    "release": { "verifyReady": true, "selectionPair": "en->zh", "bundleModelOk": true },
+    "plist": {
+      "NSRemindersFullAccessUsageDescription": "present",
+      "NSAppleEventsUsageDescription": "absent"
+    },
+    "notesOnDevice": {
+      "log": "[action] notes saved title=我想预订一张双人餐桌",
+      "noteVisibleInNotes": true,
+      "folder": "导入的备忘录",
+      "bodyContains": "原文（法文 → 简体中文）/ 译文",
+      "focusStolen": false,
+      "screenshot": "Reports/ui-v0711-notes-imported.png"
+    },
+    "remindersOnDevice": {
+      "log": "[action] reminder failed notAuthorized(\"提醒事项\")",
+      "path": "authorizationStatus == .denied → 快速失败",
+      "screenshotNotice": "在语言对胶囊位置显示「需授权「提醒事项」」"
+    },
+    "hoverTip": {
+      "delaySeconds": 2.0,
+      "middleCell": "存入备忘录（Reports/ui-v0711-hover-tip.png）",
+      "lastCell": "在主窗口打开，右侧未被裁切（Reports/ui-v0711-hover-tip-edge.png）",
+      "cancelOnExit": true
+    }
+  },
+  "notVerified": [
+    "提醒事项写入成功：EventKit 授权框需要用户点「允许」，本轮环境弹框未出现（请求挂起），只验证到拒绝路径与超时兜底"
+  ],
+  "knownLimits": [
+    "备忘录条目落在「导入的备忘录」文件夹，正文为纯文本（无加粗小标题）",
+    "导入会在 Caches/ShareQueue 留 .txt，每次写入清理一天前的旧文件",
+    "悬停气泡宽度为估算值，极长按钮名可能有几像素偏差",
+    "ad-hoc 签名导致所有 TCC 授权（辅助功能、提醒事项）在每次重构建后可能失效"
+  ],
+  "artifacts": {
+    "app": "dist/LinguaNova.app (455 MB，含内嵌模型)",
+    "dmg": "dist/LinguaNova-0.7.11.dmg (442 MB)"
+  },
+  "untouchedBaselines": {
+    "bleu": 23.19,
+    "chrf2": 43.86,
+    "comet": 0.7809,
+    "note": "STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4"
+  }
+}

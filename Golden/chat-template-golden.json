@@ -1,0 +1,147 @@
+{
+ "purpose": "D1-beta chat_template 等价渲染 golden",
+ "tool": "jinja2 Template(render) + HF tokenizers 0.23.3",
+ "cases": [
+  {
+   "args": {
+    "messages": [
+     {
+      "role": "user",
+      "content": "将以下文本翻译为简体中文：Hello, nice to meet you."
+     }
+    ],
+    "add_generation_prompt": true
+   },
+   "rendered": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>将以下文本翻译为简体中文：Hello, nice to meet you.<｜hy_Assistant｜>",
+   "ids": [
+    120000,
+    120006,
+    934,
+    80575,
+    5832,
+    403,
+    2307,
+    623,
+    11015,
+    504,
+    16883,
+    11,
+    13574,
+    287,
+    5032,
+    444,
+    13,
+    120007
+   ]
+  },
+  {
+   "args": {
+    "messages": [
+     {
+      "role": "user",
+      "content": "Translate to English: 你好世界"
+     }
+    ],
+    "add_generation_prompt": true
+   },
+   "rendered": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>Translate to English: 你好世界<｜hy_Assistant｜>",
+   "ids": [
+    120000,
+    120006,
+    26403,
+    287,
+    4717,
+    25,
+    206,
+    17687,
+    3042,
+    120007
+   ]
+  },
+  {
+   "args": {
+    "messages": [
+     {
+      "role": "system",
+      "content": "你是一个翻译助手。"
+     },
+     {
+      "role": "user",
+      "content": "Hello"
+     }
+    ],
+    "add_generation_prompt": true
+   },
+   "rendered": "<｜hy_begin▁of▁sentence｜>你是一个翻译助手。<｜hy_place▁holder▁no▁3｜><｜hy_User｜>Hello<｜hy_Assistant｜>",
+   "ids": [
+    120000,
+    1264,
+    4155,
+    5832,
+    52463,
+    292,
+    120021,
+    120006,
+    16883,
+    120007
+   ]
+  },
+  {
+   "args": {
+    "messages": [
+     {
+      "role": "user",
+      "content": "Hi"
+     },
+     {
+      "role": "assistant",
+      "content": "你好"
+     },
+     {
+      "role": "user",
+      "content": "Bye"
+     }
+    ],
+    "add_generation_prompt": true
+   },
+   "rendered": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>Hi<｜hy_Assistant｜>你好<｜hy_place▁holder▁no▁2｜><｜hy_User｜>Bye<｜hy_Assistant｜>",
+   "ids": [
+    120000,
+    120006,
+    28036,
+    120007,
+    17687,
+    120020,
+    120006,
+    3645,
+    68,
+    120007
+   ]
+  },
+  {
+   "args": {
+    "messages": [
+     {
+      "role": "user",
+      "content": "Hi"
+     },
+     {
+      "role": "assistant",
+      "content": "你好"
+     }
+    ],
+    "add_generation_prompt": false
+   },
+   "rendered": "<｜hy_begin▁of▁sentence｜><｜hy_User｜>Hi<｜hy_Assistant｜>你好<｜hy_place▁holder▁no▁2｜><｜hy_place▁holder▁no▁8｜>",
+   "ids": [
+    120000,
+    120006,
+    28036,
+    120007,
+    17687,
+    120020,
+    120026
+   ]
+  }
+ ]
+}

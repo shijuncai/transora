@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-11-21 16:32:18 +0800",
+  "accessibility_trusted": true,
+  "screen_capture_allowed": true,
+  "screencapture_rc": 0,
+  "screencapture_stderr": "",
+  "screenshot_bytes": 2678816,
+  "apple_events_rc": 1,
+  "apple_events_stderr": "40:92: execution error: System Events got an error: A privilege violation occurred. (-10004)",
+  "gui_processes_sample": "",
+  "pixel_ui_automation_ready": false,
+  "blockers": [
+    "System Events AppleEvent 自动化被拒绝/超时"
+  ],
+  "scope_note": "预检通过后才可实施 CGEvent 真实点击 + screencapture/ImageIO 前后截图像素比对；本脚本本身不产生任何点击，也不构成 UI 自动化通过证据。",
+  "next_command": "./Scripts/ui-automation.sh mlx",
+  "click_tool": "Scripts/ui-backend-click.swift (AXFrame 定位 + CGEvent + RGBA 像素差)"
+}

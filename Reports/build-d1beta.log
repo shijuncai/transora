@@ -1,0 +1,42 @@
+Building for debugging...
+[Pre-planning 1 / 298]
+[Planning deferred tasks]
+[1 / 1]
+[10 / 29] HymnNative
+[13 / 32] HymnNative
+[31 / 46] HymnStore
+[32 / 46] HymnCore
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Sources/HymnNative/HymnTokenizer.swift:86:23: [1;33mwarning: [1;39mimmutable value 'content' was never used; consider replacing with '_' or removing it[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+ [0;36m84 |[0;0m         var maxID = vocabRaw.values.max() ?? -1
+ [0;36m85 |[0;0m         for a in addedRaw {
+ [0;36m86 |[0;0m             guard let content = a["content"] as? String, let id = a["id"] as? Int else { continue }
+    [0;36m|[0;0m                       `- [1;33mwarning: [1;39mimmutable value 'content' was never used; consider replacing with '_' or removing it[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+ [0;36m87 |[0;0m             maxID = max(maxID, id)
+ [0;36m88 |[0;0m         }
+
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Sources/HymnNative/HymnTokenizer.swift:144:13: [1;33mwarning: [1;39mvariable 'printable' was never mutated; consider changing to 'let' constant[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated\VariableNeverMutated]8;;\]
+[0;36m142 |[0;0m         var b2s = [UInt32](repeating: 0, count: 256)
+[0;36m143 |[0;0m         var s2b: [UInt32: UInt8] = [:]
+[0;36m144 |[0;0m         var printable: [Int] = Array(33...126) + Array(161...172) + Array(174...255)
+    [0;36m|[0;0m             `- [1;33mwarning: [1;39mvariable 'printable' was never mutated; consider changing to 'let' constant[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated\VariableNeverMutated]8;;\]
+[0;36m145 |[0;0m         var n = 0
+[0;36m146 |[0;0m         for b in 0..<256 {
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[#VariableNeverMutated]: <https://docs.swift.org/compiler/documentation/diagnostics/variable-never-mutated>
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnNative: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[36 / 45] HymnNative
+[43 / 53] hymnctl-product
+[54 / 66] hymntest-product
+[57 / 70] hymntest-product
+[63 / 72] HymnStore
+[66 / 71] hymntest-product
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymnctl-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymnctl-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[68 / 71] hymnctl-product
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymntest-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: hymntest-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnTranslate-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/usr/lib' not found
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/Package.swift: HymnTranslate-product: ld: warning: search path '/Library/Developer/CommandLineTools/Developer/Library/Frameworks' not found
+[74 / 75] HymnTranslate-product
+Build complete! (2.91 sec)

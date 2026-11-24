@@ -1,0 +1,63 @@
+{
+  "backend" : "Sherry STQ1_0 1.3125 bpw 常驻 GEMV (NOT LUT4 \/ NOT affine INT4 \/ NOT fp16 展开缓存)",
+  "default_kv_cache_mode" : "fp16",
+  "end_to_end_greedy" : {
+    "fp16_batched" : "你好，很高兴见到你。",
+    "identical" : true,
+    "int8_batched" : "你好，很高兴见到你。"
+  },
+  "fused_dequant_gemm" : "stq1_0_gemv 自 G4 起已是「解码即乘加」融合，无中间 fp16 权重缓存；本轮不重复造算子、不重复计功。",
+  "kv_cache_bytes" : {
+    "fp16" : 67108864,
+    "int8" : 34603008,
+    "note" : "int8 路径额外含 per-(token,kvHead) fp32 scale buffer；收益有限，如实标注。",
+    "saved_bytes" : 32505856,
+    "saved_mib" : 31
+  },
+  "notes" : [
+    "batched prefill 与逐 token forward 使用完全相同的 kernel 顺序与临时 buffer，故 logits 应逐元素相等。",
+    "int8 KV cache 是有损优化，默认关闭；启用方式 HYMN_KV_INT8=1 或显式 .int8。",
+    "KV cache 节省量小（约 31 MiB），这是 32 层 × 4 KV heads × head_dim 128 × seq 1024 的真实量级，不夸大。"
+  ],
+  "numerical_equivalence" : {
+    "argmax_baseline" : 17687,
+    "argmax_batched" : 17687,
+    "argmax_int8" : 17687,
+    "baseline_vs_batched_bit_exact" : true,
+    "baseline_vs_batched_max_abs" : 0,
+    "baseline_vs_int8_max_abs" : 0.03125,
+    "baseline_vs_int8_pearson_corr" : 0.99999371303264872,
+    "baseline_vs_int8_top20_overlap" : 20
+  },
+  "prefill_ms" : {
+    "baseline_median" : 892.37487499999997,
+    "baseline_runs" : [
+      881.79754200000002,
+      1020.148958,
+      892.01066700000001,
+      1021.0435,
+      892.37487499999997
+    ],
+    "batched_median" : 556.40087500000004,
+    "batched_runs" : [
+      511.25987500000002,
+      556.40087500000004,
+      618.99525000000006,
+      512.80100000000004,
+      580.74229200000002
+    ],
+    "int8_median" : 514.08229200000005,
+    "int8_runs" : [
+      548.39133300000003,
+      516.59862499999997,
+      513.82041600000002,
+      512.40416700000003,
+      514.08229200000005
+    ],
+    "note" : "纯 prefill 墙钟中位数；不含 decode、不含模型加载。",
+    "speedup_batched" : 1.6038344206414124
+  },
+  "prompt_tokens" : 22,
+  "runs" : 5,
+  "stage" : "H1: batched prefill \/ int8 KV cache \/ fused dequant-GEMM 口径"
+}

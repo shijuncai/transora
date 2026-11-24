@@ -1,0 +1,77 @@
+{
+  "version": "0.7.10",
+  "build": "16",
+  "date": "2026-11-22T18:05:00+08:00",
+  "request": "浮窗底排「复制译文 / 存为txt / 存为docx」改成与朗读按钮同尺寸，并新增「备忘录」「提醒事项」，共 7 个按钮",
+  "footerButtons": [
+    { "index": 1, "title": "复制译文", "icon": "doc.on.doc", "action": "写入剪贴板" },
+    { "index": 2, "title": "存为 TXT", "icon": "doc.plaintext", "action": "系统保存面板" },
+    { "index": 3, "title": "存为 DOCX", "icon": "doc.richtext", "action": "系统保存面板" },
+    { "index": 4, "title": "存入备忘录", "icon": "note.text", "action": "AppleScript 新建备忘录" },
+    { "index": 5, "title": "加入提醒事项", "icon": "checklist", "action": "AppleScript 新建提醒" },
+    { "index": 6, "title": "朗读/停止", "icon": "speaker.wave.2.fill → wave.3.fill", "action": "AVSpeechSynthesizer" },
+    { "index": 7, "title": "在主窗口打开", "icon": "macwindow", "action": "跳主窗口" }
+  ],
+  "layout": {
+    "style": "等宽等大纯图标，frame(maxWidth: .infinity) + contentShape(Rectangle())，tooltip 说明含义",
+    "cells": 7,
+    "contentWidthPt": 292,
+    "cellWidthPtApprox": 41,
+    "iconSizePt": 12,
+    "footerHeightPt": 28
+  },
+  "changes": [
+    { "file": "Sources/HymnApp/SelectionPopupView.swift", "detail": "底排改为 7 个 footerIcon 等分单元格；语言标签位置增加短暂提示（存入成功/需授权）" },
+    { "file": "Sources/HymnCore/Compatibility/SelectionShareFormat.swift", "detail": "新增：htmlBody（按行 <div> + 转义）、plainBody、title（首行截断）、appleScriptLiteral（转义）" },
+    { "file": "Sources/HymnApp/SystemAppBridge.swift", "detail": "NSAppleScript 桥接：正文写临时文件由脚本读取，标题字面量转义；执行前 compileAndReturnError；-1743/-1744/-10004 映射为需授权" },
+    { "file": "Sources/HymnApp/AppModel.swift", "detail": "saveSelectionToNotes / saveSelectionToReminders；selectionNotice + 2.2 秒自动消失；新划词清空提示" },
+    { "file": "Sources/HymnApp/DocumentExporter.swift", "detail": "DocumentExportFormat 增加 popupIcon，移除已无引用的 popupLabel" },
+    { "file": "Sources/hymntest/SelectionShareFormatTests.swift", "detail": "新增 12 项：HTML 结构/转义、纯文本换行、标题截断与空值、AppleScript 转义" }
+  ],
+  "verification": {
+    "build": { "result": "BUILD_OK rc=0", "warnings": 0 },
+    "tests": { "pass": 230, "fail": 0, "total": 230, "note": "较 0.7.9 的 218 项新增 12 项" },
+    "release": {
+      "verifyReady": true,
+      "tickMaxMs": null,
+      "selectionPair": "en->zh",
+      "bundleModelOk": true
+    },
+    "footerVisual": {
+      "screenshot": "Reports/ui-v0710-popup-7buttons.png",
+      "templateWidthPt": 320,
+      "result": "7 个按钮等宽排列，无重叠/截断；语言对显示「法 → 中」"
+    },
+    "appleScriptSyntax": {
+      "method": "用与生产代码一致的转义规则生成脚本，调用 compileAndReturnError",
+      "Notes": "COMPILE_OK",
+      "Reminders": "COMPILE_OK",
+      "input": "标题含中文引号、反斜杠与换行"
+    },
+    "failurePath": {
+      "trigger": "真机按「存入备忘录」/「加入提醒事项」",
+      "log": ["[action] notes failed notAuthorized(\"备忘录\")", "[action] reminder failed notAuthorized(\"提醒事项\")"],
+      "ui": "浮窗胶囊显示「需授权「自动化」」，2.2 秒后恢复语言对（Reports/ui-v0710-popup-notice.png）"
+    }
+  },
+  "notVerified": [
+    "备忘录 / 提醒事项里真的新增条目：Apple Events 自动化授权只能由用户在系统弹窗点击，无法无交互授予；从终端启动时 TCC 把责任进程算作宿主，直接返回 -10004 权限违规",
+    "首次点击时的系统授权弹窗文案与实际授权后写入结果"
+  ],
+  "knownLimits": [
+    "每次 ad-hoc 重签都可能让「自动化」授权失效，需要重新允许一次",
+    "拒绝授权时只有一句提示，没有跳转「系统设置 → 自动化」的按钮（辅助功能有）",
+    "提醒事项只写名称与备注，不指定列表与到期时间",
+    "7 个按钮全靠图标 + tooltip 表达含义，首次使用需要悬停确认"
+  ],
+  "artifacts": {
+    "app": "dist/LinguaNova.app (455 MB，含内嵌模型)",
+    "dmg": "dist/LinguaNova-0.7.10.dmg (442 MB)"
+  },
+  "untouchedBaselines": {
+    "bleu": 23.19,
+    "chrf2": 43.86,
+    "comet": 0.7809,
+    "note": "STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4"
+  }
+}

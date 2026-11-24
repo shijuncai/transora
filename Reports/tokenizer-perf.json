@@ -1,0 +1,16 @@
+{
+  "module": "HymnSTQ.HymnTokenizer",
+  "scope": "tokenizer encode/decode benchmark, NOT model inference",
+  "vocab_size": 120818,
+  "golden_samples": 31,
+  "golden_total_ids": 164,
+  "id_mismatches": 0,
+  "decode_mismatches": 0,
+  "chat_template_cases": 5,
+  "render_mismatches": 0,
+  "chat_id_mismatches": 0,
+  "init_ms": 551.769,
+  "encode_tokens_per_sec": 108515.2,
+  "bench_tokens": 3280,
+  "bench_ms": 30.226
+}

@@ -1,0 +1,17 @@
+{
+  "module": "HymnMLX.MLXBackend (A3 PARALLEL BACKEND)",
+  "weight_format": "affine INT4 (NOT LUT4)",
+  "backend": "mlx-swift-hunyuan-affine-int4-v1",
+  "translation_en_zh": "你好，很高兴见到你。",
+  "translation_chunks": 6,
+  "ttft_ms": 78.37,
+  "total_ms": 169.80,
+  "cancel_observed": true,
+  "cancel_engine_latency_ms": 239.01,
+  "scheduler_max_concurrency": 1,
+  "main_thread_ticks": 120,
+  "main_thread_max_gap_ms": 14.87,
+  "main_thread_avg_gap_ms": 10.01,
+  "resident_peak_mb": 1188.6,
+  "note": "首次请求含 MLX kernel 预热；单次测量，非多轮统计均值"
+}

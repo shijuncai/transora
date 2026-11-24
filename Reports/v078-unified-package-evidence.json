@@ -1,0 +1,90 @@
+{
+  "version": "0.7.8",
+  "build": "14",
+  "date": "2026-11-22T12:15:00+08:00",
+  "goal": "把 450 MB 模型放进 Contents/Resources，产出「App + 模型」合一安装包，拷到其他 Apple Silicon Mac 无需手动选模型目录",
+  "changes": [
+    {
+      "file": "Scripts/make-app.sh",
+      "detail": "默认 HYMN_EMBED_MODEL=1，用 cp -cR（APFS clonefile）把 Models/Hy-MT2-1.8B-1.25Bit-GGUF 复制到 Contents/Resources/Models/，必须在 codesign 之前；HYMN_EMBED_MODEL=0 仍可产出轻量包"
+    },
+    {
+      "file": "Sources/HymnSTQ/SherryBackend.swift",
+      "detail": "locateSherryModelDirectory() 新增包内候选（Bundle.main.resourceURL/Models/...），优先级：环境变量 > 用户选择 > 包内 > 工作目录 > Application Support"
+    },
+    {
+      "file": "Scripts/make-release.sh",
+      "detail": "新增第 7/8 步合一包校验：断言包内 gguf 存在，并用 NSArgumentDomain 覆盖 hymn.modelDirectory 为无效路径后跑真实推理"
+    }
+  ],
+  "artifacts": {
+    "appBytes": 477000000,
+    "appSizeHuman": "455 MB",
+    "dmg": "dist/LinguaNova-0.7.8.dmg",
+    "dmgBytes": 463477000,
+    "dmgSizeHuman": "442 MB",
+    "embeddedModelPath": "LinguaNova.app/Contents/Resources/Models/Hy-MT2-1.8B-1.25Bit-GGUF",
+    "embeddedGgufBytes": 461860800,
+    "embeddedGgufMd5": "9b96b598c36e9ffbfcafedd919b2fd54",
+    "sourceGgufMd5": "9b96b598c36e9ffbfcafedd919b2fd54",
+    "md5Match": true
+  },
+  "verification": {
+    "build": { "result": "BUILD_OK rc=0", "warnings": 0 },
+    "tests": { "pass": 200, "fail": 0, "total": 200 },
+    "assemble": "MODEL_EMBEDDED Contents/Resources/Models/Hy-MT2-1.8B-1.25Bit-GGUF (450M)",
+    "runtimeVerify": {
+      "ready": true,
+      "ggufBytes": 461860800,
+      "tensorCount": 354,
+      "metalDevice": "Apple M3 Pro",
+      "offlineOnly": true,
+      "weightFormat": "Sherry STQ1_0 1.3125 bpw 常驻 GEMV (NOT LUT4, NOT affine INT4, NOT fp16 展开缓存)"
+    },
+    "smoke": {
+      "translation": "你好，很高兴见到你。",
+      "selectionPair": "en->zh",
+      "selectionError": "none",
+      "mainThreadTickMaxMs": 29.69,
+      "mainThreadTickAvgMs": 10.28
+    },
+    "bundleOnlyResolution": {
+      "method": "以 NSArgumentDomain 把 hymn.modelDirectory 覆盖为 /nonexistent-model-dir，屏蔽用户偏好",
+      "result": "BUNDLE_MODEL_OK",
+      "real": true,
+      "output": "你好，很高兴见到你。"
+    },
+    "readOnlyVolumeRun": {
+      "method": "hdiutil attach dist/LinguaNova-0.7.8.dmg -readonly，直接运行卷内二进制并覆盖偏好",
+      "result": "HYMN_SMOKE_OK ready=true real=true",
+      "note": "模型 mmap 读只读卷正常，可直接从 DMG 运行"
+    },
+    "guiRun": {
+      "method": "同一无效偏好下启动图形界面，辅助功能按下「翻译」按钮",
+      "statusBar": "无「模型未就绪」提示",
+      "elapsedSeconds": 0.8,
+      "historyRecord": "Hello, nice to meet you. -> 你好，很高兴见到你。 (en->zh)",
+      "screenshot": "Reports/ui-v078-unified-main.png"
+    },
+    "codesign": {
+      "verifyDeepStrict": "valid on disk / satisfies its Designated Requirement",
+      "signature": "adhoc",
+      "teamIdentifier": null,
+      "spctlAssessment": "rejected"
+    }
+  },
+  "remainingBarriers": [
+    "Gatekeeper 仍拦截：ad-hoc 签名未公证，新机器首次需右键打开或 xattr -dr com.apple.quarantine",
+    "arm64 单架构，Intel Mac 不可用",
+    "LSMinimumSystemVersion 14.0，macOS 13 及更早不可用",
+    "仅在 macOS 27.0.1 + Xcode 27 构建并真机验证，未在 macOS 14/15 实机跑过",
+    "划词即译仍需在新机器手动授予辅助功能；每次重签可能使 TCC 授权失效",
+    "DMG 体积由 2.5 MB 增至 442 MB"
+  ],
+  "untouchedBaselines": {
+    "bleu": 23.19,
+    "chrf2": 43.86,
+    "comet": 0.7809,
+    "note": "本轮未重跑质量评测；STQ1_0 1.3125 bpw，NOT LUT4 / NOT affine INT4"
+  }
+}

@@ -1,0 +1,1047 @@
+Fetching https://github.com/apple/swift-numerics from cache
+Fetched https://github.com/apple/swift-numerics from cache (0.02s)
+Creating working copy for https://github.com/apple/swift-numerics
+Working copy of https://github.com/apple/swift-numerics resolved at 1.1.1
+warning: 'mlx-swift-main': Invalid Exclude '/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx/build': File not found.
+warning: 'mlx-swift-main': Invalid Exclude '/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx/CODE_OF_CONDUCT.md': File not found.
+Creating working copy for https://github.com/apple/swift-numerics
+Working copy of https://github.com/apple/swift-numerics resolved at 1.1.1
+warning: 'mlx-swift-main': Invalid Exclude '/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx/build': File not found.
+warning: 'mlx-swift-main': Invalid Exclude '/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx/CODE_OF_CONDUCT.md': File not found.
+Building for debugging...
+[Computing dependencies]
+[Pre-planning 1 / 274]
+[Planning deferred tasks]
+warning: missing creator for mutated node: ('/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/Products/Debug/mlx-swift_Cmlx.bundle/Contents/MacOS')
+[71 / 325] _NumericsShims
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[75 / 325] RealModule
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[77 / 340]
+[79 / 340]
+[81 / 340] RealModule
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[82 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[88 / 340] RealModule
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[95 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[97 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[99 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[103 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[112 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[116 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[118 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[120 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[121 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[123 / 340] Cmlx
+[124 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[129 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[131 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[133 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[135 / 340] Cmlx
+[136 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[138 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[139 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[141 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[142 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[145 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[148 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[150 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[151 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[152 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[154 / 340] Cmlx
+[156 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[158 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[159 / 340] Cmlx
+[160 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[162 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[163 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[165 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[166 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[168 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[170 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[171 / 340] Cmlx
+[172 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[174 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[175 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[176 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[178 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[180 / 340] Cmlx
+[181 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[183 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[187 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[189 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[191 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[197 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[204 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[207 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[209 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[210 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[212 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[214 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[215 / 340] Cmlx
+[216 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[217 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[218 / 340] Cmlx
+[219 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[221 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[223 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[225 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[227 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[228 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[229 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[231 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[232 / 340] Cmlx
+[233 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[235 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[237 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[241 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[243 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[244 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[248 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[249 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[250 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[252 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[253 / 340] Cmlx
+[254 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[256 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[258 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[263 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[264 / 340] Cmlx
+[265 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[266 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[268 / 340] Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[268 / 340] _NumericsShims
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[270 / 340] RealModule
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[271 / 340] RealModule
+[272 / 340] RealModule
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[276 / 340] RealModule
+[282 / 340] mlx-swift_Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[286 / 340] mlx-swift_Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[289 / 340] mlx-swift_Cmlx
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[289 / 340] Cmlx
+[291 / 340] mlx-swift_Cmlx
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/random.metal:3:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/random.metal:3:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/rope.metal:5:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/rope.metal:5:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/scaled_dot_product_attention_vjp.metal:3:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/scaled_dot_product_attention_vjp.metal:3:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/searchsorted.metal:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/searchsorted.metal:6:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/searchsorted.metal:7:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/sort.h:43:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    if constexpr (metal::is_floating_point_v<T>) {
+       ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/sort.h:49:15: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    } else if constexpr (metal::is_same_v<T, complex64_t>) {
+              ^
+9 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/dot.metal:3:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/dot.h:5:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/dot.metal:3:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/dot.h:5:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+[298 / 353] mlx-swift_Cmlx
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/rms_norm.metal:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/rms_norm.metal:6:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/layer_norm.metal:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/layer_norm.metal:6:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+[301 / 353] RealModule
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/conv.metal:8:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/conv.metal:8:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+[305 / 353] ComplexModule
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/arg_reduce.metal:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/arg_reduce.metal:6:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+[316 / 354]
+[319 / 356] Numerics
+[329 / 357] Numerics
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/scaled_dot_product_attention.metal:4:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/scaled_dot_product_attention.metal:4:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+7 warnings generated.
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.metal:1:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.h:7:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/atomic.h:106:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    if constexpr (metal::is_floating_point_v<T>) {
+       ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.metal:1:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.h:8:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.metal:1:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.h:8:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update_vjp.metal:2:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    PROCESS_CHUNK_SG(false, S_tile, C);
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:103:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:104:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(KT_tile, k_ + kk, Dk * Hk, B)                                    \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:125:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:134:5: note: expanded from macro 'PROCESS_CHUNK_SG'
+    LOAD_M(V_tile, v_ + dv_idx, Dv * Hv, B)                                    \
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:143:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(Q_tile, q_ + kk, Hk * Dk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:144:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:162:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    PROCESS_CHUNK_SG(true, S_tile, short(T - t));
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:103:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:104:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(KT_tile, k_ + kk, Dk * Hk, B)                                    \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:125:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:134:5: note: expanded from macro 'PROCESS_CHUNK_SG'
+    LOAD_M(V_tile, v_ + dv_idx, Dv * Hv, B)                                    \
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:143:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(Q_tile, q_ + kk, Hk * Dk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:144:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:162:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+22 warnings generated.
+[329 / 357] mlx-swift_Cmlx
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.metal:1:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:4:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.metal:1:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:4:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.metal:1:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    PROCESS_CHUNK_SG(false, S_tile, C);
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:103:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:104:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(KT_tile, k_ + kk, Dk * Hk, B)                                    \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:125:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:134:5: note: expanded from macro 'PROCESS_CHUNK_SG'
+    LOAD_M(V_tile, v_ + dv_idx, Dv * Hv, B)                                    \
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:143:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(Q_tile, q_ + kk, Hk * Dk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:144:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:249:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:162:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    PROCESS_CHUNK_SG(true, S_tile, short(T - t));
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:103:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:104:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(KT_tile, k_ + kk, Dk * Hk, B)                                    \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:125:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(K_tile, k_ + kk, Dk * Hk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:134:5: note: expanded from macro 'PROCESS_CHUNK_SG'
+    LOAD_M(V_tile, v_ + dv_idx, Dv * Hv, B)                                    \
+    ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:143:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_M(Q_tile, q_ + kk, Hk * Dk, B)                                      \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:50:6: note: expanded from macro 'LOAD_M'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:144:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:258:5: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:162:7: note: expanded from macro 'PROCESS_CHUNK_SG'
+      LOAD_MT(K_tile, k_ + kk, Hk * Dk, B)                                     \
+      ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/gated_delta_update.h:62:6: note: expanded from macro 'LOAD_MT'
+  if constexpr (B) {                                                           \
+     ^
+21 warnings generated.
+[329 / 357] MLX
+[339 / 426]
+[343 / 426]
+[351 / 426]
+[354 / 426]
+[355 / 426]
+[362 / 426]
+[365 / 426]
+[368 / 426]
+[373 / 426]
+[374 / 426]
+[375 / 426]
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/steel_attention.metal:4:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../utils.h:9:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../complex.h:157:54: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex32_t) == 2 * sizeof(half));
+                                                     ^
+                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../complex.h:158:55: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex64_t) == 2 * sizeof(float));
+                                                      ^
+                                                      , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../complex.h:159:70: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+static_assert(sizeof(complex_t<bfloat16_t>) == 2 * sizeof(bfloat16_t));
+                                                                     ^
+                                                                     , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../complex.h:305:78: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+    (complex_t<half>{1.0h, 2.0h} * complex_t<half>{3.0h, 4.0h}).real == -5.0h);
+                                                                             ^
+                                                                             , ""
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../complex.h:309:35: warning: 'static_assert' with no message is a C++17 extension [-Wc++17-extensions]
+        .real == bfloat16_t(-5.0f));
+                                  ^
+                                  , ""
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/steel_attention.metal:4:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../utils.h:80:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> max = complex_t<T>(
+  ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../utils.h:83:3: warning: inline variables are a C++17 extension [-Wc++17-extensions]
+  inline static constexpr constant complex_t<T> min = complex_t<T>(
+  ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/steel_attention.metal:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:3:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/attn.h:6:
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/../../steel/attn/mma.h:11:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/../../steel/utils/integral_constant.h:105:6: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  if constexpr (start < stop) {
+     ^
+In file included from /Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/steel_attention.metal:6:
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:234:6: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+  if constexpr (!q_in_registers) {
+     ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:314:10: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+      if constexpr (!q_in_registers) {
+         ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:323:10: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+      if constexpr (!q_in_registers) {
+         ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:330:8: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+    if constexpr (WN == 2) {
+       ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:441:16: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+            if constexpr (is_bool) {
+               ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:511:14: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+          if constexpr (BD >= 128) {
+             ^
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/Cmlx/mlx-generated/metal/steel/attn/kernels/../../../steel/attn/kernels/steel_attention.h:521:14: warning: constexpr if is a C++17 extension [-Wc++17-extensions]
+          if constexpr (BD >= 128) {
+             ^
+15 warnings generated.
+[377 / 426]
+[380 / 426]
+[381 / 426]
+[388 / 426]
+clang: [0;1;35mwarning: [0m[1margument unused during compilation: '-fmodules-cache-path=/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/research/mlx-swift-probe/.build/out/ModuleCache.noindex' [-Wunused-command-line-argument][0m
+[388 / 426] Cmlx
+[389 / 426] Cmlx
+[389 / 426]
+[391 / 426]
+[403 / 426] MLX
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLX/State.swift:107:47: [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m105 |[0;0m     async rethrows -> R
+[0;36m106 |[0;0m {
+[0;36m107 |[0;0m     try await MLXRandom.$taskLocalRandomState.withValue(state, operation: body)
+    [0;36m|[0;0m                                               `- [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m108 |[0;0m }
+[0;36m109 |[0;0m 
+
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLX/Stream.swift:380:40: [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m378 |[0;0m         let cpu = device.deviceType == .cpu ? device : streams.cpu.device
+[0;36m379 |[0;0m         let gpu = device.deviceType == .gpu ? device : streams.gpu.device
+[0;36m380 |[0;0m         return try await $localStreams.withValue(
+    [0;36m|[0;0m                                        `- [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m381 |[0;0m             StreamPairPromise(cpu: cpu, gpu: gpu, defaultDeviceType: device.deviceType),
+[0;36m382 |[0;0m             operation: body)
+
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLX/Stream.swift:400:40: [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m398 |[0;0m         let pair = StreamPairPromise(
+[0;36m399 |[0;0m             parent: localStreams ?? globalStreams, device: device)
+[0;36m400 |[0;0m         return try await $localStreams.withValue(pair, operation: body)
+    [0;36m|[0;0m                                        `- [1;33mwarning: [1;39m'withValue(_:operation:isolation:file:line:)' is deprecated: Prefer the 'nonisolated(nonsending)' overload with stricter execution on caller context semantics: withValue(_:operation:file:line:)[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration\DeprecatedDeclaration]8;;\]
+[0;36m401 |[0;0m     }
+[0;36m402 |[0;0m 
+
+[#DeprecatedDeclaration]: <https://docs.swift.org/compiler/documentation/diagnostics/deprecated-declaration>
+[404 / 426] MLX
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLX/MLXArray+maskFill.swift:9:19: [1;33mwarning: [1;39mvalue 'info' was defined but never used; consider replacing with boolean test[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+ [0;36m7 |[0;0m     /// `dtype`, so masked positions vanish under softmax — no `asType` to forget.
+ [0;36m8 |[0;0m     public static func maskFill(for dtype: DType) -> MLXArray {
+ [0;36m9 |[0;0m         guard let info = dtype.finfo else {
+   [0;36m|[0;0m                   `- [1;33mwarning: [1;39mvalue 'info' was defined but never used; consider replacing with boolean test[0;0m [#]8;;https://docs.swift.org/compiler/documentation/diagnostics/no-usage\NoUsage]8;;\]
+[0;36m10 |[0;0m             fatalError("maskFill requires a floating-point dtype, got \(dtype)")
+[0;36m11 |[0;0m         }
+
+[#NoUsage]: <https://docs.swift.org/compiler/documentation/diagnostics/no-usage>
+[412 / 427] MLX
+[412 / 427] MLXNN
+[424 / 439] MLXNN
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLXNN/Module.swift:1560:34: [1;33mwarning: [1;39mconditional downcast from 'T?' to 'T' does nothing[0;0m
+[0;36m1558 |[0;0m             // note: this gives a warning but it does in fact do something
+[0;36m1559 |[0;0m             // in the case where this is e.g. ParameterInfo<MLXArray?>
+[0;36m1560 |[0;0m             if let value = [4;39mvalue[0;0m as? [4;39mT[0;0m {
+     [0;36m|[0;0m                                  `- [1;33mwarning: [1;39mconditional downcast from 'T?' to 'T' does nothing[0;0m
+[0;36m1561 |[0;0m                 return value
+[0;36m1562 |[0;0m             } else {
+
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLXNN/Module.swift:1710:36: [1;33mwarning: [1;39mconditional downcast from 'T?' to 'T' does nothing[0;0m
+[0;36m1708 |[0;0m             // note: this gives a warning but it does in fact do something
+[0;36m1709 |[0;0m             // in the case where this is e.g. ModuleInfo<Linear?>
+[0;36m1710 |[0;0m             if let module = [4;39mmodule[0;0m as? [4;39mT[0;0m {
+     [0;36m|[0;0m                                    `- [1;33mwarning: [1;39mconditional downcast from 'T?' to 'T' does nothing[0;0m
+[0;36m1711 |[0;0m                 return module
+[0;36m1712 |[0;0m             } else {
+
+/Users/Kavenshi/Documents/翻译软件ForMAC/HymnTranslate/mlx-swift-main/Source/MLXNN/Module.swift:345:13: [1;33mwarning: [1;39mdefault will never be executed[0;0m
+ [0;36m343 |[0;0m                 return isAllNone ? .none : .array(result)
+ [0;36m344 |[0;0m 
+ [0;36m345 |[0;0m             default:
+     [0;36m|[0;0m             `- [1;33mwarning: [1;39mdefault will never be executed[0;0m
+ [0;36m346 |[0;0m                 fatalError("Unexpected leaf \(vk) = \(v)")
+ [0;36m347 |[0;0m             }
+[435 / 440] MLXSwiftProbe-product
+[440 / 442] MLXSwiftProbe-product
+Build complete! (43.65 sec)

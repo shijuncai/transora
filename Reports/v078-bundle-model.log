@@ -1,0 +1,3 @@
+HYMN_SMOKE_TRANSLATION output=你好，很高兴见到你。 status=翻译完成
+HYMN_SMOKE_OK ready=true real=true status=翻译完成 history=0 error=none
+BUNDLE_MODEL_OK

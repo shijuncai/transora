@@ -1,0 +1,46 @@
+{
+  "module": "MLX Swift official runtime (A3-1 translation probe)",
+  "scope": "real translation via MLX generate(), same prompt/chat-template/sampling as D-1",
+  "weight_format": "affine INT4 (NOT LUT4)",
+  "backend": "mlx-swift-lm HunyuanModel (research probe only, NOT wired into HymnTranslate)",
+  "prompt_source": "HymnCore.RealModelBackend.buildPrompt (identical to D-1)",
+  "tokenizer": "HymnNative.HymnTokenizer bridged to MLXLMCommon.Tokenizer",
+  "sampling": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "repetition_penalty": 1.05,
+    "seed": "0x9E3779B97F4A7C15",
+    "max_tokens": 40
+  },
+  "load_ms": 674.6,
+  "cases": [
+    {
+      "direction": "en->zh",
+      "input": "Hello, nice to meet you.",
+      "mlx_translation": "你好，很高兴见到你。",
+      "d1_translation": "您好，很高兴见到您。",
+      "prompt_tokens": 22,
+      "generated_tokens": 6,
+      "wall_ms": 4204.4,
+      "prompt_ms": 4086.4,
+      "generate_ms": 113.1
+    },
+    {
+      "direction": "zh->en",
+      "input": "机器学习正在改变世界。",
+      "mlx_translation": "Machine learning is changing the world.",
+      "d1_translation": "Machine learning is changing the world.",
+      "prompt_tokens": 18,
+      "generated_tokens": 7,
+      "wall_ms": 193.2,
+      "prompt_ms": 57.9,
+      "generate_ms": 128.0
+    }
+  ],
+  "note": "First case includes one-time MLX kernel warmup (prompt_ms 4086.4). Second case is steady-state. All values are single-run measurements, NOT averaged benchmarks; not comparable to D-1 TTFT/tokens-per-second figures.",
+  "translation_comparison": "semantically equivalent; en->zh differs only in polite form (你 vs 您), zh->en byte-identical. Expected from different weight precision paths (MLX bf16 dequant vs D-1 fp16 cache) and different sampler implementations.",
+  "produces_translation": true,
+  "wired_into_app": false,
+  "still_default_backend": "hymn-native-metal-affine-int4-v1 (D-1)"
+}

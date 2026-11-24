@@ -1,0 +1,153 @@
+{
+  "schema": "linguanova.p6/1",
+  "date": "2026-11-23",
+  "sample": "Sample/Development of a novel mycelium bio-composite.pdf",
+  "machine": "M3 Pro / 18GB / macOS 27.0.1 / Swift 6.4.3",
+  "build": {
+    "release_warnings": 0,
+    "tests_total": 439,
+    "tests_failed": 0,
+    "pdf_p6_cases": 13
+  },
+  "root_causes": [
+    {
+      "id": "R1",
+      "name": "多内容流未按一条逻辑流执行",
+      "symptom": "作者单位 b 行整行读不出来（渲染正常）",
+      "evidence_before": "hymnctl pdf-structure --runs --page 1 → 无任何 y=541.42 的 run",
+      "evidence_after": "同一命令 → 40 个 run，x 41.50–358 齐全",
+      "cause": "内容流数组被逐条单独 run()，跨流累积的 TJ 操作数被丢弃；本文档把 [(Centre)…(India)] 留在流 434 末尾、TJ 放在流 435 开头",
+      "fix": "按 PDFTypesetEngine 同一规则拼接后单次 run()，streamBase=0"
+    },
+    {
+      "id": "R2",
+      "name": "行首 x 聚类的分栏检测整页塌成单栏",
+      "symptom": "段落被切成一行一块，左右栏按 y 交错，译文顺序全乱",
+      "evidence_before": {
+        "p1_blocks": 72,
+        "p1_single_line_blocks": 66,
+        "p5_blocks": 105,
+        "p5_single_line_blocks": 95,
+        "p6_blocks": 121,
+        "p6_single_line_blocks": 112,
+        "column_field": "全部为 0"
+      },
+      "evidence_after": {
+        "p1_blocks": 30,
+        "p2_blocks": 16,
+        "p5_blocks": 62,
+        "p6_blocks": 67,
+        "p2_group_order": "左栏 3 段 → 2. 材料与方法 → 2.1 → 2 段 → 右栏 4 段 → 页码"
+      },
+      "cause": "期刊首页行首 x 有 9 种取值，聚出 5~6 簇，只有 2~3 簇凑够 3 行；摘要簇与左栏纵向重叠仅 31% < 50% 门禁 ⇒ return singleColumn",
+      "fix": "递归 XY 切分：覆盖率 ≤1 找竖缝（允许居中页码这一行跨缝，作 stray 安置）+ 整幅空白带找横缝；buildBlocks 不再按 midY 全局重排"
+    },
+    {
+      "id": "R3",
+      "name": "长段落撞 KV 窗口 ⇒ 整段回落英文",
+      "symptom": "一页只翻了一半，长段落原样保留",
+      "evidence_before": "531 字符段落 + maxTokens=1024 → SEQUENCE_TOO_LONG（531 字符提示词约 330 token，330+1024>1024）",
+      "evidence_after": "同段落正常出译，tokens=86；整本 failed=0",
+      "fix": "maxSequenceLength 1024→2048；maxTokens 按剩余窗口收敛；超长段落按句切分（PDFSentenceSplitter，跳过 Fig./Eq./et al.）"
+    },
+    {
+      "id": "R4",
+      "name": "空文本 run 被丢弃，一行被撕成三块",
+      "symptom": "「30 cm × 30 cm × 1 cm」拆成 3 块分别翻译，译文语序错乱",
+      "evidence_before": [
+        "30 cm",
+        "The samples of dimension 30 cm",
+        "1 cm is placed"
+      ],
+      "evidence_after": "The samples of dimension 30 cm 30 cm 1 cm is placed between the two plates …（单块）",
+      "cause": "× 用子集字体 AdvP4C4E74，ToUnicode 把该字形映射成 U+0020；旧代码 runs.filter{!text.isEmpty} 连宽度一起丢了",
+      "fix": "保留 advance>0 的 run 参与几何计算，只丢文字"
+    },
+    {
+      "id": "R5",
+      "name": "上标被基线容差切成独立行",
+      "symptom": "作者名后的 a/b 上标中文重排后与名字脱开",
+      "evidence_before": "作者行 + 5 个单字符块（a/a/a/a/b,⇑）",
+      "evidence_after": "并回本行：S. Sivaprasad^a, Sidharth K. Byju^a, …",
+      "fix": "mergeInlineFragments：基线差 ≤1.2em 且竖直重叠 ≥30% 且水平间距 ≤1em"
+    },
+    {
+      "id": "R6",
+      "name": "无线表的纵列被当段落重排，数字叠字",
+      "symptom": "0..3531 0.854 / 1845% 之类的叠字与数字错乱",
+      "evidence_before": "Table 2/4/6 的数值列被当成段落块翻权重排",
+      "evidence_after": "三张表数值与原文逐字节相同；pdf-typeset 输出页面逐像素 0 差异",
+      "fix": "isTabularStrip 钉子规则（≥3 行、每行 ≤32 字符、数字行占一半以上 → 原地不动）"
+    },
+    {
+      "id": "R7",
+      "name": "原坐标重画时宋体更宽，词间空隙被吃掉",
+      "symptom": "ExpandedPolystyrene / CompressiveStrength",
+      "evidence_before": "Expanded 宽 29.71pt → 重画后 31.51pt，与下一词只剩 0.35pt",
+      "evidence_after": "Tz 压回原推进宽度，间隙恢复 2.15pt",
+      "fix": "drawRuns 内 Tz = clamp(run.advance / 新宽度, 0.8, 1.0)"
+    }
+  ],
+  "measurements": {
+    "identity_typeset": {
+      "pages": 7,
+      "pixel_diff": 0,
+      "ssim_min": 1.0,
+      "findings": 0,
+      "output": "/tmp/analyze-ident.pdf"
+    },
+    "no_translation_bytes": {
+      "identical_to_source": true,
+      "note": "cmp 通过；引擎在「全篇无改动」时返回原字节"
+    },
+    "pdf_verify": {
+      "pages": "7 → 7",
+      "objects_compared": 487,
+      "objects_rewritten": 32,
+      "images": 12,
+      "images_byte_identical": true,
+      "verdict": "VERIFY_PASS"
+    },
+    "e2e_headless": {
+      "command": "HYMN_HEADLESS_SMOKE=1 HYMN_PDF_REBUILD_BLOCKS=0",
+      "pages": 7,
+      "translated_blocks": 179,
+      "kept_blocks": 159,
+      "failed_blocks": 0,
+      "analysis_passed": false,
+      "analysis_codes": [
+        "glyph-missing=2"
+      ],
+      "analysis_note": "缺字为 U+21D1（⇑，通讯作者标记），思源宋体无此字形，语义无损",
+      "pdf_bytes": 2164946
+    },
+    "first_round_baseline": {
+      "translated_blocks": 180,
+      "kept_blocks": 169,
+      "note": "修前首轮；其中大量 kept 是「撞 KV 窗口后整段回落原文」"
+    },
+    "outputs": {
+      "pdf": "Sample/开发一种新型菌丝体生物复合材料，用于替代包装应用中的聚苯乙烯-译文-修复版.pdf",
+      "report": "Sample/开发一种新型菌丝体生物复合材料，用于替代包装应用中的聚苯乙烯-对照报告.html"
+    }
+  },
+  "visual_check": {
+    "method": "110 dpi 逐页渲染 + 220 dpi 表头区域放大比对",
+    "pages_checked": 7,
+    "findings": [
+      "无英文正文残留",
+      "无中英同行交替",
+      "无叠字",
+      "图片 12 张全部保留",
+      "表格数值与原文一致",
+      "作者单位 b 行存在"
+    ]
+  },
+  "known_gaps": [
+    "参考文献被翻译成中文（期刊名意译），是否保持原文需产品决策",
+    "ARTICLE INFO 被译成「第1条」；PDF 链路未接 GlossaryMatcher",
+    "无线表仍未识别为表格：数值安全，但表头保持英文",
+    "U+21D1 缺字 2 处（装饰符号）",
+    "「3. 结果与讨论 / 3.1. 声阻抗测试」两个小标题并成一个块（行距过近）"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "device" : "Apple M3 Pro",
+  "isRealModelInference" : false,
+  "metrics" : {
+    "dequant_cpu_ms_for_16_rows" : 0.898209,
+    "dequant_elements" : 32768,
+    "dequant_metal_m_elements_per_s" : 6.150631534037104,
+    "dequant_metal_ms_for_16_rows" : 5.327583,
+    "dequant_speedup_vs_cpu" : 0.16859596556262005,
+    "golden_mlx_aligned_elements" : 65536,
+    "golden_mlx_max_abs_diff" : 0,
+    "metal_msl_compile_ms" : 17.755458,
+    "tensor_count" : 804,
+    "weight_file_bytes" : 1007776125
+  },
+  "note" : "数据来自真实 1GB safetensors 的字节级解析与 Metal 反量化；未执行完整模型 forward，不代表翻译 token\/s。",
+  "weightFormat" : "affine INT4 (NOT LUT4)"
+}

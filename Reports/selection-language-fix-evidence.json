@@ -1,0 +1,62 @@
+{
+  "captured_at": "2026-11-22 09:43:50 +0800",
+  "issue": "v0.7.1 划词弹窗「无效」：浮窗其实会弹出，但语言对直接复用主窗口 en→zh，划到中文时模型按「翻译成简体中文」把原文原样照抄，用户看到译文=原文。",
+  "root_causes": [
+    "语言对：translateSelection 用 LanguagePair(source: sourceLang, target: targetLang)，未依据选区内容调整；",
+    "捕获稳定性：SelectionWatcher 用 isCapturing 布尔锁，某次 completion 丢失后会永久阻塞后续划词；剪贴板轮询仅 12×20ms，长文本/慢应用会误判无选区；",
+    "权限缺失时完全静默失败，用户看不到原因。"
+  ],
+  "fixes": [
+    "新增 HymnCore/Compatibility/SelectionLanguageResolver.swift：Unicode 书写系统判定选区语言，自动选择「与选区不同」的目标语言；",
+    "浮窗 header 显示本次实际语言对（如「中 → 英」），历史记录按实际语言对写入；",
+    "划词 maxTokens 由固定 128 改为按文本长度放宽（上限 512）；",
+    "isCapturing 布尔锁改为单调递增 generation，过期结果丢弃但不再永久阻塞；",
+    "剪贴板轮询放宽到 30×30ms（约 900ms）；",
+    "未授权且捕获失败时提示系统授权引导（60 秒节流），设置页仅在未授权时出现「授予辅助功能权限」按钮；",
+    "设置页移除「操作提示音」行（静默实现 SilentMainWindow/SilentFloatingPanel 保留）。"
+  ],
+  "before_v071": {
+    "binary": "/Volumes/智译星 LinguaNova 1/LinguaNova.app (0.7.1 build 7)",
+    "sample": {
+      "id": 124,
+      "pair": "en->zh",
+      "source": "植入物通常不会随着时间而磨损。  \n植入物随时间失效的主要原因在于无菌松动，即植入物碎片因磨损导致骨-植入物界面发炎和破坏，久而久之，会导致植入物松动和疼痛，需",
+      "target": "植入物通常不会随着时间而磨损。  \n植入物随时间失效的主要原因在于无菌松动，即植入物碎片因磨损导致骨-植入物界面发炎和破坏，久而久之，会导致植入物松动和疼痛，需"
+    },
+    "observation": "译文与原文逐字相同（中文自译）"
+  },
+  "after_v072": {
+    "binary": "dist/LinguaNova.app (0.7.2 build 8)",
+    "sample": {
+      "id": 138,
+      "pair": "zh->en",
+      "source": "植入物通常不会随着时间而磨损。植入物随时间失效的主要原因在于无菌松动，需要进行修复性关节置换术。",
+      "target": "Implants generally do not wear out over time. The main reason for the expiration"
+    },
+    "observation": "中文划词输出完整英文译文，浮窗显示「中 → 英」"
+  },
+  "deterministic_selftests": [
+    {
+      "text": "植入物通常不会随着时间而磨损。",
+      "pair": "zh->en",
+      "output": "Implants usually do not wear out over time."
+    },
+    {
+      "text": "Hello, nice to meet you.",
+      "pair": "en->zh",
+      "output": "你好，很高兴见到你。"
+    },
+    {
+      "text": "こんにちは、今日は良い天気です。",
+      "pair": "ja->zh",
+      "output": "你好，今天天气很好。"
+    }
+  ],
+  "screenshots": [
+    "Reports/ui-v072-selection-cn.png",
+    "Reports/ui-v072-settings.png",
+    "Reports/ui-v072-translate.png"
+  ],
+  "tests": "168/168（新增 selection-language 19 项）",
+  "caveat": "修复前后数据来自同一台机器的同一 1.25bit GGUF 模型；质量分数基线 BLEU 23.19 / chrF2 43.86 / COMET 0.7809 未变。"
+}
