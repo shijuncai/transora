@@ -190,6 +190,6 @@ swift build --disable-sandbox     # SwiftPM 在这个工程里必须关沙箱
 
 ## 许可证
 
-代码以 **MIT** 发布，全文见 [LICENSE](LICENSE)。内置中文字体由思源宋体实例化而来，
-遵循 SIL Open Font License 1.1（`Resources/Fonts/OFL.txt`）；模型权重遵循上游模型发布方的
-许可条款，不包含在本仓库中。
+代码以 **MIT** 发布，全文见 [LICENSE](LICENSE)。内置中文字体由思源宋体实例化而来、
+遵循 SIL Open Font License 1.1，模型权重遵循上游发布方许可且不在本仓库中——
+详见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
