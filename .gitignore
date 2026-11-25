@@ -22,3 +22,12 @@ Reports/**/*.png
 Reports/*.png
 
 .DS_Store
+
+# ---- 构建会重写的报告产物（保留 .md 文档与评测数据）----
+Reports/*.log
+Reports/test-report.md
+Reports/*perf*.json
+Reports/perf.json
+Reports/gguf-perf.json
+Reports/sherry-resident-golden.json
+Reports/release-*.json

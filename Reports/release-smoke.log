@@ -1,5 +1,0 @@
-HYMN_SMOKE_TRANSLATION output=你好，很高兴见到你。 status=翻译完成
-HYMN_SMOKE_TICKS count=79 maxMs=20.39 avgMs=10.27
-HYMN_SELECTION_SELFTEST source=Hello, nice to meet you. output=你好，很高兴见到你。 pair=en->zh error=none
-HYMN_SMOKE_OK ready=true real=true status=翻译完成 history=1 error=none
-SELECTION_CHAIN main='你好，很高兴见到你。' selection='你好，很高兴见到你。' pair='en->zh' error=none
