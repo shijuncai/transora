@@ -1,201 +1,163 @@
-# 译澜 TransOra
+# TransOra
 
-**本机 AI 翻译 —— 所有翻译在这台 Mac 上完成，文本不离开本机。**
+**On-device AI translation for macOS. Every request is handled on your Mac — your text never leaves it.**
 
-**简体中文** · [English](README.en.md)
-
----
-
-译澜 TransOra ：一个完全离线的 macOS 翻译工具，选中即译、长 PDF 也能整本译完。
-
-译澜 TransOra 是把 18 亿参数翻译模型直接装进 Mac 的桌面翻译工具。它在本地用 GPU 跑推理，不联网、不上传、不需要账号，断网、飞行模式下照常工作。支持 14 种常用语言、划词即译、几百页 PDF 整本翻译，译文可导出 TXT / DOCX，历史与术语库都存在本地。
-
-见下方各章。
+[简体中文](README.zh-CN.md) · **English**
 
 ---
 
-## 为什么做它
+## What it is
 
-在线翻译用起来方便，但代价是**把要翻译的内容交给第三方服务器**。合同、病历、内部文档、还没发布的产品资料，这类文本往往是最需要翻译、也最不适合上传的。
+A fully offline macOS translation tool: select text anywhere to translate it, or translate whole PDFs while keeping the original layout. It runs an 1.8B-parameter model on the GPU through Metal, needs no account and no network — it works in airplane mode.
 
-译澜的设计前提只有一条：**文本不出这台 Mac**。因此：
+- **14 common languages** in the UI (36 supported by the model), with automatic source-language detection and a target that is never the same as the source.
+- **Selection translation**: select text in any app, a floating panel shows the translation with seven quick actions.
+- **PDF**: text-only re-translation, or layout rebuild that writes the Chinese back into the original page.
+- **Local only**: history, glossary and exports all live on this Mac.
 
-- **全程离线**——运行时没有任何网络请求，不是"可离线"，是"没有联网这条代码路径"；
-- **不需要账号**——没有登录、没有订阅、没有用量统计；
-- **数据本地化**——历史记录、术语库、模型全部存在本机，删掉 App 即全部消失；
-- **单实例、单后端**——不做多模型切换的花活，只把一个模型调到位。
+## Why
 
----
+There are plenty of translation apps. Almost all of them send your text somewhere. For contracts, medical records and unpublished drafts that is a non-starter. TransOra takes the opposite constraint as its design premise: **the text never leaves the machine**, therefore everything else follows — the model has to fit on the laptop, the inference has to be fast enough to feel instant, and the app must work with the network switched off.
 
-## 核心功能
+## Core features
 
-### 主窗口翻译
+### Main window
 
-输入或粘贴文本，逐字流式输出译文，可随时取消。源语言与目标语言并排一行，支持一键互换。长段落走分块串行翻译，不会卡住界面。
+Source and target language pickers with a one-click swap, streaming output, per-request seed so the same input reproduces, and a length setting (Short / Standard / Long / Longest) that trades latency for completeness.
 
-### 划词即译
+### Select to translate
 
-在任意 App 里选中文字，浮窗直接给出译文，**不打断你当前的操作**（浮窗不抢焦点）。
+- Detects the selected text's language by writing system first (kana, hangul, han, thai, arabic, cyrillic), then falls back to the system language recogniser for Latin scripts — so selecting French no longer says "English → Chinese".
+- The target language is configurable in Settings: **Automatic** (English → Chinese, Chinese → English) or pinned to a specific language.
+- A non-activating panel appears next to the selection, with up to seven buttons: copy, save as TXT, save as DOCX, save to Notes, add to Reminders, speak, open in the main window. All of them can be toggled in Settings.
+- Uses the Accessibility API first and falls back to a simulated ⌘C that never clears your clipboard.
 
-- 自动判断选区语言，选出"与选区不同"的目标语言——选中文自动中→英，选英文自动英→中，选法语自动法→中，不会再出现"中译中"的空转；
-- 浮窗按内容自适应四档宽度与高度，长句不会挤成一条缝；
-- 浮窗底部一排 7 个图标按钮：复制译文、存为 TXT、存为 DOCX、存入备忘录、加入提醒事项、朗读译文（系统语音、离线合成）、回到主窗口。光标停留 2 秒会显示按钮名称。
+### Long PDF translation
 
-### PDF 长文翻译
+Extract text with PDFKit → chunk by page → translate serially → show live progress, cancellable at any time → export. Verified on a 310-page / 1.53M-character document (2787 chunks).
 
-系统 PDFKit 提取文本 → 按页分块 → 串行真译 → 实时进度与可取消 → 导出译文。实测 310 页 / 153 万字符 / 2787 个分块可完整跑通（耗时较长，属预期）。
+It can also rebuild the original layout: translations go back into their original columns while figures, formulas, captions, headers and page numbers stay untouched. When a translation does not fit it first tightens leading, then shrinks type, then widens the box, and only then moves the block to a footnote — never leaving overlapping text or blank pages.
 
-也能按原版式重建：译文回填到原来的栏位，图表、公式、图注、页眉页码保持原样，只把正文换成中文；放不下时先压行距、再缩字号，最后才扩框，实在排不下就保留原文，不留叠字也不留空白页。
+![PDF layout rebuild before and after](Assets/screenshots/pdf-layout-comparison.jpg)
 
-![PDF 版式重建前后对比](Assets/screenshots/pdf-layout-comparison.jpg)
+*Same page: left is the Chinese rebuild (original columns and figure positions), right is the English source. Figures and captions are not translated.*
 
-*同一页的对比：左为中文译文（按原栏位与图位置重排），右为英文原文。图表与图注不参与翻译。*
+Scanned PDFs (image-only) are reported as unreadable — **no OCR**, because guessing is worse than saying no.
 
-扫描件（纯图片 PDF）会明确提示无法提取，**不做 OCR**——不猜内容，比猜错好。
+### History and glossary
 
-### 历史与术语库
+Every translation (including selections) goes into a local SQLite database. Search, filter by language pair, export one or many entries as TXT / DOCX. The glossary pins terminology for the current language pair.
 
-每次翻译（含划词）都落到本地 SQLite。支持搜索、按语言对筛选、单条导出、多条合并导出 TXT / DOCX。术语库用于固定专有名词的译法。
+### Export
 
-### 导出
+TXT and DOCX are **written in pure Swift** (DOCX is an OOXML ZIP generated in-process, CRC32 included) — no Office library, no Python.
 
-TXT 与 DOCX 都是**纯 Swift 手写实现**（DOCX 直接生成 OOXML ZIP，含 CRC32），不依赖任何 Office 库或 Python。
+### Menu bar
 
-### 菜单栏常驻
+Closing the main window keeps the app alive in the menu bar, where selection translation can be toggled and the main window reopened.
 
-关掉主窗口不退出，菜单栏图标常驻，可随时开关划词、打开主窗口、查看关于信息。
+## Under the hood
 
-### 14 种常用语言
+| Item | Detail |
+| -- | -- |
+| Model | `Hy-MT2-1.8B-1.25Bit.gguf`, 1.8B parameters, 1.25-bit quantised |
+| Weight format | **Sherry STQ1_0, 1.3125 bpw**, resident in unified memory for GEMV — **not LUT4, not affine INT4** |
+| File facts | GGUF v3 / 461,860,800 B / 354 tensors |
+| Inference | Resident `MTLBuffer`, 225 GEMV per token, weights never expanded to fp16 |
+| Language | Swift 6 + SwiftUI + AppKit, strict concurrency |
+| Storage | SQLite (`libsqlite3`) |
+| Dependencies | **Zero** — `otool -L` lists only system dylibs; no MLX, no metal-cpp, no SwiftPM packages |
 
-简体中文、英语、日语、韩语、法语、德语、西班牙语、葡萄牙语、俄语、意大利语、阿拉伯语、泰语、越南语、印尼语。
+**Why bpw matters**: at 1.3125 bits per weight the 1.8B model occupies 440 MB, small enough to stay resident on an 18 GB laptop instead of being reloaded for every request. That is what makes "double-click and translate in 0.8 s" possible.
 
-> 界面只列 14 种；模型实际支持的 36 种语言映射在底层完整保留，供命令行工具、评测与历史记录显示使用。
+## Quality and performance
 
----
+| Metric | Result | Note |
+| -- | -- | -- |
+| BLEU | **23.19** | Against reference translations |
+| chrF2 | **43.86** | Same |
+| COMET | **0.7809** | `Unbabel/wmt22-comet-da`, real inference |
+| Direction coverage | 36 × 35 = **1260 pairs** | 64 scored, 1196 smoke-tested |
+| Degenerate pairs | 491 → **0** | No more "source == target" no-ops |
+| Short sentence | **~0.8 s** | "Hello, nice to meet you." → 你好，很高兴见到你。 |
+| Main-thread load | **10.3 ms** / token avg | Inference never blocks the UI |
+| Unit tests | **497 / 497** | Zero compiler warnings |
 
-## 技术底座
+## Install and requirements
 
-| 项     | 说明                                                                       |
-| ----- | ------------------------------------------------------------------------ |
-| 模型    | `Hy-MT2-1.8B-1.25Bit.gguf`，18 亿参数，1.25 bit 量化                            |
-| 权重格式  | **Sherry STQ1_0，1.3125 bpw**，权重常驻统一内存做 GEMV（**不是 LUT4，也不是 affine INT4**） |
-| 文件实证  | GGUF v3 / 461,860,800 B / 354 张量 / type 42                               |
-| 推理    | Metal 常驻 `MTLBuffer`，每 token 225 次 GEMV，权重全程不展开成 fp16                    |
-| 语言/框架 | Swift 6 + SwiftUI + AppKit，严格并发（actor 调度、`Task.detached`）                |
-| 存储    | SQLite（系统 `libsqlite3`）                                                  |
-| 依赖    | **零第三方依赖**——`otool -L` 只有系统 dylib，无 MLX、无 metal-cpp、无外部 SwiftPM 包        |
+| Item | Requirement |
+| -- | -- |
+| Chip | Apple Silicon (arm64). **Intel Macs are not supported** |
+| OS | macOS 14.0 or later |
+| Disk | ~470 MB |
+| Network | **Not required**, not even on first launch |
+| Account | Not required |
 
-**为什么在意 bpw**：1.3125 bit/权重意味着 18 亿参数的模型只占 440 MB，能塞进一台 18 GB 内存的笔记本并常驻，而不用每次翻译重新加载。这是它能做到"双击即用、0.8 秒出结果"的原因。
+Open the DMG, drag **译澜 / TransOra** into Applications, then **right-click → Open** the first time (the build is ad-hoc signed, not notarised).
 
----
+The release bundle embeds the model, so there is nothing to download afterwards. A 5 MB lightweight build is also produced; it asks for a model folder on first launch.
 
-## 质量与性能（可复现的实测数据）
+## Build from source
 
-| 指标    | 结果                       | 说明                                      |
-| ----- | ------------------------ | --------------------------------------- |
-| BLEU  | **23.19**                | 参考译文对照                                  |
-| chrF2 | **43.86**                | 同上                                      |
-| COMET | **0.7809**               | `Unbabel/wmt22-comet-da`，真实推理打分         |
-| 方向覆盖  | 36 × 35 = **1260 个语言方向** | 64 个方向有参考译文出分数，1196 个方向仅做冒烟不产分数         |
-| 退化方向  | 491 → **0**              | 即"源==目标"的空转全部消除                         |
-| 短句延迟  | **约 0.8 秒**              | 「Hello, nice to meet you.」→「你好，很高兴见到你。」 |
-| 主线程负载 | 平均 **10.3 ms** / token   | 推理不阻塞界面，滚动与输入始终跟手                       |
-| 单元测试  | **497 / 497**            | 零编译警告                                   |
+The repository contains source, fonts and golden data. **Model weights and evaluation assets are not included** — the weights carry their own licence and the COMET assets are ~5 GB.
 
----
-
-## 安装与系统要求
-
-| 项  | 要求                                     |
-| -- | -------------------------------------- |
-| 芯片 | Apple Silicon（arm64）。**Intel Mac 不支持** |
-| 系统 | macOS 14.0 或更高                         |
-| 磁盘 | 约 470 MB                               |
-| 网络 | **不需要**，首次启动也不需要                       |
-| 账号 | 不需要                                    |
-
-**安装**：打开 DMG，把「译澜」拖进「应用程序」，然后**右键 → 打开**（首次需要绕过 Gatekeeper，见下）。
-
-安装包已内嵌模型，**不需要另外下载或指定模型目录**。
-
-> 想省空间也可以自己拿模型：轻量包约 5 MB，首次启动在「设置 → 选择模型文件夹」里指向模型目录即可。
-
-
-
----
-
-## 从源码构建
-
-仓库只放源码、字体与 golden 数据；**模型权重和评测资产不进仓库**（前者有独立许可，后者约 5 GB）。
-
-| 项  | 要求                                                        |
-| -- | --------------------------------------------------------- |
-| 工具 | Xcode 26 / Swift 6.x，Swift Package Manager                  |
-| 系统 | macOS 14.0+，Apple Silicon                                   |
-| 模型 | 可选。缺模型时除推理相关外的测试照常跑                                  |
+| Item | Requirement |
+| -- | -- |
+| Toolchain | Xcode 26 / Swift 6.x, Swift Package Manager |
+| OS | macOS 14.0+, Apple Silicon |
+| Model | Optional. Tests that need it are skipped when absent |
 
 ```bash
 git clone https://github.com/shijuncai/transora.git
 cd transora
-swift build --disable-sandbox     # SwiftPM 在这个工程里必须关沙箱
-./Scripts/test.sh                 # 497 项测试
+swift build --disable-sandbox     # SwiftPM must run with the sandbox disabled here
+./Scripts/test.sh                 # 497 tests
+./Scripts/check-localization.sh   # every UI string has an English translation
 ```
 
-要用真实推理，把量化后的 Hy-MT2-1.8B GGUF 放到
-`Models/Hy-MT2-1.8B-1.25Bit-GGUF/Hy-MT2-1.8B-1.25Bit.gguf`，
-或启动后在「设置 → 选择模型文件夹」里指定目录。权重遵循上游发布方许可，不随本仓库分发。
-
-打包与发布：
+For real inference, put the quantised Hy-MT2-1.8B GGUF at
+`Models/Hy-MT2-1.8B-1.25Bit-GGUF/Hy-MT2-1.8B-1.25Bit.gguf`,
+or point **Settings → Choose model folder** at it. The weights follow the upstream licence and are not redistributed here.
 
 ```bash
-./Scripts/make-app.sh            # 组装 dist/TransOra.app（HYMN_EMBED_MODEL=0 出 5 MB 轻量包）
-./Scripts/make-release.sh        # 构建 → 全量测试 → 图标 → .app → 真机冒烟 → DMG
+./Scripts/make-app.sh            # dist/TransOra.app (HYMN_EMBED_MODEL=0 for a 5 MB build)
+./Scripts/make-release.sh        # build → tests → icon → .app → smoke test → DMG
 ```
 
-| 目录 | 内容 |
+| Directory | Contents |
 | -- | -- |
-| `Sources/HymnCore` | 推理后端、分词、划词、PDF 版式重建 |
-| `Sources/HymnStore` | 历史与术语库（SQLite） |
-| `Sources/HymnSTQ` | STQ1_0 权重解包与 GEMV kernel |
-| `Sources/HymnApp` | SwiftUI 界面、托盘、划词浮窗 |
-| `Sources/hymnctl` · `hymntest` | 命令行工具与测试 |
-| `Scripts` | 构建、图标、字体、发布脚本 |
-| `Golden` | 对齐模型输出的 golden 数据（测试用） |
+| `Sources/HymnCore` | Inference backend, tokenizer, selection pipeline, PDF layout rebuild |
+| `Sources/HymnStore` | History and glossary (SQLite) |
+| `Sources/HymnSTQ` | STQ1_0 weight unpacking and GEMV kernels |
+| `Sources/HymnApp` | SwiftUI UI, menu bar, selection panel |
+| `Sources/hymnctl` · `hymntest` | CLI and test suites |
+| `Scripts` | Build, icon, font, release scripts |
+| `Golden` | Golden tensors used by tests |
+
+## Known limitations
+
+These are today's real limits, not future promises:
+
+- **Not notarised by Apple**: ad-hoc signature only; Gatekeeper blocks the first launch. Right-click → Open, or `xattr -dr com.apple.quarantine /Applications/TransOra.app`.
+- **Apple Silicon only**; Intel Macs and macOS 13 or earlier cannot run it.
+- **Selection translation needs Accessibility permission.** Without it the main window, PDF and history still work.
+- **Permission may reset after a rebuild**: every ad-hoc re-sign changes the signature fingerprint. Keep one copy in `/Applications` and delete old entries in System Settings.
+- **Reading selections in web/Electron apps**: Accessibility first, simulated copy second; if the target app does not respond, the panel stays closed rather than showing the wrong text.
+- **PDF chunking loses cross-chunk context**: paragraph flow across a chunk boundary is weaker than translating the whole document at once, and hundreds of pages take hours.
+- **No OCR**: scanned documents are reported, never guessed.
+- **Memo import** lands in the "Imported" folder as plain text with the first translated line as title — that avoids the Automation permission, at the cost of formatting.
+- **Reminders needs a one-time privacy grant.**
+- **Latin-script languages cannot always be told apart** (Spanish vs Portuguese, for example); pick the language manually.
+- **No Windows or Linux build.**
+
+## Version
+
+Current: **0.8.8 (build 28)**
+
+Two hard constraints hold across every version: **describe the format honestly** (no calling STQ1_0 "LUT4") and **keep inference fully local** (no silent fallback to cloud or Python).
 
 ---
 
-## 已知边界（如实说明）
+## Licence
 
-这些不是"以后会修"的托词，而是当前版本的真实限制：
-
-- **未做 Apple 公证**：App 使用 ad-hoc 签名，首次打开会被 Gatekeeper 拦一次，需右键「打开」或在终端执行 `xattr -dr com.apple.quarantine /Applications/TransOra.app`。
-- **仅 Apple Silicon**：Intel Mac 与 macOS 13 及更早系统无法运行。
-- **划词需要「辅助功能」授权**：在「系统设置 → 隐私与安全性 → 辅助功能」中勾选本 App。未授权时主窗口翻译、PDF、历史仍完全可用。
-- **授权可能因重装失效**：开发版每次重新构建都会变签名指纹，系统会要求重新授权；把 App 只保留在 `/Applications` 一份、删掉系统设置里的旧条目即可。
-- **网页 / Electron 应用的选区读取**：优先走 macOS 辅助功能接口；读不到时退回模拟复制，若目标应用不响应则宁可不弹窗，也不弹错内容。
-- **PDF 分块翻译会损失跨块上下文**：长文档的段落衔接不如整篇送入自然；几百页文档耗时可达数小时。
-- **不做 OCR**：扫描件会明确报错，不会输出猜测内容。
-- **备忘录用文件导入**：条目会落在备忘录的「导入的备忘录」文件夹，正文为纯文本，标题取译文首行——这样不需要「自动化」权限，代价是文件夹与格式不能自定义。
-- **提醒事项需要一次「提醒事项」隐私授权**：首次点击会弹系统授权框，允许后即可写入默认列表。
-- **拉丁语系无法细分语种**：同一书写系统的语言（如西班牙语/葡萄牙语）需手动指定。
-- **无 Windows / Linux 版本**。
-
----
-
-## 版本
-
-当前版本：**0.8.8（build 28）**
-
-技术实现遵循两条硬约束，贯穿所有版本：**格式如实标注**（不把 STQ1_0 说成 LUT4）、**推理全程本地**（不静默降级到云端或 Python）。
-
----
-
-*译澜 TransOra · 本机 AI 翻译 · 文本不离开这台 Mac*
-
----
-
-## 许可证
-
-代码以 **MIT** 发布，全文见 [LICENSE](LICENSE)。内置中文字体由思源宋体实例化而来、
-遵循 SIL Open Font License 1.1，模型权重遵循上游发布方许可且不在本仓库中——
-详见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
+Code is released under **MIT** — see [LICENSE](LICENSE). The bundled Chinese font is an instance of Source Han Serif and follows the SIL Open Font License 1.1 (see `Resources/Fonts/OFL.txt`); model weights follow the upstream publisher's terms and are not part of this repository. Details in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
