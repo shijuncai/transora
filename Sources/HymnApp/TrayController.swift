@@ -38,7 +38,7 @@ final class TrayController {
         item.button?.toolTip = AppBrand.fullName
 
         let menu = NSMenu()
-        let open = NSMenuItem(title: "打开\(AppBrand.displayName)",
+        let open = NSMenuItem(title: L("打开%@", AppBrand.displayName),
                               action: #selector(openMain(_:)), keyEquivalent: "")
         open.target = self
         menu.addItem(open)
@@ -51,12 +51,12 @@ final class TrayController {
         selectionItem = toggle
 
         menu.addItem(NSMenuItem.separator())
-        let about = NSMenuItem(title: "关于\(AppBrand.displayName)",
+        let about = NSMenuItem(title: L("关于%@", AppBrand.displayName),
                                action: #selector(about(_:)), keyEquivalent: "")
         about.target = self
         menu.addItem(about)
 
-        let quit = NSMenuItem(title: "退出\(AppBrand.displayName)",
+        let quit = NSMenuItem(title: L("退出%@", AppBrand.displayName),
                               action: #selector(quit(_:)), keyEquivalent: "q")
         quit.target = self
         menu.addItem(quit)
@@ -65,8 +65,18 @@ final class TrayController {
         statusItem = item
     }
 
+    /// 界面语言切换后重建菜单栏图标与菜单。
+    func rebuild() {
+        if let statusItem {
+            NSStatusBar.system.removeStatusItem(statusItem)
+        }
+        statusItem = nil
+        selectionItem = nil
+        install()
+    }
+
     private var selectionTitle: String {
-        (selectionEnabled?() ?? false) ? "划词翻译：开启" : "划词翻译：关闭"
+        (selectionEnabled?() ?? false) ? L("划词翻译：开启") : L("划词翻译：关闭")
     }
 
     func refreshSelectionTitle() {

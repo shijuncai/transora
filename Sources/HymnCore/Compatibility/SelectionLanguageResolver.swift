@@ -128,8 +128,12 @@ public enum SelectionLanguageResolver {
     /// - 选区是拉丁文字 → 由识别器给出具体语言（法/德/西/葡/意/越/印尼…），
     ///   置信度不足时才回落到「英文」或主窗口源语言；
     /// - 其余情况保留主窗口目标语言。
+    /// - Parameter fixedTarget: 用户在设置页指定的「划词输出语言」。非空时优先于
+    ///   `preferredTarget`；若它与判定出的源语言相同（会造成自译），退回中文/英文里
+    ///   另一个，逻辑与自动模式一致。
     public static func resolve(
-        text: String, preferredSource: String, preferredTarget: String
+        text: String, preferredSource: String, preferredTarget: String,
+        fixedTarget: String? = nil
     ) -> Pair {
         let detected = detect(text)
         let source: String
@@ -148,6 +152,10 @@ public enum SelectionLanguageResolver {
         }
 
         var target = preferredTarget
+        if let fixed = fixedTarget, LanguageCatalog.contains(fixed) {
+            target = fixed == source ? (source == "zh" ? "en" : "zh") : fixed
+            return Pair(source: source, target: target, autoDetected: autoDetected)
+        }
         if target == source {
             let options = [preferredSource, preferredTarget, "zh", "en"]
             target = options.first {

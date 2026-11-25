@@ -24,9 +24,9 @@ struct TranslateView: View {
 
             HStack(spacing: 14) {
                 TextPanel(
-                    title: "原文",
+                    title: L("原文"),
                     icon: "doc.text",
-                    placeholder: "输入或粘贴要翻译的文本…",
+                    placeholder: L("输入或粘贴要翻译的文本…"),
                     text: $model.inputText,
                     editable: true,
                     trailing: AnyView(
@@ -36,15 +36,15 @@ struct TranslateView: View {
                             Image(systemName: "xmark.circle").imageScale(.small)
                         }
                         .buttonStyle(.borderless)
-                        .help("清空输入与译文")
+                        .help(L("清空输入与译文"))
                     ))
 
                 TextPanel(
-                    title: "译文",
+                    title: L("译文"),
                     icon: "character.bubble.zh",
                     placeholder: model.isRunning
-                        ? "正在生成译文…"
-                        : (model.isRealInference ? "译文将在这里逐字出现" : "请先完成初始设置"),
+                        ? L("正在生成译文…")
+                        : (model.isRealInference ? L("译文将在这里逐字出现") : L("请先完成初始设置")),
                     text: .constant(model.outputText),
                     editable: false,
                     trailing: AnyView(
@@ -55,7 +55,7 @@ struct TranslateView: View {
                         }
                         .buttonStyle(.borderless)
                         .disabled(model.outputText.isEmpty)
-                        .help("复制译文")
+                        .help(L("复制译文"))
                     ))
             }
             .padding(.horizontal, 20)
@@ -74,8 +74,8 @@ struct TranslateView: View {
     /// 不再单独写一套字号，跨页切换时标题基线不会跳。
     private var header: some View {
         PageHeader(
-            title: "翻译",
-            subtitle: "支持 14 种常用语言 · 长文与划词都能译",
+            title: L("翻译"),
+            subtitle: L("支持 14 种常用语言 · 长文与划词都能译"),
             icon: "character.bubble",
             trailing: AnyView(shortcutHint))
             .padding(.horizontal, 20)
@@ -86,7 +86,7 @@ struct TranslateView: View {
         HStack(spacing: 5) {
             Image(systemName: "command")
                 .font(.caption2)
-            Text("↵ 开始翻译")
+            Text(L("↵ 开始翻译"))
                 .font(.caption2.weight(.medium))
         }
         .foregroundStyle(.secondary)
@@ -98,7 +98,7 @@ struct TranslateView: View {
 
     private var languageBar: some View {
         HStack(alignment: .center, spacing: 12) {
-            LanguagePicker(label: "源语言", selection: $model.sourceLang)
+            LanguagePicker(label: L("源语言"), selection: $model.sourceLang)
             Button {
                 model.swapLanguages()
             } label: {
@@ -109,15 +109,15 @@ struct TranslateView: View {
             // 与 LanguagePicker 内的下拉菜单统一 controlSize 与高度，视觉齐平。
             .controlSize(.large)
             .frame(width: 38, height: LanguageBarMetrics.controlHeight)
-            .help("交换语言（并把译文放回输入框）")
+            .help(L("交换语言（并把译文放回输入框）"))
             .keyboardShortcut("s", modifiers: [.command, .shift])
-            LanguagePicker(label: "目标语言", selection: $model.targetLang)
+            LanguagePicker(label: L("目标语言"), selection: $model.targetLang)
             Spacer()
             if model.isPreparing {
                 ProgressView().controlSize(.small)
-                Text("正在准备…").font(.caption).foregroundStyle(.secondary)
+                Text(L("正在准备…")).font(.caption).foregroundStyle(.secondary)
             } else if let ms = model.lastDurationMs {
-                Label(String(format: "上次用时 %.1f 秒", Double(ms) / 1000),
+                Label(L("上次用时 %.1f 秒", Double(ms) / 1000),
                       systemImage: "clock")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
@@ -130,7 +130,7 @@ struct TranslateView: View {
             Button {
                 Task { await model.translate() }
             } label: {
-                Label(model.isRunning ? "翻译中…" : "翻译", systemImage: "arrow.right.circle.fill")
+                Label(model.isRunning ? L("翻译中…") : L("翻译"), systemImage: "arrow.right.circle.fill")
                     .frame(minWidth: 100)
             }
             .buttonStyle(.borderedProminent)
@@ -142,7 +142,7 @@ struct TranslateView: View {
             Button {
                 Task { await model.cancelCurrent() }
             } label: {
-                Label("取消", systemImage: "stop.circle")
+                Label(L("取消"), systemImage: "stop.circle")
             }
             .buttonStyle(.bordered)
             .unifiedControlHeight()
@@ -152,7 +152,7 @@ struct TranslateView: View {
             Button {
                 model.copyOutput()
             } label: {
-                Label("复制译文", systemImage: "doc.on.doc")
+                Label(L("复制译文"), systemImage: "doc.on.doc")
             }
             .buttonStyle(.bordered)
             .unifiedControlHeight()

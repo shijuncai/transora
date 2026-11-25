@@ -124,6 +124,27 @@ func selectionLanguageSuite() -> [TestResult] {
     out.append(check(suite: suite, "49 组文本×语言对组合均不自译", allDistinct,
                      detail: badCase))
 
+    // MARK: 设置页固定的输出语言（v0.8.8）
+    // 划词默认输出语言可选「自动」或具体语言；指定后必须压过自动判断，
+    // 但不能和源语言相同（否则模型会把原文抄一遍）。
+
+    let fixedEn = r.resolve(text: "你好，很高兴见到你。", preferredSource: "zh",
+                            preferredTarget: "zh", fixedTarget: "en")
+    out.append(check(suite: suite, "指定输出英文：中文选区译成 en", fixedEn.target == "en",
+                     detail: "\(fixedEn.source) → \(fixedEn.target)"))
+    let fixedZh = r.resolve(text: "Hello, nice to meet you.", preferredSource: "en",
+                            preferredTarget: "en", fixedTarget: "zh")
+    out.append(check(suite: suite, "指定输出中文：英文选区译成 zh", fixedZh.target == "zh",
+                     detail: "\(fixedZh.source) → \(fixedZh.target)"))
+    let clash = r.resolve(text: "你好，很高兴见到你。", preferredSource: "zh",
+                          preferredTarget: "en", fixedTarget: "zh")
+    out.append(check(suite: suite, "指定语言与源语言相同则退回另一语言", clash.target == "en",
+                     detail: clash.target))
+    let unknown = r.resolve(text: "Hello.", preferredSource: "en",
+                            preferredTarget: "zh", fixedTarget: "qq")
+    out.append(check(suite: suite, "无效的固定语言被忽略，回落自动判断", unknown.target == "zh",
+                     detail: unknown.target))
+
     // MARK: 生成上限
 
     out.append(check(suite: suite, "短划词至少 128 tokens",

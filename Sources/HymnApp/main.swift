@@ -22,46 +22,47 @@ struct TransOraApp {
         app.run()
     }
 
+    /// 界面语言切换后需要重建：`NSMenuItem` 的标题在创建时取定值。
     @MainActor
-    private static func buildMenu(_ app: NSApplication, delegate: AppDelegate) {
+    static func buildMenu(_ app: NSApplication, delegate: AppDelegate) {
         let mainMenu = NSMenu()
 
         // 应用菜单
         let appItem = NSMenuItem()
         mainMenu.addItem(appItem)
         let appMenu = NSMenu(title: AppBrand.displayName)
-        let about = NSMenuItem(title: "关于\(AppBrand.displayName)",
+        let about = NSMenuItem(title: L("关于%@", AppBrand.displayName),
                                action: #selector(AppDelegate.showAbout(_:)),
                                keyEquivalent: "")
         about.target = delegate
         appMenu.addItem(about)
         appMenu.addItem(NSMenuItem.separator())
-        let settings = NSMenuItem(title: "设置…", action: #selector(AppDelegate.openSettings(_:)),
+        let settings = NSMenuItem(title: L("设置…"), action: #selector(AppDelegate.openSettings(_:)),
                                   keyEquivalent: ",")
         settings.target = delegate
         appMenu.addItem(settings)
         appMenu.addItem(NSMenuItem.separator())
-        appMenu.addItem(withTitle: "退出\(AppBrand.displayName)",
+        appMenu.addItem(withTitle: L("退出%@", AppBrand.displayName),
                         action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q")
         appItem.submenu = appMenu
 
         // 编辑菜单（系统标准 action，保证输入框内复制/粘贴可用）
         let editItem = NSMenuItem()
         mainMenu.addItem(editItem)
-        let editMenu = NSMenu(title: "编辑")
-        editMenu.addItem(withTitle: "撤销", action: Selector(("undo:")), keyEquivalent: "z")
-        editMenu.addItem(withTitle: "重做", action: Selector(("redo:")), keyEquivalent: "Z")
+        let editMenu = NSMenu(title: L("编辑"))
+        editMenu.addItem(withTitle: L("撤销"), action: Selector(("undo:")), keyEquivalent: "z")
+        editMenu.addItem(withTitle: L("重做"), action: Selector(("redo:")), keyEquivalent: "Z")
         editMenu.addItem(NSMenuItem.separator())
-        editMenu.addItem(withTitle: "剪切", action: #selector(NSText.cut(_:)), keyEquivalent: "x")
-        editMenu.addItem(withTitle: "复制", action: #selector(NSText.copy(_:)), keyEquivalent: "c")
-        editMenu.addItem(withTitle: "粘贴", action: #selector(NSText.paste(_:)), keyEquivalent: "v")
-        editMenu.addItem(withTitle: "全选", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a")
+        editMenu.addItem(withTitle: L("剪切"), action: #selector(NSText.cut(_:)), keyEquivalent: "x")
+        editMenu.addItem(withTitle: L("复制"), action: #selector(NSText.copy(_:)), keyEquivalent: "c")
+        editMenu.addItem(withTitle: L("粘贴"), action: #selector(NSText.paste(_:)), keyEquivalent: "v")
+        editMenu.addItem(withTitle: L("全选"), action: #selector(NSText.selectAll(_:)), keyEquivalent: "a")
         editItem.submenu = editMenu
 
         // 翻译菜单
         let translateItem = NSMenuItem()
         mainMenu.addItem(translateItem)
-        let menu = NSMenu(title: "翻译")
+        let menu = NSMenu(title: L("翻译"))
         func item(_ title: String, _ action: Selector, _ key: String,
                   _ modifiers: NSEvent.ModifierFlags = .command) {
             let entry = NSMenuItem(title: title, action: action, keyEquivalent: key)
@@ -69,21 +70,21 @@ struct TransOraApp {
             entry.target = delegate
             menu.addItem(entry)
         }
-        item("翻译", #selector(AppDelegate.menuTranslate(_:)), "\r")
-        item("取消当前翻译", #selector(AppDelegate.menuCancel(_:)), ".")
+        item(L("翻译"), #selector(AppDelegate.menuTranslate(_:)), "\r")
+        item(L("取消当前翻译"), #selector(AppDelegate.menuCancel(_:)), ".")
         menu.addItem(NSMenuItem.separator())
-        item("交换语言", #selector(AppDelegate.menuSwapLanguages(_:)), "s", [.command, .shift])
-        item("复制译文", #selector(AppDelegate.menuCopyOutput(_:)), "c", [.command, .shift])
-        item("清空输入与译文", #selector(AppDelegate.menuClear(_:)), "k")
+        item(L("交换语言"), #selector(AppDelegate.menuSwapLanguages(_:)), "s", [.command, .shift])
+        item(L("复制译文"), #selector(AppDelegate.menuCopyOutput(_:)), "c", [.command, .shift])
+        item(L("清空输入与译文"), #selector(AppDelegate.menuClear(_:)), "k")
         menu.addItem(NSMenuItem.separator())
-        item("划词翻译 开/关", #selector(AppDelegate.menuToggleSelection(_:)), "t", [.command, .shift])
-        item("重新检测模型", #selector(AppDelegate.menuRetryModel(_:)), "r", [.command, .shift])
+        item(L("划词翻译 开/关"), #selector(AppDelegate.menuToggleSelection(_:)), "t", [.command, .shift])
+        item(L("重新检测模型"), #selector(AppDelegate.menuRetryModel(_:)), "r", [.command, .shift])
         translateItem.submenu = menu
 
         // 视图菜单
         let viewItem = NSMenuItem()
         mainMenu.addItem(viewItem)
-        let viewMenu = NSMenu(title: "视图")
+        let viewMenu = NSMenu(title: L("视图"))
         for (index, section) in AppSection.allCases.enumerated() {
             let entry = NSMenuItem(title: section.title, action: #selector(AppDelegate.menuSection(_:)),
                                    keyEquivalent: "\(index + 1)")
@@ -150,6 +151,16 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     private var aboutWindow: NSWindow?
     private var authorizationTimer: Timer?
 
+    /// 语言切换后重建：主菜单、窗口标题、菜单栏图标与菜单。
+    /// SwiftUI 那部分靠 `AppModel` 的 `objectWillChange` 自动重绘，不在这里处理。
+    private func applyInterfaceLanguage() {
+        TransOraApp.buildMenu(NSApp, delegate: self)
+        window?.title = "\(AppBrand.fullName) — \(AppBrand.tagline)"
+        tray.rebuild()
+        aboutWindow?.close()
+        aboutWindow = nil
+    }
+
     func applicationDidFinishLaunching(_ notification: Notification) {
         let env = ProcessInfo.processInfo.environment
         let headless = env["HYMN_HEADLESS_SMOKE"] == "1"
@@ -165,6 +176,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         window.contentView = NSHostingView(rootView: RootView().environmentObject(model))
         if !headless { window.makeKeyAndOrderFront(nil) }
         self.window = window
+        // 切换界面语言后，AppKit 那些不是 SwiftUI 的地方要手动重建。
+        model.onInterfaceLanguageChange = { [weak self] in
+            self?.applyInterfaceLanguage()
+        }
 
         if !headless {
             installTrayAndSelection()
@@ -290,7 +305,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 contentRect: NSRect(x: 0, y: 0, width: 340, height: 252),
                 styleMask: [.titled, .closable],
                 backing: .buffered, defer: false)
-            w.title = "关于\(AppBrand.displayName)"
+            w.title = L("关于%@", AppBrand.displayName)
             w.isReleasedWhenClosed = false
             w.level = .floating
             w.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]

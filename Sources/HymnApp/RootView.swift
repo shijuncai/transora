@@ -37,10 +37,12 @@ struct RootView: View {
                 brandMark
                 VStack(alignment: .leading, spacing: 2) {
                     Text(AppBrand.displayName).font(.title3.weight(.semibold))
-                    // 中文名 + 英文名两行；版本号不在这里显示。
-                    Text(AppBrand.englishName)
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    // 中文界面「译澜 / TransOra」两行；英文界面品牌名就是 TransOra，不再重复。
+                    if L10n.current != .english {
+                        Text(AppBrand.englishName)
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
                 }
             }
             .padding(.horizontal, 16)
@@ -49,7 +51,7 @@ struct RootView: View {
 
             Divider().padding(.horizontal, 14)
 
-            Text("工作区")
+            Text(L("工作区"))
                 .font(.caption2.weight(.medium))
                 .foregroundStyle(.tertiary)
                 .padding(.horizontal, 22)
@@ -105,12 +107,12 @@ struct RootView: View {
             VStack(alignment: .leading, spacing: 6) {
                 HStack(spacing: 7) {
                     AppIconMark(size: 20)
-                    Text("划词即译，长PDF翻译").font(.caption.weight(.medium))
+                    Text(L("划词即译，长PDF翻译")).font(.caption.weight(.medium))
                 }
-                Text("选中文字，译文随手可得")
+                Text(L("选中文字，译文随手可得"))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
-                Text("文本只留在这台 Mac")
+                Text(L("文本只留在这台 Mac"))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }
@@ -149,7 +151,7 @@ struct RootView: View {
                 .lineLimit(1)
             Spacer()
             if let ms = model.lastDurationMs {
-                Label(String(format: "上次 %.1f 秒", Double(ms) / 1000),
+                Label(L("上次 %.1f 秒", Double(ms) / 1000),
                       systemImage: "clock")
                     .font(.caption2)
                     .foregroundStyle(.tertiary)

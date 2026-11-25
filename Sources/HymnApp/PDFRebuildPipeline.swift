@@ -40,9 +40,9 @@ struct PDFRebuildPipeline {
 
         var errorDescription: String? {
             switch self {
-            case .fontMissing: return "找不到内置字体（LinguaNovaSong），无法写回版式"
-            case .emptyDocument: return "这份 PDF 没有可提取的文字（可能是扫描件）"
-            case .cancelled: return "已取消"
+            case .fontMissing: return L("找不到内置字体（LinguaNovaSong），无法写回版式")
+            case .emptyDocument: return L("这份 PDF 没有可提取的文字（可能是扫描件）")
+            case .cancelled: return L("已取消")
             }
         }
     }
@@ -82,7 +82,7 @@ struct PDFRebuildPipeline {
         progress: @escaping @Sendable (Progress) -> Void
     ) async throws -> Outcome {
         // 1. 结构
-        progress(Progress(stage: "解析版式", done: 0, total: 1, detail: "读取页面与文字位置"))
+        progress(Progress(stage: L("解析版式"), done: 0, total: 1, detail: L("读取页面与文字位置")))
         let document = try PDFDocument(data: data)
         if document.isEncrypted {
             throw PDFScrub.Failure.encrypted
@@ -130,14 +130,14 @@ struct PDFRebuildPipeline {
                 }
                 if isCancelled() { throw Failure.cancelled }
                 let cleaned = translated.trimmingCharacters(in: .whitespacesAndNewlines)
-                if cleaned.isEmpty || cleaned.hasPrefix("［本段翻译失败") {
+                if cleaned.isEmpty || cleaned.hasPrefix(L("［本段翻译失败")) {
                     failed += 1
                 } else {
                     map.entries["p\(page.index + 1)-\(block.id)"] = cleaned
                 }
                 progress(Progress(
-                    stage: "翻译", done: done, total: translatable,
-                    detail: "第 \(page.index + 1) 页 · \(block.id)"))
+                    stage: L("翻译"), done: done, total: translatable,
+                    detail: L("第 %d 页 · %@", page.index + 1, block.id)))
             }
         }
 
@@ -150,7 +150,7 @@ struct PDFRebuildPipeline {
         let bold = fonts.bold.flatMap { try? TrueTypeFont(url: $0) }
 
         // 4. 排版 + 自检（图片/矢量必须一个像素都不动）
-        progress(Progress(stage: "写回版式", done: 0, total: 1, detail: "驱逐译文对应的原文并重排"))
+        progress(Progress(stage: L("写回版式"), done: 0, total: 1, detail: L("驱逐译文对应的原文并重排")))
         var request = PDFTypesetEngine.Request()
         request.translations = map
         request.scrub = true
@@ -169,7 +169,7 @@ struct PDFRebuildPipeline {
         if isCancelled() { throw Failure.cancelled }
 
         // 5. 对照报告
-        progress(Progress(stage: "生成报告", done: 0, total: 1, detail: "逐段对照原文与译文"))
+        progress(Progress(stage: L("生成报告"), done: 0, total: 1, detail: L("逐段对照原文与译文")))
         let ordered = loop.layouts.keys.sorted().compactMap { loop.layouts[$0] }
         let sections = PDFComparisonReport.sections(
             layouts: ordered, report: loop.report)
@@ -203,7 +203,7 @@ extension PDFRebuildPipeline {
             }
         } catch {
             if output.isEmpty {
-                return "［本段翻译失败：\(error.localizedDescription)］"
+                return L("［本段翻译失败：%@］", error.localizedDescription)
             }
         }
         return output

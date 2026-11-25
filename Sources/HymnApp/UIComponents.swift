@@ -120,7 +120,7 @@ struct LanguagePicker: View {
                 // 产品收敛：主界面只列 14 种常用语言；完整 36 种映射仍在
                 // LanguageCatalog.all 中供 CLI 评测与历史记录显示使用。
                 ForEach(LanguageCatalog.featured, id: \.code) { entry in
-                    Text("\(entry.chineseName) (\(entry.code))").tag(entry.code)
+                    Text("\(languageDisplayName(entry.code)) (\(entry.code))").tag(entry.code)
                 }
             }
             .labelsHidden()
@@ -146,7 +146,7 @@ struct TextPanel: View {
                 SmallIconBadge(systemName: icon)
                 Text(title).font(.subheadline.weight(.semibold))
                 Spacer()
-                Text("\(text.count) 字符")
+                Text(L("%d 字符", text.count))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
                     .padding(.horizontal, 7)
@@ -206,7 +206,7 @@ struct ErrorBanner: View {
                 .font(.callout)
                 .fixedSize(horizontal: false, vertical: true)
             Spacer(minLength: 8)
-            Button("重新检测", action: retry)
+            Button(L("重新检测"), action: retry)
                 .buttonStyle(.bordered)
                 .unifiedControlHeight()
         }
@@ -240,7 +240,10 @@ struct EmptyStateView: View {
 }
 
 func languageDisplayName(_ code: String) -> String {
-    LanguageCatalog.name(for: code)
+    if L10n.current == .english, let name = LanguageNames.english[code.lowercased()] {
+        return name
+    }
+    return LanguageCatalog.name(for: code)
 }
 
 /// 用 App 的真实图标（`Contents/Resources/TransOra.icns`）作为品牌标，
@@ -285,10 +288,12 @@ struct AboutView: View {
                 .shadow(color: .black.opacity(0.18), radius: 7, y: 3)
 
             Text(AppBrand.displayName).font(.title2.weight(.semibold))
-            Text(AppBrand.englishName)
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-            Text("版本 \(AppBrand.version)")
+            if L10n.current != .english {
+                Text(AppBrand.englishName)
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
+            Text(L("版本 %@", AppBrand.version))
                 .font(.caption)
                 .foregroundStyle(.tertiary)
 
@@ -298,9 +303,12 @@ struct AboutView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
-            Text("Apple Silicon 本机离线推理 · 无需联网")
+            Text(L("Apple Silicon 本机离线推理 · 无需联网"))
                 .font(.caption2)
                 .foregroundStyle(.tertiary)
+            Text(AppBrand.copyright)
+                .font(.caption2)
+                .foregroundStyle(.quaternary)
         }
         .padding(20)
         .frame(width: 340, height: 252)

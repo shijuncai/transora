@@ -13,15 +13,15 @@ enum PDFWorkMode: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
-        case .text: return "纯译文（TXT / DOCX）"
-        case .layout: return "版式重建（PDF）"
+        case .text: return L("纯译文（TXT / DOCX）")
+        case .layout: return L("版式重建（PDF）")
         }
     }
 
     var subtitle: String {
         switch self {
-        case .text: return "只保留文字，便于二次编辑"
-        case .layout: return "译文写回原位置，图片与表格不动"
+        case .text: return L("只保留文字，便于二次编辑")
+        case .layout: return L("译文写回原位置，图片与表格不动")
         }
     }
 }
@@ -71,7 +71,7 @@ extension AppModel {
         guard !pdfRebuild.isRunning else { return }
         guard let url = currentPDFURL() else {
             var status = pdfRebuild
-            status.error = "请先选择一份 PDF"
+            status.error = L("请先选择一份 PDF")
             pdfRebuild = status
             return
         }
@@ -83,16 +83,16 @@ extension AppModel {
         }
         guard PDFRebuildPipeline.fontURLs() != nil else {
             var status = pdfRebuild
-            status.error = "缺少内置字体（LinguaNovaSong-Regular.ttf）"
+            status.error = L("缺少内置字体（LinguaNovaSong-Regular.ttf）")
             pdfRebuild = status
             return
         }
 
         let flag = PDFRebuildCancelFlag()
         pdfRebuildFlag = flag
-        pdfRebuild = PDFRebuildStatus(isRunning: true, stage: "准备中",
-                                      detail: "读取文件", done: 0, total: 0)
-        status = "正在重建 PDF 版式"
+        pdfRebuild = PDFRebuildStatus(isRunning: true, stage: L("准备中"),
+                                      detail: L("读取文件"), done: 0, total: 0)
+        status = L("正在重建 PDF 版式")
         Task { @MainActor in await self.runRebuild(url: url, flag: flag) }
     }
 
@@ -100,8 +100,8 @@ extension AppModel {
         guard pdfRebuild.isRunning else { return }
         pdfRebuildFlag?.cancel()
         var status = pdfRebuild
-        status.stage = "正在取消"
-        status.detail = "当前段落结束后停止"
+        status.stage = L("正在取消")
+        status.detail = L("当前段落结束后停止")
         pdfRebuild = status
     }
 
@@ -131,7 +131,7 @@ extension AppModel {
         do {
             data = try Data(contentsOf: url)
         } catch {
-            finishRebuild(error: "读取文件失败：\(error.localizedDescription)")
+            finishRebuild(error: L("读取文件失败：%@", error.localizedDescription))
             return
         }
 
@@ -188,7 +188,7 @@ extension AppModel {
         pdfRebuildFlag = nil
 
         if flag.isCancelled {
-            finishRebuild(error: "已取消（已完成的部分没有写盘）")
+            finishRebuild(error: L("已取消（已完成的部分没有写盘）"))
             return
         }
         if let failure {
@@ -196,7 +196,7 @@ extension AppModel {
             return
         }
         guard let outcome else {
-            finishRebuild(error: "没有产出结果")
+            finishRebuild(error: L("没有产出结果"))
             return
         }
         saveRebuild(outcome: outcome, source: url,
@@ -208,20 +208,20 @@ extension AppModel {
     ) {
         let base = source.deletingPathExtension().lastPathComponent
         let directory = Self.rebuildOutputDirectory(preferred: source.deletingLastPathComponent())
-        let pdfURL = directory.appendingPathComponent("\(base)-译文.pdf")
-        let htmlURL = directory.appendingPathComponent("\(base)-对照报告.html")
+        let pdfURL = directory.appendingPathComponent("\(base)-\(L("译文")).pdf")
+        let htmlURL = directory.appendingPathComponent("\(base)-\(L("对照报告")).html")
         do {
             try outcome.pdf.write(to: pdfURL)
             try outcome.reportHTML.write(to: htmlURL, atomically: true, encoding: .utf8)
         } catch {
-            finishRebuild(error: "写文件失败：\(error.localizedDescription)")
+            finishRebuild(error: L("写文件失败：%@", error.localizedDescription))
             return
         }
 
         var status = pdfRebuild
         status.isRunning = false
         status.finished = true
-        status.stage = "完成"
+        status.stage = L("完成")
         status.error = nil
         status.done = status.total
         status.outputPDF = pdfURL.path
@@ -233,12 +233,12 @@ extension AppModel {
         status.passed = (outcome.analysis?.passed ?? true)
         status.elapsedSeconds = elapsed
         status.detail = String(
-            format: "%d 页 · 已译 %d 段 · 保留原文 %d 段 · %.1f 秒",
+            format: L("%d 页 · 已译 %d 段 · 保留原文 %d 段 · %.1f 秒"),
             outcome.typeset.pages.count, outcome.translatedBlocks,
             outcome.keptBlocks, elapsed)
         pdfRebuild = status
 
-        self.status = "版式重建完成"
+        self.status = L("版式重建完成")
         refreshData()
     }
 
@@ -246,10 +246,10 @@ extension AppModel {
         var status = pdfRebuild
         status.isRunning = false
         status.finished = false
-        status.stage = "未完成"
+        status.stage = L("未完成")
         status.error = error
         pdfRebuild = status
-        self.status = "版式重建未完成"
+        self.status = L("版式重建未完成")
     }
 
     private func currentPDFURL() -> URL? { pdfURL }

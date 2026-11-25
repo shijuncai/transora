@@ -37,8 +37,8 @@ struct SelectionPopupView: View {
                         .padding(.vertical, 2)
                         .background(Capsule().fill(Color.accentColor.opacity(0.14)))
                 } else if !model.selectionSource.isEmpty {
-                    Text("\(LanguageCatalog.shortLabel(for: model.selectionSourceLang)) → "
-                         + LanguageCatalog.shortLabel(for: model.selectionTargetLang))
+                    Text("\(LanguageNames.shortLabel(for: model.selectionSourceLang)) → "
+                         + LanguageNames.shortLabel(for: model.selectionTargetLang))
                         .font(.caption2)
                         .foregroundStyle(.secondary)
                         .padding(.horizontal, 6)
@@ -78,7 +78,7 @@ struct SelectionPopupView: View {
                         .foregroundStyle(.orange)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else if model.selectionTranslation.isEmpty {
-                    Text(model.isSelectionTranslating ? "正在翻译…" : "")
+                    Text(model.isSelectionTranslating ? L("正在翻译…") : "")
                         .font(.callout)
                         .foregroundStyle(.tertiary)
                         .frame(maxWidth: .infinity, alignment: .leading)
@@ -157,34 +157,34 @@ struct SelectionPopupView: View {
 
         switch id {
         case .copyTranslation:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.copySelectionTranslation()
             }
         case .saveTxt:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.exportSelection(.txt)
             }
         case .saveDocx:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.exportSelection(.docx)
             }
         case .saveNotes:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.saveSelectionToNotes()
             }
         case .saveReminders:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.saveSelectionToReminders()
             }
         case .speak:
             // 朗读中换成三波浪图标（不用 speaker.slash，容易被读成「已静音」）。
             return FooterButton(
-                title: model.isSelectionSpeaking ? "停止朗读" : id.title,
+                title: model.isSelectionSpeaking ? L("停止朗读") : L(id.title),
                 symbol: model.isSelectionSpeaking ? "speaker.wave.3.fill" : id.symbol,
                 enabled: enabled,
                 tint: model.isSelectionSpeaking ? Color.accentColor : Color.primary) {
@@ -192,12 +192,12 @@ struct SelectionPopupView: View {
                     model.toggleSelectionSpeech()
                 }
         case .openMain:
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) { onOpenMain() }
         default:
             // 网页动作：先交给默认浏览器（译文进查询串），再收起浮窗，
             // 否则这个非激活面板会一直盖在浏览器上面。
-            return FooterButton(title: id.title, symbol: id.symbol,
+            return FooterButton(title: L(id.title), symbol: id.symbol,
                                 enabled: enabled, tint: .primary) {
                 model.openSelectionWebAction(id)
                 onClose()

@@ -9,8 +9,8 @@ enum DocumentExportFormat: String, CaseIterable, Sendable {
 
     var label: String {
         switch self {
-        case .txt: return "保存为 TXT 格式"
-        case .docx: return "保存为 DOCX 格式"
+        case .txt: return L("保存为 TXT 格式")
+        case .docx: return L("保存为 DOCX 格式")
         }
     }
 
@@ -47,7 +47,7 @@ enum DocumentExporter {
         panel.allowedContentTypes = [format.contentType]
         panel.allowsOtherFileTypes = false
         panel.canCreateDirectories = true
-        panel.message = "译文只保存在你指定的位置，不会上传。"
+        panel.message = L("译文只保存在你指定的位置，不会上传。")
         guard panel.runModal() == .OK, let url = panel.url else { return .cancelled }
         do {
             let data: Data
@@ -68,6 +68,6 @@ enum DocumentExporter {
             .replacingOccurrences(of: ":", with: "-")
             .replacingOccurrences(of: "\n", with: " ")
             .trimmingCharacters(in: .whitespacesAndNewlines)
-        return cleaned.isEmpty ? "译澜译文" : String(cleaned.prefix(80))
+        return cleaned.isEmpty ? L("译澜译文") : String(cleaned.prefix(80))
     }
 }

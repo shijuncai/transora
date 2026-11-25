@@ -11,11 +11,11 @@ struct HistoryView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            PageHeader(title: "历史记录", subtitle: "所有翻译仅保存在本机，不会上传",
+            PageHeader(title: L("历史记录"), subtitle: L("所有翻译仅保存在本机，不会上传"),
                        icon: "clock.arrow.circlepath")
 
             HStack(spacing: 10) {
-                TextField("搜索原文或译文", text: $model.historySearch)
+                TextField(L("搜索原文或译文"), text: $model.historySearch)
                     .textFieldStyle(.roundedBorder)
                     .unifiedControlHeight()
                     .onChange(of: model.historySearch) { _, _ in model.refreshData() }
@@ -23,15 +23,15 @@ struct HistoryView: View {
                 Button {
                     model.refreshData()
                 } label: {
-                    Label("刷新", systemImage: "arrow.clockwise")
+                    Label(L("刷新"), systemImage: "arrow.clockwise")
                 }
                 .unifiedControlHeight()
                 Spacer()
-                Text("\(model.history.count) 条").font(.caption).foregroundStyle(.secondary)
+                Text(L("%d 条", model.history.count)).font(.caption).foregroundStyle(.secondary)
                 Button(role: .destructive) {
                     model.clearAllData()
                 } label: {
-                    Label("清空全部", systemImage: "trash")
+                    Label(L("清空全部"), systemImage: "trash")
                 }
                 .unifiedControlHeight()
                 .disabled(model.history.isEmpty)
@@ -39,13 +39,13 @@ struct HistoryView: View {
 
             // 单条 / 多条合并导出工具条
             HStack(spacing: 10) {
-                Text("已选 \(selectedCount) 条").font(.caption).foregroundStyle(.secondary)
-                Button("全选") {
+                Text(L("已选 %d 条", selectedCount)).font(.caption).foregroundStyle(.secondary)
+                Button(L("全选")) {
                     model.selectedHistoryIDs = Set(model.history.map(\.id))
                 }
                 .unifiedControlHeight()
                 .disabled(model.history.isEmpty)
-                Button("取消选择") { model.selectedHistoryIDs = [] }
+                Button(L("取消选择")) { model.selectedHistoryIDs = [] }
                     .unifiedControlHeight()
                     .disabled(selectedCount == 0)
                 Divider().frame(height: 16)
@@ -53,21 +53,21 @@ struct HistoryView: View {
                     Button {
                         model.exportSelectedHistory(format)
                     } label: {
-                        Label("导出所选为 \(format.shortLabel)", systemImage: "square.and.arrow.down")
+                        Label(L("导出所选为 %@", format.shortLabel), systemImage: "square.and.arrow.down")
                     }
                     .buttonStyle(.bordered)
                     .unifiedControlHeight()
                     .disabled(selectedCount == 0)
                 }
                 Spacer()
-                Text("按住 ⌘ 或 ⇧ 可多选").font(.caption2).foregroundStyle(.tertiary)
+                Text(L("按住 ⌘ 或 ⇧ 可多选")).font(.caption2).foregroundStyle(.tertiary)
             }
 
             if model.history.isEmpty {
                 EmptyStateView(
                     icon: "tray",
-                    title: model.historySearch.isEmpty ? "还没有翻译记录" : "没有匹配的记录",
-                    subtitle: model.historySearch.isEmpty ? "完成一次翻译后会自动出现在这里" : "换个关键词试试")
+                    title: model.historySearch.isEmpty ? L("还没有翻译记录") : L("没有匹配的记录"),
+                    subtitle: model.historySearch.isEmpty ? L("完成一次翻译后会自动出现在这里") : L("换个关键词试试"))
             } else {
                 List(selection: $model.selectedHistoryIDs) {
                     ForEach(model.history) { record in
@@ -76,18 +76,18 @@ struct HistoryView: View {
                                 Text(record.sourceText)
                                     .font(.body)
                                     .lineLimit(1)
-                                Text(record.targetText.isEmpty ? "（无译文）" : record.targetText)
+                                Text(record.targetText.isEmpty ? L("（无译文）") : record.targetText)
                                     .font(.callout)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(2)
                                 Text("\(languageDisplayName(record.sourceLang)) → \(languageDisplayName(record.targetLang))"
-                                     + String(format: " · 用时 %.1f 秒", Double(record.durationMs) / 1000))
+                                     + L(" · 用时 %.1f 秒", Double(record.durationMs) / 1000))
                                     .font(.caption2)
                                     .foregroundStyle(.tertiary)
                             }
                             Spacer(minLength: 6)
                             if record.cancelled {
-                                Badge(text: "已取消", tint: .orange)
+                                Badge(text: L("已取消"), tint: .orange)
                             }
                             Menu {
                                 ForEach(DocumentExportFormat.allCases, id: \.rawValue) { format in
@@ -99,14 +99,14 @@ struct HistoryView: View {
                                 Image(systemName: "square.and.arrow.down")
                             }
                             .buttonStyle(.borderless)
-                            .help("导出这条记录")
+                            .help(L("导出这条记录"))
                             Button {
                                 model.loadFromHistory(record)
                             } label: {
                                 Image(systemName: "arrow.uturn.backward")
                             }
                             .buttonStyle(.borderless)
-                            .help("载入到翻译页")
+                            .help(L("载入到翻译页"))
                             Button {
                                 model.deleteHistory(record)
                             } label: {
@@ -114,7 +114,7 @@ struct HistoryView: View {
                             }
                             .buttonStyle(.borderless)
                             .foregroundStyle(.red)
-                            .help("删除这条记录")
+                            .help(L("删除这条记录"))
                         }
                         .padding(.vertical, 5)
                         .tag(record.id)
@@ -136,35 +136,35 @@ struct GlossaryView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 14) {
-            PageHeader(title: "术语库", subtitle: "为当前语言对指定固定译法，翻译时自动遵循",
+            PageHeader(title: L("术语库"), subtitle: L("为当前语言对指定固定译法，翻译时自动遵循"),
                        icon: "text.book.closed")
 
-            SectionCard(title: "添加术语", icon: "plus.circle") {
+            SectionCard(title: L("添加术语"), icon: "plus.circle") {
                 HStack(spacing: 10) {
-                    TextField("源术语", text: $model.newTermSource)
+                    TextField(L("源术语"), text: $model.newTermSource)
                         .textFieldStyle(.roundedBorder)
                         .unifiedControlHeight()
                     Image(systemName: "arrow.right").foregroundStyle(.secondary)
-                    TextField("目标译法", text: $model.newTermTarget)
+                    TextField(L("目标译法"), text: $model.newTermTarget)
                         .textFieldStyle(.roundedBorder)
                         .unifiedControlHeight()
                         .onSubmit { model.addTerm(source: model.newTermSource, target: model.newTermTarget) }
-                    Button("添加") {
+                    Button(L("添加")) {
                         model.addTerm(source: model.newTermSource, target: model.newTermTarget)
                     }
                     .buttonStyle(.borderedProminent)
                     .unifiedControlHeight()
                     .disabled(model.newTermSource.isEmpty || model.newTermTarget.isEmpty)
                 }
-                Text("当前语言对：\(languageDisplayName(model.sourceLang)) → \(languageDisplayName(model.targetLang))")
+                Text(L("当前语言对：%@ → %@", languageDisplayName(model.sourceLang), languageDisplayName(model.targetLang)))
                     .font(.caption2)
                     .foregroundStyle(.secondary)
             }
 
             if model.terms.isEmpty {
                 EmptyStateView(icon: "text.book.closed",
-                               title: "该语言对暂无术语",
-                               subtitle: "添加后，翻译会优先遵循这些译法")
+                               title: L("该语言对暂无术语"),
+                               subtitle: L("添加后，翻译会优先遵循这些译法"))
             } else {
                 List {
                     ForEach(model.terms) { term in
@@ -198,21 +198,27 @@ struct GlossaryView: View {
 struct SettingsView: View {
     @EnvironmentObject private var model: AppModel
 
+    /// 设置行的标签列宽。英文标签（Interface language / Selection output language）
+    /// 比中文长一倍，固定 90pt 会把文字挤成两行，所以按语言给不同宽度。
+    private var settingsLabelWidth: CGFloat {
+        L10n.current == .english ? 172 : 90
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 14) {
-                PageHeader(title: "设置", subtitle: "偏好设置与本地数据管理",
+                PageHeader(title: L("设置"), subtitle: L("偏好设置与本地数据管理"),
                            icon: "gearshape")
 
-                SectionCard(title: "关于", icon: "info.circle") {
+                SectionCard(title: L("关于"), icon: "info.circle") {
                     HStack(alignment: .top, spacing: 14) {
                         AppIconMark(size: 52)
                             .shadow(color: .black.opacity(0.16), radius: 6, y: 2)
                         VStack(alignment: .leading, spacing: 4) {
                             Text(AppBrand.fullName).font(.headline)
-                            Text("版本 \(AppBrand.version) · \(AppBrand.tagline)")
+                            Text(L("版本 %@ · %@", AppBrand.version, L(AppBrand.tagline)))
                                 .font(.caption).foregroundStyle(.secondary)
-                            Text("支持 14 种常用语言 · 划词即译 · PDF 长文翻译")
+                            Text(L("支持 14 种常用语言 · 划词即译 · PDF 长文翻译"))
                                 .font(.caption2).foregroundStyle(.tertiary)
                         }
                     }
@@ -220,34 +226,54 @@ struct SettingsView: View {
                     Label(AppBrand.privacy, systemImage: "lock.shield")
                         .font(.caption)
                         .foregroundStyle(.secondary)
+                    Text(AppBrand.copyright)
+                        .font(.caption2)
+                        .foregroundStyle(.tertiary)
                 }
 
-                SectionCard(title: "初始设置", icon: "folder") {
-                    Text("首次使用需要指定本机模型文件夹，之后即可开始翻译。")
+                SectionCard(title: L("界面"), icon: "globe") {
+                    HStack {
+                        Text(L("界面语言")).frame(width: settingsLabelWidth, alignment: .leading)
+                        Picker("", selection: $model.interfaceLanguage) {
+                            ForEach(InterfaceLanguage.allCases) { language in
+                                Text(language.nativeName).tag(language)
+                            }
+                        }
+                        .labelsHidden()
+                        .unifiedControlHeight()
+                        .frame(width: 170)
+                        Spacer()
+                    }
+                    Text(L("切到 English 后菜单、设置与提示都用英文；翻译语言对不受影响。"))
+                        .font(.caption2).foregroundStyle(.secondary)
+                }
+
+                SectionCard(title: L("初始设置"), icon: "folder") {
+                    Text(L("首次使用需要指定本机模型文件夹，之后即可开始翻译。"))
                         .font(.callout)
                     HStack(spacing: 8) {
                         Button {
                             model.chooseModelDirectory()
                         } label: {
-                            Label("选择模型文件夹…", systemImage: "folder")
+                            Label(L("选择模型文件夹…"), systemImage: "folder")
                         }
                         Button {
                             Task { await model.retryPreparation() }
                         } label: {
-                            Label("重新检测", systemImage: "arrow.clockwise")
+                            Label(L("重新检测"), systemImage: "arrow.clockwise")
                         }
                         .unifiedControlHeight()
                         .disabled(model.isPreparing || model.isRunning)
                         Spacer()
-                        Text("选择后自动检测")
+                        Text(L("选择后自动检测"))
                             .font(.caption2)
                             .foregroundStyle(.tertiary)
                     }
                 }
 
-                SectionCard(title: "翻译偏好", icon: "slider.horizontal.3") {
+                SectionCard(title: L("翻译偏好"), icon: "slider.horizontal.3") {
                     HStack {
-                        Text("译文长度").frame(width: 90, alignment: .leading)
+                        Text(L("译文长度")).frame(width: settingsLabelWidth, alignment: .leading)
                         Picker("", selection: $model.lengthOption) {
                             ForEach(TranslationLength.allCases) { option in
                                 Text(option.label).tag(option)
@@ -259,23 +285,40 @@ struct SettingsView: View {
                         .onChange(of: model.lengthOption) { _, _ in model.savePreferences() }
                         Spacer()
                     }
-                    Text("文本较长时可以选择「较长」或「超长」，翻译耗时会相应增加。")
+                    Text(L("文本较长时可以选择「较长」或「超长」，翻译耗时会相应增加。"))
+                        .font(.caption2).foregroundStyle(.secondary)
+                    Divider()
+                    HStack {
+                        Text(L("划词输出语言")).frame(width: settingsLabelWidth, alignment: .leading)
+                        Picker("", selection: $model.selectionPreferredTarget) {
+                            Text(L("自动判断")).tag("auto")
+                            ForEach(LanguageCatalog.featured, id: \.code) { entry in
+                                Text(languageDisplayName(entry.code)).tag(entry.code)
+                            }
+                        }
+                        .labelsHidden()
+                        .unifiedControlHeight()
+                        .frame(width: 150)
+                        .onChange(of: model.selectionPreferredTarget) { _, _ in model.savePreferences() }
+                        Spacer()
+                    }
+                    Text(L("自动判断：选中英文译成中文、选中中文译成英文；指定语言后，划词固定译成该语言。"))
                         .font(.caption2).foregroundStyle(.secondary)
                     Divider()
                     VStack(alignment: .leading, spacing: 6) {
                         HStack {
-                            Text("划词翻译").frame(width: 90, alignment: .leading)
+                            Text(L("划词翻译")).frame(width: settingsLabelWidth, alignment: .leading)
                             // 只在 API 报告未授权时出现；不再由启动/划词失败自动弹系统框。
                             Text(model.selectionAccessibilityTrusted
-                                 ? "在任意应用中选中文字即可弹出译文，可在菜单栏图标中开关。"
-                                 : "若已在系统设置授权仍无反应，请完全退出后重新打开 App；也可点右侧复查。")
+                                 ? L("在任意应用中选中文字即可弹出译文，可在菜单栏图标中开关。")
+                                 : L("若已在系统设置授权仍无反应，请完全退出后重新打开 App；也可点右侧复查。"))
                                 .font(.caption).foregroundStyle(.secondary)
                             Spacer(minLength: 8)
                             if !model.selectionAccessibilityTrusted {
                                 Button {
                                     model.requestAccessibility()
                                 } label: {
-                                    Label("复查授权状态", systemImage: "hand.raised")
+                                    Label(L("复查授权状态"), systemImage: "hand.raised")
                                 }
                                 .unifiedControlHeight()
                             }
@@ -286,13 +329,13 @@ struct SettingsView: View {
                                 Image(systemName: "exclamationmark.triangle.fill")
                                     .font(.caption2)
                                     .foregroundStyle(.orange)
-                                Text("辅助功能权限尚未对当前 App 生效。请在系统设置里移除列表里的旧条目，只保留下面这个路径，然后完全退出重开。")
+                                Text(L("辅助功能权限尚未对当前 App 生效。请在系统设置里移除列表里的旧条目，只保留下面这个路径，然后完全退出重开。"))
                                     .font(.caption2)
                                     .foregroundStyle(.secondary)
                                     .fixedSize(horizontal: false, vertical: true)
                             }
                             HStack(spacing: 8) {
-                                Button("打开辅助功能设置") { model.openAccessibilitySettings() }
+                                Button(L("打开辅助功能设置")) { model.openAccessibilitySettings() }
                                     .unifiedControlHeight()
                                 Text(Bundle.main.bundlePath)
                                     .font(.caption2)
@@ -302,7 +345,7 @@ struct SettingsView: View {
                                     .textSelection(.enabled)
                             }
                         } else if model.selectionDiagnosis == .axEmpty {
-                            Text("当前应用没有向系统暴露选区，已自动尝试模拟复制；若仍无译文，请检查辅助功能授权。")
+                            Text(L("当前应用没有向系统暴露选区，已自动尝试模拟复制；若仍无译文，请检查辅助功能授权。"))
                                 .font(.caption2)
                                 .foregroundStyle(.tertiary)
                                 .fixedSize(horizontal: false, vertical: true)
@@ -311,9 +354,9 @@ struct SettingsView: View {
                     }
                 }
 
-                SectionCard(title: "划词面板按钮", icon: "square.grid.2x2") {
+                SectionCard(title: L("划词面板按钮"), icon: "square.grid.2x2") {
                     HStack(alignment: .firstTextBaseline) {
-                        Text("选中文字弹出的译文面板，底部这一排按钮可按需增减，最多 \(SelectionActionPreferences.maxCount) 个、至少保留 1 个。")
+                        Text(L("选中文字弹出的译文面板，底部这一排按钮可按需增减，最多 %d 个、至少保留 1 个。", SelectionActionPreferences.maxCount))
                             .font(.caption).foregroundStyle(.secondary)
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer(minLength: 8)
@@ -323,7 +366,7 @@ struct SettingsView: View {
                                              ? Color.secondary : Color.orange)
                             .padding(.horizontal, 7).padding(.vertical, 3)
                             .background(Capsule().fill(Color.secondary.opacity(0.12)))
-                        Button("恢复默认") { model.resetSelectionActions() }
+                        Button(L("恢复默认")) { model.resetSelectionActions() }
                             .unifiedControlHeight()
                             .disabled(model.selectionActions.isDefault)
                     }
@@ -333,7 +376,7 @@ struct SettingsView: View {
                     Divider()
 
                     VStack(alignment: .leading, spacing: 4) {
-                        Text("本机操作")
+                        Text(L("本机操作"))
                             .font(.caption2.weight(.medium)).foregroundStyle(.tertiary)
                         ForEach(SelectionActionID.localActions) { selectionActionRow($0) }
                     }
@@ -342,13 +385,13 @@ struct SettingsView: View {
 
                     VStack(alignment: .leading, spacing: 4) {
                         HStack(spacing: 6) {
-                            Text("网页操作")
+                            Text(L("网页操作"))
                                 .font(.caption2.weight(.medium)).foregroundStyle(.tertiary)
-                            Text("会把译文发送到对应网站")
+                            Text(L("会把译文发送到对应网站"))
                                 .font(.caption2).foregroundStyle(.tertiary)
                         }
                         ForEach(SelectionActionID.onlineActions) { selectionActionRow($0) }
-                        Label("这几个按钮只在默认浏览器里打开网页，翻译本身仍在本机完成；不想外发就不勾选。",
+                        Label(L("这几个按钮只在默认浏览器里打开网页，翻译本身仍在本机完成；不想外发就不勾选。"),
                               systemImage: "info.circle")
                             .font(.caption2)
                             .foregroundStyle(.secondary)
@@ -356,17 +399,17 @@ struct SettingsView: View {
                     }
                 }
 
-                SectionCard(title: "本地数据", icon: "externaldrive") {
-                    Text("历史记录与术语库保存在这台 Mac 上，可随时清空。")
+                SectionCard(title: L("本地数据"), icon: "externaldrive") {
+                    Text(L("历史记录与术语库保存在这台 Mac 上，可随时清空。"))
                         .font(.caption).foregroundStyle(.secondary)
                     HStack {
-                        Text("历史 \(model.history.count) 条 · 当前语言对术语 \(model.terms.count) 条")
+                        Text(L("历史 %d 条 · 当前语言对术语 %d 条", model.history.count, model.terms.count))
                             .font(.caption).foregroundStyle(.secondary)
                         Spacer()
                         Button(role: .destructive) {
                             model.clearAllData()
                         } label: {
-                            Label("清空本地数据", systemImage: "trash")
+                            Label(L("清空本地数据"), systemImage: "trash")
                         }
                         .unifiedControlHeight()
                         .disabled(model.history.isEmpty && model.terms.isEmpty)
@@ -388,15 +431,15 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
                     .frame(width: 27, height: 23)
                     .background(AppPalette.subtleFill, in: RoundedRectangle(cornerRadius: 6))
-                    .help(id.title)
+                    .help(L(id.title))
             }
             if model.selectionActions.canAddMore {
-                Text("还可添加 \(SelectionActionPreferences.maxCount - model.selectionActions.count) 个")
+                Text(L("还可添加 %d 个", SelectionActionPreferences.maxCount - model.selectionActions.count))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
                     .padding(.leading, 6)
             } else {
-                Text("已满")
+                Text(L("已满"))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
                     .padding(.leading, 6)
@@ -416,12 +459,12 @@ struct SettingsView: View {
                 .foregroundStyle(isOn ? Color.accentColor : Color.secondary)
                 .frame(width: 20)
             VStack(alignment: .leading, spacing: 1) {
-                Text(id.title).font(.callout)
-                Text(id.detail).font(.caption2).foregroundStyle(.secondary)
+                Text(L(id.title)).font(.callout)
+                Text(L(id.detail)).font(.caption2).foregroundStyle(.secondary)
             }
             Spacer(minLength: 8)
             if blocked {
-                Text("已达上限")
+                Text(L("已达上限"))
                     .font(.caption2)
                     .foregroundStyle(.tertiary)
             }
@@ -432,7 +475,7 @@ struct SettingsView: View {
                 .toggleStyle(.switch)
                 .controlSize(.mini)
                 .disabled(blocked)
-                .accessibilityLabel(id.title)
+                .accessibilityLabel(L(id.title))
         }
         .padding(.vertical, 2)
         .opacity(blocked ? 0.55 : 1)

@@ -2,6 +2,8 @@
 
 **本机 AI 翻译 —— 所有翻译在这台 Mac 上完成，文本不离开本机。**
 
+**简体中文** · [English](README.en.md)
+
 ---
 
 译澜 TransOra ：一个完全离线的 macOS 翻译工具，选中即译、长 PDF 也能整本译完。
@@ -98,7 +100,7 @@ TXT 与 DOCX 都是**纯 Swift 手写实现**（DOCX 直接生成 OOXML ZIP，�
 | 退化方向  | 491 → **0**              | 即"源==目标"的空转全部消除                         |
 | 短句延迟  | **约 0.8 秒**              | 「Hello, nice to meet you.」→「你好，很高兴见到你。」 |
 | 主线程负载 | 平均 **10.3 ms** / token   | 推理不阻塞界面，滚动与输入始终跟手                       |
-| 单元测试  | **493 / 493**            | 零编译警告                                   |
+| 单元测试  | **497 / 497**            | 零编译警告                                   |
 
 ---
 
@@ -136,7 +138,7 @@ TXT 与 DOCX 都是**纯 Swift 手写实现**（DOCX 直接生成 OOXML ZIP，�
 git clone https://github.com/shijuncai/transora.git
 cd transora
 swift build --disable-sandbox     # SwiftPM 在这个工程里必须关沙箱
-./Scripts/test.sh                 # 493 项测试
+./Scripts/test.sh                 # 497 项测试
 ```
 
 要用真实推理，把量化后的 Hy-MT2-1.8B GGUF 放到
@@ -182,7 +184,7 @@ swift build --disable-sandbox     # SwiftPM 在这个工程里必须关沙箱
 
 ## 版本
 
-当前版本：**0.8.7（build 27）**
+当前版本：**0.8.8（build 28）**
 
 技术实现遵循两条硬约束，贯穿所有版本：**格式如实标注**（不把 STQ1_0 说成 LUT4）、**推理全程本地**（不静默降级到云端或 Python）。
 

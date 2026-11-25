@@ -22,8 +22,8 @@ enum SystemAppBridge {
 
         var errorDescription: String? {
             switch self {
-            case .notAuthorized(let app): return "需要授权访问「\(app)」"
-            case .failed(let app, let message): return "\(app) 返回错误：\(message)"
+            case .notAuthorized(let app): return L("需要授权访问「%@」", app)
+            case .failed(let app, let message): return L("%@ 返回错误：%@", app, message)
             }
         }
 
@@ -52,7 +52,7 @@ enum SystemAppBridge {
         }
         guard let notes = NSWorkspace.shared.urlForApplication(
             withBundleIdentifier: "com.apple.Notes") else {
-            completion("系统里找不到备忘录 App")
+            completion(L("系统里找不到备忘录 App"))
             return
         }
         // activates = false：导入时把备忘录留在后台，不抢走用户当前焦点。
@@ -70,7 +70,7 @@ enum SystemAppBridge {
     static func addReminder(title: String, body: String) async throws {
         // 已明确拒绝时不再发起请求，直接给出可操作提示。
         if EKEventStore.authorizationStatus(for: .reminder) == .denied {
-            throw BridgeError.notAuthorized("提醒事项")
+            throw BridgeError.notAuthorized(L("提醒事项"))
         }
         let store = EKEventStore()
         let granted: Bool
@@ -79,9 +79,9 @@ enum SystemAppBridge {
         } catch {
             throw BridgeError.notAuthorized("提醒事项")
         }
-        guard granted else { throw BridgeError.notAuthorized("提醒事项") }
+        guard granted else { throw BridgeError.notAuthorized(L("提醒事项")) }
         guard let calendar = store.defaultCalendarForNewReminders() else {
-            throw BridgeError.failed("提醒事项", "没有可用的提醒列表")
+            throw BridgeError.failed(L("提醒事项"), L("没有可用的提醒列表"))
         }
         let reminder = EKReminder(eventStore: store)
         reminder.title = title
@@ -90,7 +90,7 @@ enum SystemAppBridge {
         do {
             try store.save(reminder, commit: true)
         } catch {
-            throw BridgeError.failed("提醒事项", error.localizedDescription)
+            throw BridgeError.failed(L("提醒事项"), error.localizedDescription)
         }
     }
 
@@ -111,7 +111,7 @@ enum SystemAppBridge {
 
         // 文件名只做定位用途；备忘录用文件首行作为标题。
         let stamp = Int(Date().timeIntervalSince1970)
-        let url = dir.appendingPathComponent("划词译文-\(stamp)-\(UUID().uuidString.prefix(6)).txt")
+        let url = dir.appendingPathComponent("\(L("划词译文"))-\(stamp)-\(UUID().uuidString.prefix(6)).txt")
         try Data(text.utf8).write(to: url, options: .atomic)
         return url
     }

@@ -18,11 +18,11 @@ enum AppSection: String, CaseIterable, Identifiable, Sendable {
     var id: String { rawValue }
     var title: String {
         switch self {
-        case .translate: return "翻译"
-        case .history:   return "历史记录"
-        case .glossary:  return "术语库"
-        case .settings:  return "设置"
-        case .pdf:       return "PDF 翻译"
+        case .translate: return L("翻译")
+        case .history:   return L("历史记录")
+        case .glossary:  return L("术语库")
+        case .settings:  return L("设置")
+        case .pdf:       return L("PDF 翻译")
         }
     }
     var icon: String {
@@ -46,10 +46,10 @@ enum TranslationLength: Int, CaseIterable, Identifiable, Sendable {
     var id: Int { rawValue }
     var label: String {
         switch self {
-        case .short:     return "较短"
-        case .standard:  return "标准"
-        case .long:      return "较长"
-        case .extraLong: return "超长"
+        case .short:     return L("较短")
+        case .standard:  return L("标准")
+        case .long:      return L("较长")
+        case .extraLong: return L("超长")
         }
     }
 }
@@ -61,9 +61,20 @@ final class AppModel: ObservableObject {
     @Published var runtimeStatus: SherryRuntimeStatus
     @Published var isPreparing: Bool = true
     @Published var isRealInference: Bool = false
-    @Published var status: String = "正在准备…"
+    @Published var status: String = L("正在准备…")
+    /// 界面语言（中文 / 英文 / 跟随系统）。改动即时生效，并触发 AppKit 层（托盘菜单、窗口标题）重建。
+    @Published var interfaceLanguage: InterfaceLanguage {
+        didSet {
+            guard oldValue != interfaceLanguage else { return }
+            L10n.current = L10n.resolve(interfaceLanguage)
+            UserDefaults.standard.set(interfaceLanguage.rawValue, forKey: PrefKey.interfaceLanguage)
+            onInterfaceLanguageChange?()
+        }
+    }
+    /// 界面语言变更后的回调：托盘菜单、关于窗口这些不是 SwiftUI 的地方要重建。
+    var onInterfaceLanguageChange: (() -> Void)?
     @Published var errorMessage: String?
-    private var activeBackendIdentifier: String = "未初始化"
+    private var activeBackendIdentifier: String = L("未初始化")
 
     // MARK: - 主窗口翻译
 
@@ -94,6 +105,9 @@ final class AppModel: ObservableObject {
     @Published private(set) var isSelectionSpeaking: Bool = false
     /// 浮窗内的短暂提示（「已存入备忘录」等），2 秒后自动消失。
     @Published private(set) var selectionNotice: String?
+    /// 划词翻译的默认输出语言：`auto` 表示按选区自动判断（英→中、中→英），
+    /// 其余为 `LanguageCatalog` 的 code，表示固定译成该语言。
+    @Published var selectionPreferredTarget: String = "auto"
     /// 划词浮窗底排按钮的选择（设置页可增删，最多 7 个、至少 1 个）。
     @Published private(set) var selectionActions: SelectionActionPreferences
     private var noticeTask: Task<Void, Never>?
@@ -148,6 +162,10 @@ final class AppModel: ObservableObject {
         static let modelDirectory = "hymn.modelDirectory"
         /// 划词浮窗底排按钮（逗号分隔短码，如 `copy,txt,docx,notes,reminders,speak,main`）。
         static let selectionActions = "hymn.selection.actions"
+        /// 划词默认输出语言；`auto` 或 36 种语言 code。
+        static let selectionTarget = "hymn.selection.targetLang"
+        /// 界面语言：system / chinese / english。
+        static let interfaceLanguage = "hymn.ui.interfaceLanguage"
     }
 
     init() {
@@ -166,6 +184,11 @@ final class AppModel: ObservableObject {
         // 划词浮窗底排按钮：从未配置过时用出厂 7 个；旧版本遗留的未知短码会被忽略。
         selectionActions = SelectionActionPreferences(
             rawValue: defaults.string(forKey: PrefKey.selectionActions))
+        selectionPreferredTarget = defaults.string(forKey: PrefKey.selectionTarget) ?? "auto"
+        let savedInterface = InterfaceLanguage(
+            rawValue: defaults.string(forKey: PrefKey.interfaceLanguage) ?? "") ?? .system
+        interfaceLanguage = savedInterface
+        L10n.current = L10n.resolve(savedInterface)
 
         let dir = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
             .appendingPathComponent("HymnTranslate", isDirectory: true)
@@ -178,7 +201,7 @@ final class AppModel: ObservableObject {
             store = try SQLiteStore(path: path)
         } catch {
             store = try! SQLiteStore(path: ":memory:")
-            status = "本地数据暂不可用，已切换为临时存储"
+            status = L("本地数据暂不可用，已切换为临时存储")
         }
         selectionAccessibilityTrusted = SelectionCapture.accessibilityTrusted
     }
@@ -190,8 +213,7 @@ final class AppModel: ObservableObject {
         runtimeStatus = probe
 
         guard probe.ready else {
-            await activateFixture(reason: "未找到本地模型。请在「设置 → 选择模型目录」里指向下载好的模型文件夹，"
-                + "然后点「重新检测」。当前处于演示模式，输出不是译文。")
+            await activateFixture(reason: L("未找到本地模型。请在「设置 → 选择模型目录」里指向下载好的模型文件夹，然后点「重新检测」。当前处于演示模式，输出不是译文。"))
             isPreparing = false
             refreshData()
             return
@@ -203,9 +225,9 @@ final class AppModel: ObservableObject {
             activeBackendIdentifier = await engine.backendIdentifier()
             errorMessage = nil
             // 就绪是常态，不再常驻显示「已就绪」；只在异常时给出可操作提示。
-            status = isRealInference ? "" : "模型未就绪"
+            status = isRealInference ? "" : L("模型未就绪")
         } catch {
-            await activateFixture(reason: "模型加载失败，请在「设置」里重新选择模型目录并重试。\(error)")
+            await activateFixture(reason: L("模型加载失败，请在「设置」里重新选择模型目录并重试。%@", String(describing: error)))
         }
         isPreparing = false
         refreshData()
@@ -215,7 +237,7 @@ final class AppModel: ObservableObject {
         await engine.shutdown()
         engine = TranslationEngine(backend: SherryBackend())
         isRealInference = false
-        activeBackendIdentifier = "未初始化"
+        activeBackendIdentifier = L("未初始化")
         await bootstrap()
     }
 
@@ -227,7 +249,7 @@ final class AppModel: ObservableObject {
         engine = fixture
         isRealInference = false
         activeBackendIdentifier = await fixture.backendIdentifier()
-        status = "模型未就绪"
+        status = L("模型未就绪")
         errorMessage = reason
     }
 
@@ -237,8 +259,8 @@ final class AppModel: ObservableObject {
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
-        panel.prompt = "选择"
-        panel.message = "请选择下载好的模型文件夹（选择后即可开始使用）"
+        panel.prompt = L("选择")
+        panel.message = L("请选择下载好的模型文件夹（选择后即可开始使用）")
         guard panel.runModal() == .OK, let url = panel.url else { return }
         UserDefaults.standard.set(url.path, forKey: PrefKey.modelDirectory)
         Task { await retryPreparation() }
@@ -249,17 +271,17 @@ final class AppModel: ObservableObject {
     func translate() async {
         guard !isRunning, !isPreparing else { return }
         guard !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-            status = "请先输入要翻译的文本"
+            status = L("请先输入要翻译的文本")
             return
         }
         guard isRealInference else {
-            status = "模型未就绪，请在设置中选择模型目录"
+            status = L("模型未就绪，请在设置中选择模型目录")
             return
         }
         isRunning = true
         outputText = ""
         lastDurationMs = nil
-        status = "翻译中…"
+        status = L("翻译中…")
         savePreferences()
 
         let languages = LanguagePair(source: sourceLang, target: targetLang)
@@ -280,11 +302,11 @@ final class AppModel: ObservableObject {
         } catch let failure as HymnFailure where failure.code == "CANCELLED" {
             cancelled = true
         } catch {
-            errorMessage = "翻译失败，请稍后重试。\(error)"
+            errorMessage = L("翻译失败，请稍后重试。%@", String(describing: error))
         }
         let elapsedMs = Int64((DispatchTime.now().uptimeNanoseconds - start) / 1_000_000)
         lastDurationMs = elapsedMs
-        status = cancelled ? "已取消" : "翻译完成"
+        status = cancelled ? L("已取消") : L("翻译完成")
         isRunning = false
         currentRequestID = nil
 
@@ -321,13 +343,13 @@ final class AppModel: ObservableObject {
         guard !outputText.isEmpty else { return }
         NSPasteboard.general.clearContents()
         NSPasteboard.general.setString(outputText, forType: .string)
-        status = "译文已复制"
+        status = L("译文已复制")
     }
 
     func clearTexts() {
         inputText = ""
         outputText = ""
-        status = "已清空"
+        status = L("已清空")
     }
 
     // MARK: - 划词翻译
@@ -352,12 +374,13 @@ final class AppModel: ObservableObject {
         refreshAccessibilityStatus()
 
         let pair = SelectionLanguageResolver.resolve(
-            text: trimmed, preferredSource: sourceLang, preferredTarget: targetLang)
+            text: trimmed, preferredSource: sourceLang, preferredTarget: targetLang,
+            fixedTarget: selectionPreferredTarget == "auto" ? nil : selectionPreferredTarget)
         selectionSourceLang = pair.source
         selectionTargetLang = pair.target
 
         guard isRealInference else {
-            selectionError = "模型未就绪，请在设置中选择模型目录"
+            selectionError = L("模型未就绪，请在设置中选择模型目录")
             isSelectionTranslating = false
             return
         }
@@ -373,7 +396,7 @@ final class AppModel: ObservableObject {
                     if !chunk.isFinal { selectionTranslation += chunk.text }
                 }
             } catch {
-                if generation == selectionGeneration { selectionError = "翻译失败，请重试" }
+                if generation == selectionGeneration { selectionError = L("翻译失败，请重试") }
             }
             guard generation == selectionGeneration else { return }
             isSelectionTranslating = false
@@ -421,15 +444,15 @@ final class AppModel: ObservableObject {
         let next = selectionActions.toggled(id)
         guard next != selectionActions else {
             if selectionActions.contains(id) {
-                status = "划词面板至少保留 \(SelectionActionPreferences.minCount) 个按钮"
+                status = L("划词面板至少保留 %d 个按钮", SelectionActionPreferences.minCount)
             } else {
-                status = "划词面板最多 \(SelectionActionPreferences.maxCount) 个按钮"
+                status = L("划词面板最多 %d 个按钮", SelectionActionPreferences.maxCount)
             }
             return
         }
         selectionActions = next
         UserDefaults.standard.set(next.serialized, forKey: PrefKey.selectionActions)
-        status = next.contains(id) ? "已加入「\(id.title)」" : "已移除「\(id.title)」"
+        status = next.contains(id) ? L("已加入「%@」", L(id.title)) : L("已移除「%@」", L(id.title))
     }
 
     func resetSelectionActions() {
@@ -437,7 +460,7 @@ final class AppModel: ObservableObject {
             ordered: SelectionActionPreferences.defaultOrder)
         selectionActions = factory
         UserDefaults.standard.set(factory.serialized, forKey: PrefKey.selectionActions)
-        status = "划词面板按钮已恢复默认"
+        status = L("划词面板按钮已恢复默认")
     }
 
     /// 网页动作（Bing / Google / 微博 / 淘宝）：把译文放进查询串，用默认浏览器打开。
@@ -447,7 +470,7 @@ final class AppModel: ObservableObject {
     @discardableResult
     func openSelectionWebAction(_ id: SelectionActionID) -> Bool {
         guard let url = id.webURL(for: selectionTranslation) else {
-            status = "还没有可搜索的译文"
+            status = L("还没有可搜索的译文")
             return false
         }
         // 微博分享页在未登录的浏览器里会先跳到登录页，`title` 参数可能随之丢失。
@@ -459,9 +482,9 @@ final class AppModel: ObservableObject {
         actionDebug("web action \(id.rawValue) chars=\(url.absoluteString.count)")
         let opened = NSWorkspace.shared.open(url)
         if opened {
-            status = id == .shareWeibo ? "已复制译文并打开微博" : "已在浏览器打开「\(id.title)」"
+            status = id == .shareWeibo ? L("已复制译文并打开微博") : L("已在浏览器打开「%@」", L(id.title))
         } else {
-            status = "无法打开默认浏览器"
+            status = L("无法打开默认浏览器")
         }
         return opened
     }
@@ -482,10 +505,10 @@ final class AppModel: ObservableObject {
                 guard let self else { return }
                 if let failure {
                     self.actionDebug("notes failed \(failure)")
-                    self.showSelectionNotice("备忘录导入失败")
+                    self.showSelectionNotice(L("备忘录导入失败"))
                 } else {
                     self.actionDebug("notes saved title=\(title)")
-                    self.showSelectionNotice("已存入备忘录")
+                    self.showSelectionNotice(L("已存入备忘录"))
                 }
             }
         }
@@ -509,18 +532,18 @@ final class AppModel: ObservableObject {
                 try? await Task.sleep(nanoseconds: 12_000_000_000)
                 guard !Task.isCancelled, self.reminderRequestID == requestID else { return }
                 self.actionDebug("reminder timeout")
-                self.showSelectionNotice("提醒事项需授权")
+                self.showSelectionNotice(L("提醒事项需授权"))
             }
             defer { watchdog.cancel() }
             do {
                 try await SystemAppBridge.addReminder(title: title, body: body)
                 guard self.reminderRequestID == requestID else { return }
-                showSelectionNotice("已加入提醒事项")
+                showSelectionNotice(L("已加入提醒事项"))
                 actionDebug("reminder saved title=\(title)")
             } catch {
                 guard self.reminderRequestID == requestID else { return }
                 actionDebug("reminder failed \(error)")
-                showSelectionNotice(Self.noticeText(for: error, app: "提醒事项"))
+                showSelectionNotice(Self.noticeText(for: error, app: L("提醒事项")))
             }
         }
     }
@@ -528,9 +551,9 @@ final class AppModel: ObservableObject {
     /// 失败提示要短到能塞进语言标签那个胶囊里，同时保留可操作信息。
     private static func noticeText(for error: Error, app: String) -> String {
         if let bridge = error as? SystemAppBridge.BridgeError, bridge.isNotAuthorized {
-            return "需授权「\(app)」"
+            return L("需授权「%@」", app)
         }
-        return "\(app) 存入失败"
+        return L("%@ 存入失败", app)
     }
 
     private func showSelectionNotice(_ text: String) {
@@ -665,7 +688,7 @@ final class AppModel: ObservableObject {
         targetLang = record.targetLang
         selectedSection = .translate
         savePreferences()
-        status = "已从历史记录载入"
+        status = L("已从历史记录载入")
     }
 
     func deleteHistory(_ record: HistoryRecord) {
@@ -692,7 +715,7 @@ final class AppModel: ObservableObject {
     func clearAllData() {
         try? store.clearAll()
         refreshData()
-        status = "本地数据已清空"
+        status = L("本地数据已清空")
     }
 
     func refreshData() {
@@ -706,32 +729,34 @@ final class AppModel: ObservableObject {
         defaults.set(sourceLang, forKey: PrefKey.source)
         defaults.set(targetLang, forKey: PrefKey.target)
         defaults.set(lengthOption.rawValue, forKey: PrefKey.maxTokens)
+        defaults.set(selectionPreferredTarget, forKey: PrefKey.selectionTarget)
+        defaults.set(interfaceLanguage.rawValue, forKey: PrefKey.interfaceLanguage)
     }
 
     // MARK: - 导出（划词 / 历史 / PDF 共用同一套文档写出）
 
     private func handleExport(_ outcome: DocumentExportOutcome) {
         switch outcome {
-        case .saved(let url): status = "已保存：\(url.lastPathComponent)"
+        case .saved(let url): status = L("已保存：%@", url.lastPathComponent)
         case .cancelled: break
-        case .failed(let message): status = "保存失败：\(message)"
+        case .failed(let message): status = L("保存失败：%@", message)
         }
     }
 
     func exportSelection(_ format: DocumentExportFormat) {
         guard !selectionSource.isEmpty else {
-            status = "还没有可保存的划词内容"
+            status = L("还没有可保存的划词内容")
             return
         }
         let document = TranslationDocument(
-            title: "划词译文",
+            title: L("划词译文"),
             subtitle: "\(AppBrand.fullName) · \(languageDisplayName(sourceLang)) → \(languageDisplayName(targetLang))",
-            items: [.init(heading: "划词内容",
+            items: [.init(heading: L("划词内容"),
                           source: selectionSource,
                           translation: selectionTranslation.isEmpty
-                              ? "（译文尚未生成）" : selectionTranslation)])
+                              ? L("（译文尚未生成）") : selectionTranslation)])
         handleExport(DocumentExporter.save(
-            document, suggestedName: "划词译文", format: format))
+            document, suggestedName: L("划词译文"), format: format))
     }
 
     /// 单条与多条合并走同一路径：1 条即单条导出，多条按顺序合并成一个文件。
@@ -739,19 +764,19 @@ final class AppModel: ObservableObject {
         guard !records.isEmpty else { return }
         let items = records.enumerated().map { index, record in
             TranslationDocument.Item(
-                heading: "第 \(index + 1) 条 · \(languageDisplayName(record.sourceLang))"
+                heading: L("第 %d 条 · %@", index + 1, languageDisplayName(record.sourceLang))
                     + " → \(languageDisplayName(record.targetLang))",
                 source: record.sourceText,
-                translation: record.targetText.isEmpty ? "（无译文）" : record.targetText,
-                note: "记录 #\(record.id) · "
+                translation: record.targetText.isEmpty ? L("（无译文）") : record.targetText,
+                note: L("记录 #%@ · ", String(describing: record.id))
                     + Date(timeIntervalSince1970: Double(record.createdAt) / 1000)
                         .formatted(date: .abbreviated, time: .shortened))
         }
         let document = TranslationDocument(
-            title: records.count == 1 ? "翻译记录" : "翻译记录（\(records.count) 条合并）",
-            subtitle: "\(AppBrand.fullName) · 本机导出 · 不上传",
+            title: records.count == 1 ? L("翻译记录") : L("翻译记录（%d 条合并）", records.count),
+            subtitle: L("%@ · 本机导出 · 不上传", AppBrand.fullName),
             items: items)
-        let name = records.count == 1 ? "翻译记录" : "翻译记录-\(records.count)条"
+        let name = records.count == 1 ? L("翻译记录") : L("翻译记录-%d条", records.count)
         handleExport(DocumentExporter.save(document, suggestedName: name, format: format))
     }
 
@@ -768,7 +793,7 @@ final class AppModel: ObservableObject {
         panel.allowedContentTypes = [.pdf]
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
-        panel.message = "选择要翻译的 PDF（支持几百页，按页分块串行翻译）"
+        panel.message = L("选择要翻译的 PDF（支持几百页，按页分块串行翻译）")
         guard panel.runModal() == .OK, let url = panel.url else { return }
         pdfURL = url
         do {
@@ -782,11 +807,11 @@ final class AppModel: ObservableObject {
             pdfChunkDone = 0
             pdfPreviewText = ""
             pdfErrorMessage = nil
-            pdfStatus = "已载入 \(result.pageCount) 页 / \(result.characterCount) 字，"
-                + "分为 \(pdfChunks.count) 段；长文档耗时较长，可随时取消。"
+            pdfStatus = L("已载入 %d 页 / %d 字，分为 %d 段；长文档耗时较长，可随时取消。",
+                          result.pageCount, result.characterCount, pdfChunks.count)
         } catch {
             pdfErrorMessage = error.localizedDescription
-            pdfStatus = "无法读取 PDF"
+            pdfStatus = L("无法读取 PDF")
             pdfChunks = []
             pdfChunkTotal = 0
             pdfChunkDone = 0
@@ -796,7 +821,7 @@ final class AppModel: ObservableObject {
     func startPDFTranslation() {
         guard !pdfIsTranslating, !pdfChunks.isEmpty else { return }
         guard isRealInference else {
-            pdfErrorMessage = "模型未就绪，请在设置中选择模型目录"
+            pdfErrorMessage = L("模型未就绪，请在设置中选择模型目录")
             return
         }
         pdfCancelled = false
@@ -805,7 +830,7 @@ final class AppModel: ObservableObject {
         pdfChunkDone = 0
         pdfPreviewText = ""
         pdfErrorMessage = nil
-        pdfStatus = "正在翻译…"
+        pdfStatus = L("正在翻译…")
         Task { @MainActor in await self.runPDFTranslation() }
     }
 
@@ -826,24 +851,24 @@ final class AppModel: ObservableObject {
                     if !piece.isFinal { translated += piece.text }
                 }
             } catch {
-                translated = "［本段翻译失败：\(error)］"
+                translated = L("［本段翻译失败：%@］", String(describing: error))
             }
             if pdfCancelled { break }
             pdfTranslations[index] = translated
             pdfChunkDone = index + 1
             pdfPreviewText = makePDFPreview()
-            pdfStatus = "已完成 \(index + 1) / \(chunks.count) 段"
+            pdfStatus = L("已完成 %d / %d 段", index + 1, chunks.count)
         }
         pdfCurrentRequestID = nil
         pdfIsTranslating = false
         let elapsed = Int64((DispatchTime.now().uptimeNanoseconds - start) / 1_000_000)
         if pdfCancelled {
-            pdfStatus = "已在第 \(pdfChunkDone) / \(chunks.count) 段取消"
-            status = "PDF 翻译已取消"
+            pdfStatus = L("已在第 %d / %d 段取消", pdfChunkDone, chunks.count)
+            status = L("PDF 翻译已取消")
         } else {
-            pdfStatus = String(format: "翻译完成 · %d 段 · 用时 %.1f 分钟",
+            pdfStatus = L("翻译完成 · %d 段 · 用时 %.1f 分钟",
                                chunks.count, Double(elapsed) / 60_000)
-            status = "PDF 翻译完成"
+            status = L("PDF 翻译完成")
             recordPDFToHistory(elapsedMs: elapsed)
         }
     }
@@ -852,7 +877,7 @@ final class AppModel: ObservableObject {
         guard pdfIsTranslating else { return }
         pdfCancelled = true
         let id = pdfCurrentRequestID
-        pdfStatus = "正在取消…"
+        pdfStatus = L("正在取消…")
         if let id {
             Task { @MainActor in await engine.cancel(id: id) }
         }
@@ -879,7 +904,7 @@ final class AppModel: ObservableObject {
             let chunk = pdfChunks[index]
             let text = pdfTranslations[index]
             if text.isEmpty { continue }
-            parts.append("【第 \(chunk.pageStart) 页 · 第 \(index + 1) 段】\n\(text)")
+            parts.append(L("【第 %d 页 · 第 %d 段】\n%@", chunk.pageStart, index + 1, text))
         }
         let joined = parts.joined(separator: "\n\n")
         return String(joined.suffix(6_000))
@@ -891,26 +916,26 @@ final class AppModel: ObservableObject {
             let translated = index < pdfTranslations.count ? pdfTranslations[index] : ""
             guard !translated.isEmpty else { continue }
             items.append(.init(
-                heading: "第 \(chunk.pageStart) 页 · 第 \(index + 1) 段",
+                heading: L("第 %d 页 · 第 %d 段", chunk.pageStart, index + 1),
                 source: chunk.text,
                 translation: translated,
                 note: "\(languageDisplayName(sourceLang)) → \(languageDisplayName(targetLang))"))
         }
         return TranslationDocument(
-            title: "\(pdfFileName) · 译文",
-            subtitle: "\(AppBrand.fullName) · 本机翻译 · 共 \(pdfPageCount) 页 / \(pdfChunkTotal) 段",
+            title: L("%@ · 译文", pdfFileName),
+            subtitle: L("%@ · 本机翻译 · 共 %d 页 / %d 段", AppBrand.fullName, pdfPageCount, pdfChunkTotal),
             items: items)
     }
 
     func exportPDFTranslation(_ format: DocumentExportFormat) {
         let document = makePDFDocument()
         guard !document.items.isEmpty else {
-            status = "还没有可导出的 PDF 译文"
+            status = L("还没有可导出的 PDF 译文")
             return
         }
         let base = (pdfFileName as NSString).deletingPathExtension
         handleExport(DocumentExporter.save(
-            document, suggestedName: "\(base)-译文", format: format))
+            document, suggestedName: L("%@-译文", base), format: format))
     }
 
     /// headless 冒烟专用：走同一条「PDFKit 提取 → 分块 → 真实推理 → DOCX 写出」链路，
@@ -938,7 +963,7 @@ final class AppModel: ObservableObject {
         }
         let document = TranslationDocument(
             title: "PDF smoke",
-            items: [.init(heading: "第 1 页",
+            items: [.init(heading: L("第 1 页"),
                           source: chunks[0].text,
                           translation: outputs.first ?? "")])
         let docxBytes = (try? TranslationDocumentWriter.docxData(document))?.count ?? 0

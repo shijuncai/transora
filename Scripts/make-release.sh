@@ -2,13 +2,13 @@
 # 一键发布校验：构建 → 全量测试 → 图标 → .app → 运行时自检 → 真机冒烟
 #               （含划词翻译数据链路自测）→ DMG
 #
-# 产物：dist/TransOra.app（含内嵌模型，约 450 MB）、dist/TransOra-0.8.7.dmg、
+# 产物：dist/TransOra.app（含内嵌模型，约 450 MB）、dist/TransOra-0.8.8.dmg、
 #       Reports/release-runtime.json、Reports/release-smoke.log、Reports/release-bundle-model.log
 # 说明：ad-hoc 签名不等于 Apple 公证；正式分发仍需 Developer ID 签名与公证。
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
-VERSION="0.8.7"
+VERSION="0.8.8"
 APP="$ROOT/dist/TransOra.app"
 
 echo "=== 1/8 构建 ==="

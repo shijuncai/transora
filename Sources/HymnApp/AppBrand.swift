@@ -8,8 +8,9 @@ import Foundation
 enum AppBrand {
     static let chineseName = "译澜"
     static let englishName = "TransOra"
-    static let displayName = "译澜"
-    static let fullName = "译澜 TransOra"
+    /// 界面语言决定显示哪个名字：中文界面「译澜」，英文界面直接用 TransOra。
+    static var displayName: String { L10n.current == .english ? englishName : chineseName }
+    static var fullName: String { L10n.current == .english ? englishName : "译澜 TransOra" }
     /// 版本号**以 Info.plist 为唯一来源**。
     ///
     /// 踩过的坑：版本号曾经硬编码在这里，打包脚本另写一份 `CFBundleShortVersionString`，
@@ -26,8 +27,10 @@ enum AppBrand {
 
     /// 无 bundle 场景的回退值。必须与 `Scripts/make-app.sh` 的 `VERSION` 一致，
     /// `Scripts/make-release.sh` 的「2b/8 版本一致性」会强制校验，不一致直接中断发布。
-    static let fallbackVersion = "0.8.7"
-    static let tagline = "本机 AI 翻译"
-    static let privacy = "所有翻译在本机完成，文本不会离开这台 Mac。"
+    static let fallbackVersion = "0.8.8"
+    static var tagline: String { L("本机 AI 翻译") }
+    static var privacy: String { L("所有翻译在本机完成，文本不会离开这台 Mac。") }
+    /// 版权行：关于窗口与设置页底部都显示这一条，不随界面语言翻译。
+    static let copyright = "Copyright (C) 2026 shijuncai"
     static let bundleIdentifier = "com.hymntranslate.macos"
 }

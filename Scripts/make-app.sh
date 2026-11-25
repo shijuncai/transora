@@ -11,8 +11,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 BUILD="$ROOT/.build/debug"
 APP="$ROOT/dist/TransOra.app"
-VERSION="0.8.7"
-BUILD_NUMBER="27"
+VERSION="0.8.8"
+BUILD_NUMBER="28"
 EMBED_MODEL="${HYMN_EMBED_MODEL:-1}"
 
 # 清理旧品牌产物（都是可重建的构建产物，不是用户数据）
